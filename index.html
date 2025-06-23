@@ -5,26 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CalmClinic</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f0f4f8;
+    }
+    header {
+      background-color: #0077cc;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    header img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #f0f4f8;
+      padding: 20px 10px;
+      gap: 15px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+      background: white;
+      padding: 12px 18px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: #e0f0ff;
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <img src="images/logo.png" alt="CalmClinic Logo" style="max-width: 220px; height: auto; display: block; margin: 0 auto 20px;" />
+    <img src="images/logo.png" alt="CalmClinic logo" />
     <h1>Velkommen til CalmClinic</h1>
     <p>Her finder du værktøjer, der hjælper dig med at få en tryg og rolig oplevelse hos tandlægen.</p>
   </header>
 
   <nav>
-    <ul>
-      <li><a href="test.html">🧠 Start testen</a></li>
-      <li><a href="calmcoach.html">💬 CalmCoach</a></li>
-      <li><a href="hjertemeditation_intro.html">❤️ Hjertemeditation Intro</a></li>
-      <li><a href="hjertemeditation_video.html">🎵 Hjertemeditation</a></li>
-      <li><a href="behandling_afstressning.html">🛋️ Afspænding under behandling</a></li>
-      <li><a href="bog.html">📖 Mini E-bog</a></li>
-      <li><a href="om.html">ℹ️ Om CalmClinic</a></li>
-      <li><a href="find.html">📍 Find behandler</a></li>
-      <li><a href="kontakt.html">✉️ Kontakt</a></li>
-    </ul>
+    <a href="test.html">🧠 Start testen</a>
+    <a href="calmcoach.html">💬 CalmCoach</a>
+    <a href="hjertemeditation_intro.html">❤️ Hjertemeditation Intro</a>
+    <a href="hjertemeditation_video.html">🎵 Hjertemeditation</a>
+    <a href="behandling_afstressning.html">🛋️ Afspænding under behandling</a>
+    <a href="bog.html">📖 Mini E-bog</a>
+    <a href="om.html">ℹ️ Om CalmClinic</a>
+    <a href="find.html">📍 Find behandler</a>
+    <a href="kontakt.html">✉️ Kontakt</a>
   </nav>
 </body>
 </html>
