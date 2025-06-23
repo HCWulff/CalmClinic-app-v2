@@ -28,3 +28,29 @@ main {
   padding: 30px;
   text-align: center;
 }
+header img {
+  max-width: 220px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+/* Mobilvenlig skalering */
+@media (max-width: 600px) {
+  header img {
+    max-width: 160px;
+  }
+}
+header img {
+  max-width: 220px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+/* Mobilvenlig skalering */
+@media (max-width: 600px) {
+  header img {
+    max-width: 160px;
+  }
+}
