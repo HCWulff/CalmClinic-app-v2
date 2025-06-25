@@ -2,11 +2,157 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8">
-  <title>Test</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalmClinic Test</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    header img {
+      max-height: 80px;
+      margin-bottom: 10px;
+    }
+    header h1 {
+      margin: 10px 0 0;
+      font-size: 28px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .instructions {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #003366;
+    }
+    .question-block {
+      margin-bottom: 30px;
+    }
+    .image-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .image-option {
+      width: 200px;
+      border: 4px solid transparent;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s, border-color 0.3s;
+      background-color: #fff;
+    }
+    .image-option img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .image-option span {
+      display: block;
+      text-align: center;
+      padding: 8px;
+      font-weight: bold;
+      background: #f2f2f2;
+    }
+    .image-option:hover {
+      transform: scale(1.05);
+    }
+    .selected {
+      border-color: #0077cc;
+    }
+    .result-button {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 28px;
+      font-size: 18px;
+      color: white;
+      background-color: #0077cc;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .result-button:hover {
+      background-color: #005fa3;
+    }
+    @media (max-width: 600px) {
+      .image-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .image-option {
+        width: 90vw;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header><h1>Test</h1></header>
-  <main><p>Indhold til <strong>test.html</strong> kommer her...</p></main>
+  <header>
+    <img src="images/logo.png" alt="CalmClinic logo">
+    <h1>Find din CalmClinic-type</h1>
+  </header>
+  <div class="container">
+    <div class="instructions">
+      <p>For at besvare testen, vælg ét billede i hver række, som bedst beskriver din oplevelse af et trygt og godt tandlægebesøg.</p>
+      <p>Tænk på, hvad der føles mest rigtigt – der er ingen forkerte svar. Valget af de to billeder indikerer hvilken kommunikationsform du foretrækker under et tandlægebesøg.</p>
+    </div>
+    <div class="question-block">
+      <div class="image-row">
+        <div class="image-option" data-type="taenker" data-step="first" onclick="selectOption(this, 'first')">
+          <img src="images/taenker.jpg.png" alt="Tænker">
+          <span>Information</span>
+        </div>
+        <div class="image-option" data-type="foeler" data-step="first" onclick="selectOption(this, 'first')">
+          <img src="images/foeler.jpg.png" alt="Føler">
+          <span>Empati</span>
+        </div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="image-row">
+        <div class="image-option" data-type="intuitiv" data-step="second" onclick="selectOption(this, 'second')">
+          <img src="images/intuitiv.jpg.png" alt="Intuitiv">
+          <span>Overblik</span>
+        </div>
+        <div class="image-option" data-type="sansende" data-step="second" onclick="selectOption(this, 'second')">
+          <img src="images/sensitiv.jpg.png" alt="Sansende">
+          <span>Ro</span>
+        </div>
+      </div>
+    </div>
+    <button class="result-button" onclick="showResult()">Se mit resultat</button>
+  </div>
+  <script>
+    let selection = {};
+
+    function selectOption(el, step) {
+      document.querySelectorAll(`.image-option[data-step="${step}"]`).forEach(opt => opt.classList.remove("selected"));
+      el.classList.add("selected");
+      selection[step] = el.getAttribute("data-type");
+    }
+
+    function showResult() {
+      if (!selection.first || !selection.second) {
+        alert("Vælg ét billede i hver række for at se resultatet.");
+        return;
+      }
+      const combined = `${selection.second}_${selection.first}`;
+      window.location.href = `result_${combined}.html`;
+    }
+  </script>
 </body>
 </html>
