@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CalmClinic Resultat – Intuitiv Føler</title>
+  <meta charset="UTF-8">
+  <title>Din CalmClinic-type: Intuitiv Føler</title>
   <link rel="stylesheet" href="style.css">
   <style>
     body {
@@ -28,99 +27,110 @@
     }
     header h1 {
       margin: 0;
-      font-size: 26px;
-      font-weight: bold;
+      font-size: 32px;
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
     }
     main {
-      max-width: 700px;
+      max-width: 800px;
       margin: 40px auto;
       background: white;
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .profile-img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-    .section-title {
+    h2 {
       color: #003366;
-      margin-top: 30px;
     }
     ul {
+      margin-top: 10px;
       padding-left: 20px;
-      margin: 10px 0 30px 0;
     }
-    li {
-      margin-bottom: 10px;
-    }
-    .good li::before {
-      content: "✅ ";
-      color: green;
-    }
-    .bad li::before {
-      content: "❌ ";
-      color: red;
-    }
-    .email-section {
-      background: #f2f8fc;
-      padding: 20px;
-      border-radius: 8px;
-    }
-    .email-section input {
+    input[type="email"] {
+      width: 100%;
       padding: 10px;
-      width: calc(100% - 130px);
-      border-radius: 5px;
+      font-size: 16px;
+      margin: 12px 0;
+      border-radius: 6px;
       border: 1px solid #ccc;
-      margin-bottom: 10px;
     }
-    .email-section button {
-      background-color: #0077cc;
+    .send-button {
+      background-color: #28a745;
       color: white;
       border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
       cursor: pointer;
     }
-    .email-section button:hover {
-      background-color: #005fa3;
+    .send-button:hover {
+      background-color: #218838;
     }
   </style>
 </head>
 <body>
   <header>
     <img src="images/logo.png" alt="CalmClinic logo">
-    <h1>Intuitiv Føler</h1>
+    <h1>Din CalmClinic-type: Intuitiv Føler</h1>
   </header>
   <main>
-    <img src="images/intuitiv_foeler.jpg.png" alt="Intuitiv Føler" class="profile-img" />
+    <p>Du mærker hurtigt stemninger og søger mening i det, du oplever. Du bliver tryg, når du føler dig forstået og set som menneske – ikke bare som patient.</p>
 
-    <p><strong>Du mærker hurtigt stemninger og søger mening i det, du oplever.</strong> Du bliver tryg, når du føler dig forstået og set som menneske – ikke bare som patient.</p>
-
-    <h2 class="section-title">Det hjælper dig, når:</h2>
-    <ul class="good">
+    <h2>Det hjælper dig, når:</h2>
+    <ul>
       <li>Du kan opbygge en relation med tandlægen</li>
       <li>Du mærker ægte interesse og forståelse</li>
       <li>Du har mulighed for afledning, hvis du ønsker det</li>
       <li>Du føler dig inkluderet og imødekommet</li>
     </ul>
 
-    <h2 class="section-title">Du har ikke brug for:</h2>
-    <ul class="bad">
+    <h2>Du har ikke brug for:</h2>
+    <ul>
       <li>At opleve professionel distance uden personlig kontakt</li>
       <li>En mekanisk behandling uden dialog</li>
       <li>At være i et miljø med stress eller uro</li>
     </ul>
 
-    <div class="email-section">
-      <h3>Send til klinikken</h3>
-      <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken. Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
-      <input type="email" placeholder="f.eks. info@klinik.dk">
-      <button>Send til klinikken</button>
-    </div>
+    <h2>Send til klinikken</h2>
+    <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken.<br>Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
+
+    <input type="email" id="clinicEmail" placeholder="f.eks. info@klinik.dk">
+    <button onclick="sendToClinic()" class="send-button">Send til klinikken</button>
   </main>
+
+  <script>
+    function sendToClinic() {
+      const email = document.getElementById("clinicEmail").value;
+      if (!email) {
+        alert("Udfyld venligst klinikkens e-mailadresse.");
+        return;
+      }
+      const subject = encodeURIComponent("CalmClinic-type: Intuitiv Føler – patientens kommunikationsbehov");
+      const body = encodeURIComponent(`Indhold til journal / intern vejledning:
+
+Patienten har gennemført CalmClinic-testen og identificerer sig som: Intuitiv Føler
+
+Denne type patient mærker hurtigt stemninger og søger mening i det, der foregår. Det er vigtigt, at patienten føler sig forstået som menneske – ikke kun som patient.
+
+Anbefalet kommunikation i klinikken:
+
+✅ Skab en relation og vis ægte interesse
+✅ Giv plads til dialog og vis forståelse
+✅ Tilbyd afledning (fx musik eller billeder), hvis ønsket
+✅ Vær inkluderende og imødekommende i din tilgang
+
+❌ Undgå professionel distance og mekanisk fremgangsmåde
+❌ Undgå stresset stemning og utrygge omgivelser
+❌ Undgå at ignorere patientens behov for relation og kontakt
+
+Formålet med CalmClinic-testen:
+Testen hjælper med at identificere den kommunikationsform, der giver den enkelte patient mest tryghed og ro under tandbehandling. Ved at tage udgangspunkt i patientens oplevelse og behov, kan behandlingen tilpasses mere præcist – hvilket ofte fører til bedre samarbejde og øget tillid.
+
+Vil I vide mere?
+Hvis I ønsker at vide mere om CalmClinic-metoden eller få jeres klinik med i systemet, kan I læse mere på www.calmclinic.dk eller kontakte os direkte.`);
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    }
+  </script>
 </body>
 </html>
+
 
