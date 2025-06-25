@@ -8,73 +8,114 @@
   <style>
     body {
       margin: 0;
-      font-family: sans-serif;
-      background-color: #f0f4f8;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f8fa;
     }
 
     header {
       background: url('images/havbaggrund.jpg.png') no-repeat center center;
       background-size: cover;
       color: white;
+      padding: 60px 20px;
       text-align: center;
-      padding: 40px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
-    header img {
-      width: 140px;
-      margin-bottom: 20px;
+    header h1 {
+      margin: 0;
+      font-size: 36px;
     }
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      background-color: #dceff8;
-      padding: 30px 20px;
-      gap: 15px;
+    header p {
+      font-size: 18px;
+      margin-top: 10px;
     }
 
-    nav a {
-      text-decoration: none;
-      color: #003366;
-      font-weight: bold;
+    main.grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 40px;
+    }
+
+    .card {
       background: white;
-      padding: 14px 20px;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: background 0.3s;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
     }
 
-    nav a:hover {
-      background: #e6f4ff;
+    .card a {
+      display: block;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #003366;
+      text-decoration: none;
     }
 
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        align-items: center;
-      }
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #333;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="images/logo.png" alt="CalmClinic logo" />
     <h1>Velkommen til CalmClinic</h1>
     <p>Her finder du værktøjer, der hjælper dig med at få en tryg og rolig oplevelse hos tandlægen.</p>
   </header>
 
-  <nav>
-    <a href="test.html">🧠 Start testen</a>
-    <a href="calmcoach.html">💬 CalmCoach</a>
-    <a href="hjertemeditation_intro.html">❤️ Hjertemeditation Intro</a>
-    <a href="hjertemeditation_video.html">🎵 Hjertemeditation</a>
-    <a href="behandling_afstressning.html">🛋️ Afspænding under behandling</a>
-    <a href="bog.html">📖 Mini E-bog</a>
-    <a href="om.html">ℹ️ Om CalmClinic</a>
-    <a href="find.html">📍 Find behandler</a>
-    <a href="kontakt.html">✉️ Kontakt</a>
-  </nav>
+  <main class="grid">
+    <div class="card">
+      <a href="test.html">🧠 Start testen</a>
+      <p>Find ud af, hvordan du bedst bliver mødt hos tandlægen – og hvilken kommunikationsform der skaber tryghed for dig.</p>
+    </div>
+
+    <div class="card">
+      <a href="calmcoach.html">💬 CalmCoach</a>
+      <p>Få små opmuntrende beskeder og rolig støtte op til dit tandlægebesøg. Du vælger selv datoen.</p>
+    </div>
+
+    <div class="card">
+      <a href="hjertemeditation_intro.html">❤️ Hjertemeditation Intro</a>
+      <p>En kort introduktion til hjertemeditation, der hjælper dig med at finde ro inden behandlingen.</p>
+    </div>
+
+    <div class="card">
+      <a href="hjertemeditation_video.html">🎵 Hjertemeditation</a>
+      <p>Se og lyt til en guidet video med musik og afslapning, der beroliger kroppen.</p>
+    </div>
+
+    <div class="card">
+      <a href="behandling_afstressning.html">🛋️ Afspænding under behandling</a>
+      <p>Brug lyd og billeder under tandbehandlingen for at mindske ubehag og spænding.</p>
+    </div>
+
+    <div class="card">
+      <a href="bog.html">📖 Mini E-bog</a>
+      <p>Læs vores lille e-bog med gode råd om tandlægeskræk og hvordan du håndterer den.</p>
+    </div>
+
+    <div class="card">
+      <a href="om.html">ℹ️ Om CalmClinic</a>
+      <p>Hvem står bag CalmClinic? Læs mere om vores tilgang og idégrundlag.</p>
+    </div>
+
+    <div class="card">
+      <a href="find.html">📍 Find behandler</a>
+      <p>Find tandklinikker og terapeuter, der arbejder med CalmClinic-metoden.</p>
+    </div>
+
+    <div class="card">
+      <a href="kontakt.html">✉️ Kontakt</a>
+      <p>Har du spørgsmål eller brug for hjælp? Kontakt os her.</p>
+    </div>
+  </main>
 </body>
 </html>
-
