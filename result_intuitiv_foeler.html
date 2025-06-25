@@ -147,12 +147,12 @@
       <li>At være i et miljø med stress eller uro</li>
     </ul>
 
-    <h2>Send til klinikken</h2>
+     <h2>Send til klinikken</h2>
     <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken.<br>Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
 
     <input type="email" id="clinicEmail" placeholder="f.eks. info@klinik.dk">
     <button onclick="sendToClinic()" class="send-button">Send til klinikken</button>
-  </div>
+  </main>
 
   <script>
     function sendToClinic() {
@@ -161,4 +161,32 @@
         alert("Udfyld venligst klinikkens e-mailadresse.");
         return;
       }
-      const subject = en
+      const subject = encodeURIComponent("CalmClinic-type: Intuitiv Føler – patientens kommunikationsbehov");
+      const body = encodeURIComponent(`Indhold til journal / intern vejledning:
+
+Patienten har gennemført CalmClinic-testen og identificerer sig som: Intuitiv Føler
+
+Denne type patient mærker hurtigt stemninger og søger mening i det, der foregår. Det er vigtigt, at patienten føler sig forstået som menneske – ikke kun som patient.
+
+Anbefalet kommunikation i klinikken:
+
+✅ Skab en relation og vis ægte interesse
+✅ Giv plads til dialog og vis forståelse
+✅ Tilbyd afledning (fx musik eller billeder), hvis ønsket
+✅ Vær inkluderende og imødekommende i din tilgang
+
+❌ Undgå professionel distance og mekanisk fremgangsmåde
+❌ Undgå stresset stemning og utrygge omgivelser
+❌ Undgå at ignorere patientens behov for relation og kontakt
+
+Formålet med CalmClinic-testen:
+Testen hjælper med at identificere den kommunikationsform, der giver den enkelte patient mest tryghed og ro under tandbehandling. Ved at tage udgangspunkt i patientens oplevelse og behov, kan behandlingen tilpasses mere præcist – hvilket ofte fører til bedre samarbejde og øget tillid.
+
+Vil I vide mere?
+Hvis I ønsker at vide mere om CalmClinic-metoden eller få jeres klinik med i systemet, kan I læse mere på www.calmclinic.dk eller kontakte os direkte.`);
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
+  
