@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -12,7 +14,6 @@
       padding: 0 20px;
       color: #003366;
     }
-
     .wrapper {
       max-width: 700px;
       margin: 40px auto;
@@ -21,102 +22,87 @@
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-
     .logo {
       display: block;
       margin: 0 auto 20px;
       max-width: 150px;
       height: auto;
     }
-
     .hero-image {
       max-width: 100%;
       border-radius: 12px;
       margin: 20px 0;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-
     h1 {
+      color: #003366;
       text-align: center;
       font-size: 24px;
       margin-bottom: 10px;
-      color: #003366;
     }
-
+    h2 {
+      color: #003366;
+      margin-top: 40px;
+    }
     p {
       font-size: 18px;
       line-height: 1.6;
-      margin-bottom: 20px;
       color: #000;
+      margin-bottom: 20px;
     }
-
     ul {
       list-style: none;
       padding: 0;
       margin: 0 0 30px;
     }
-
     ul li {
       font-size: 18px;
       margin-bottom: 12px;
       padding-left: 28px;
       position: relative;
     }
-
     ul.positiv li::before {
       content: "✔";
       color: green;
       position: absolute;
       left: 0;
     }
-
     ul.negativ li::before {
       content: "✖";
       color: red;
       position: absolute;
       left: 0;
     }
-
-    .section-title {
-      font-weight: bold;
-      margin-top: 30px;
-      font-size: 18px;
-      color: #003366;
+    .send-button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      display: block;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-
+    .send-button:hover {
+      background-color: #218838;
+    }
     input[type="email"] {
       width: 100%;
       padding: 10px;
       font-size: 16px;
-      margin: 12px 0;
-      border-radius: 6px;
+      margin-bottom: 10px;
       border: 1px solid #ccc;
-    }
-
-    .send-button {
-      background-color: #28a745;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
       border-radius: 8px;
-      cursor: pointer;
-      display: block;
     }
-
-    .send-button:hover {
-      background-color: #218838;
-    }
-
     @media (max-width: 600px) {
       .wrapper {
         padding: 20px;
       }
-
       h1 {
         font-size: 20px;
       }
-
       p, ul li {
         font-size: 16px;
       }
@@ -127,32 +113,31 @@
   <div class="wrapper">
     <img src="images/logo.png" alt="CalmClinic logo" class="logo" />
     <h1>Intuitiv Føler</h1>
-    <img src="images/intuitiv_foeler.jpg.png" alt="Illustration af Intuitiv Føler" class="hero-image" />
-
+    <img src="images/intuitiv_foeler.jpg.png" alt="Illustration" class="hero-image" />
     <p><strong>Du mærker hurtigt stemninger og søger mening i det, du oplever.</strong></p>
     <p>Du bliver tryg, når du føler dig forstået og set som menneske – ikke bare som patient.</p>
 
-    <div class="section-title">Det hjælper dig, når:</div>
+    <h2>Det hjælper dig, når:</h2>
     <ul class="positiv">
       <li>Du kan opbygge en relation med tandlægen</li>
       <li>Du mærker ægte interesse og forståelse</li>
-      <li>Du har mulighed for afledning, hvis du ønsker det</li>
+      <li>Du har mulighed for afledning (fx musik eller billeder), hvis ønsket</li>
       <li>Du føler dig inkluderet og imødekommet</li>
     </ul>
 
-    <div class="section-title">Du har ikke brug for:</div>
+    <h2>Du har ikke brug for:</h2>
     <ul class="negativ">
       <li>At opleve professionel distance uden personlig kontakt</li>
       <li>En mekanisk behandling uden dialog</li>
       <li>At være i et miljø med stress eller uro</li>
     </ul>
 
-     <h2>Send til klinikken</h2>
-    <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken.<br>Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
-
+    <h2>Send til klinikken</h2>
+    <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken.<br>
+    Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
     <input type="email" id="clinicEmail" placeholder="f.eks. info@klinik.dk">
     <button onclick="sendToClinic()" class="send-button">Send til klinikken</button>
-  </main>
+  </div>
 
   <script>
     function sendToClinic() {
@@ -189,4 +174,3 @@ Hvis I ønsker at vide mere om CalmClinic-metoden eller få jeres klinik med i s
   </script>
 </body>
 </html>
-  
