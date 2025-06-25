@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Din CalmClinic-type: Sansende Tænker</title>
+  <title>CalmClinic Resultat – Sansende Tænker</title>
   <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f8fb;
+      background-color: #e6f3fa;
     }
     header {
       background-image: url('images/havbaggrund.jpg.png');
@@ -28,52 +28,56 @@
     }
     header h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 26px;
+      font-weight: bold;
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
     }
     main {
-      max-width: 800px;
+      max-width: 700px;
       margin: 40px auto;
       background: white;
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .main-image {
+    .profile-img {
       width: 100%;
       border-radius: 10px;
-      margin: 20px 0;
+      margin-bottom: 20px;
     }
-    h2 {
+    .section-title {
       color: #003366;
-      font-size: 20px;
       margin-top: 30px;
     }
     ul {
       padding-left: 20px;
+      margin: 10px 0 30px 0;
     }
-    ul li {
-      margin-bottom: 8px;
+    li {
+      margin-bottom: 10px;
     }
-    .check {
+    .good li::before {
+      content: "✅ ";
       color: green;
     }
-    .cross {
+    .bad li::before {
+      content: "❌ ";
       color: red;
     }
     .email-section {
-      margin-top: 40px;
+      background: #f2f8fc;
+      padding: 20px;
+      border-radius: 8px;
     }
     .email-section input {
       padding: 10px;
-      width: 100%;
-      max-width: 400px;
-      border: 1px solid #ccc;
+      width: calc(100% - 130px);
       border-radius: 5px;
+      border: 1px solid #ccc;
       margin-bottom: 10px;
     }
     .email-section button {
-      background-color: #28a745;
+      background-color: #0077cc;
       color: white;
       border: none;
       padding: 10px 20px;
@@ -81,7 +85,7 @@
       cursor: pointer;
     }
     .email-section button:hover {
-      background-color: #218838;
+      background-color: #005fa3;
     }
   </style>
 </head>
@@ -91,28 +95,27 @@
     <h1>Sansende Tænker</h1>
   </header>
   <main>
-    <img src="images/taenker.jpg.png" alt="Resultat billede" class="main-image">
+    <img src="images/sansende_resultat.jpg" alt="Sansende Tænker" class="profile-img" />
 
-    <p><strong>Du kan lide at vide, hvad der sker – og hvorfor.</strong></p>
-    <p>Du finder tryghed i detaljer og tydelige forklaringer. Det giver dig ro, når du kan følge med i processen og fornemme, at alt er velovervejet.</p>
+    <p><strong>Du orienterer dig gennem konkrete sanseindtryk og har brug for overblik og forståelig information.</strong> Du føler dig tryg, når du ved, hvad der sker, og der ikke er for mange ubekendte faktorer.</p>
 
-    <h2>Det hjælper dig, når:</h2>
-    <ul>
-      <li class="check">✔️ Du får rolig og struktureret information</li>
-      <li class="check">✔️ Du ved, hvad næste skridt bliver</li>
-      <li class="check">✔️ Du kan stille spørgsmål og blive taget alvorligt</li>
-      <li class="check">✔️ Der er gennemsigtighed og professionalisme i behandlingen</li>
+    <h2 class="section-title">Det hjælper dig, når:</h2>
+    <ul class="good">
+      <li>Du bliver informeret klart og enkelt</li>
+      <li>Du får lov til at se instrumenter og forstå proceduren</li>
+      <li>Du får besked om næste trin og kan følge med</li>
+      <li>Miljøet er roligt og genkendeligt</li>
     </ul>
 
-    <h2>Du har ikke brug for:</h2>
-    <ul>
-      <li class="cross">❌ At tingene går hurtigt uden forklaring</li>
-      <li class="cross">❌ At du bliver sat i gang uden overblik</li>
-      <li class="cross">❌ For meget snak, som ikke handler om behandlingen</li>
+    <h2 class="section-title">Du har ikke brug for:</h2>
+    <ul class="bad">
+      <li>Overraskelser eller skift i procedure uden forklaring</li>
+      <li>Uklare beskeder og forvirrende information</li>
+      <li>Støj og for mange stimuli samtidig</li>
     </ul>
 
     <div class="email-section">
-      <h2>Send til klinikken</h2>
+      <h3>Send til klinikken</h3>
       <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken. Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
       <input type="email" placeholder="f.eks. info@klinik.dk">
       <button>Send til klinikken</button>
@@ -120,4 +123,5 @@
   </main>
 </body>
 </html>
+
 
