@@ -13,7 +13,9 @@
       background-color: #f0f8ff;
     }
     header {
-      background-color: #003366;
+      background-image: url('images/havbaggrund.jpg');
+      background-size: cover;
+      background-position: center;
       color: white;
       padding: 30px 20px;
       text-align: center;
@@ -50,17 +52,20 @@
     }
     .image-option {
       width: 200px;
+      height: 200px;
       border: 4px solid transparent;
       border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
       transition: transform 0.3s, border-color 0.3s;
       background-color: #fff;
+      display: flex;
+      flex-direction: column;
     }
     .image-option img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 140px;
+      object-fit: cover;
     }
     .image-option span {
       display: block;
@@ -68,6 +73,7 @@
       padding: 8px;
       font-weight: bold;
       background: #f2f2f2;
+      flex-grow: 1;
     }
     .image-option:hover {
       transform: scale(1.05);
