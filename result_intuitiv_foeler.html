@@ -1,10 +1,7 @@
-
-
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>CalmClinic – Intuitiv Føler</title>
   <style>
     body {
@@ -28,21 +25,11 @@
       max-width: 150px;
       height: auto;
     }
-    .hero-image {
-      max-width: 100%;
-      border-radius: 12px;
-      margin: 20px 0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
     h1 {
       color: #003366;
       text-align: center;
       font-size: 24px;
       margin-bottom: 10px;
-    }
-    h2 {
-      color: #003366;
-      margin-top: 40px;
     }
     p {
       font-size: 18px;
@@ -73,6 +60,20 @@
       position: absolute;
       left: 0;
     }
+    .section-title {
+      font-weight: bold;
+      margin-top: 30px;
+      color: #003366;
+      font-size: 18px;
+    }
+    input[type=email] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
     .send-button {
       padding: 12px 24px;
       font-size: 16px;
@@ -81,51 +82,37 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      margin-top: 20px;
       display: block;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     .send-button:hover {
       background-color: #218838;
     }
-    input[type="email"] {
+    .hero-image {
       width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    @media (max-width: 600px) {
-      .wrapper {
-        padding: 20px;
-      }
-      h1 {
-        font-size: 20px;
-      }
-      p, ul li {
-        font-size: 16px;
-      }
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      margin: 20px 0;
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
     <img src="images/logo.png" alt="CalmClinic logo" class="logo" />
-    <h1>Intuitiv Føler</h1>
+    <h1>Din CalmClinic-type: Intuitiv Føler</h1>
     <img src="images/intuitiv_foeler.jpg.png" alt="Illustration" class="hero-image" />
     <p><strong>Du mærker hurtigt stemninger og søger mening i det, du oplever.</strong></p>
     <p>Du bliver tryg, når du føler dig forstået og set som menneske – ikke bare som patient.</p>
 
-    <h2>Det hjælper dig, når:</h2>
+    <div class="section-title">Det hjælper dig, når:</div>
     <ul class="positiv">
       <li>Du kan opbygge en relation med tandlægen</li>
       <li>Du mærker ægte interesse og forståelse</li>
-      <li>Du har mulighed for afledning (fx musik eller billeder), hvis ønsket</li>
+      <li>Du har mulighed for afledning, hvis du ønsker det</li>
       <li>Du føler dig inkluderet og imødekommet</li>
     </ul>
 
-    <h2>Du har ikke brug for:</h2>
+    <div class="section-title">Du har ikke brug for:</div>
     <ul class="negativ">
       <li>At opleve professionel distance uden personlig kontakt</li>
       <li>En mekanisk behandling uden dialog</li>
@@ -133,8 +120,8 @@
     </ul>
 
     <h2>Send til klinikken</h2>
-    <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken.<br>
-    Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
+    <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken.<br>Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
+
     <input type="email" id="clinicEmail" placeholder="f.eks. info@klinik.dk">
     <button onclick="sendToClinic()" class="send-button">Send til klinikken</button>
   </div>
@@ -146,6 +133,7 @@
         alert("Udfyld venligst klinikkens e-mailadresse.");
         return;
       }
+
       const subject = encodeURIComponent("CalmClinic-type: Intuitiv Føler – patientens kommunikationsbehov");
       const body = encodeURIComponent(`Indhold til journal / intern vejledning:
 
@@ -169,6 +157,7 @@ Testen hjælper med at identificere den kommunikationsform, der giver den enkelt
 
 Vil I vide mere?
 Hvis I ønsker at vide mere om CalmClinic-metoden eller få jeres klinik med i systemet, kan I læse mere på www.calmclinic.dk eller kontakte os direkte.`);
+
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     }
   </script>
