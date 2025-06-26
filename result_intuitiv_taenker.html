@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CalmClinic Resultat – Intuitiv Tænker</title>
-  <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -117,9 +116,44 @@
     <div class="email-section">
       <h3>Send til klinikken</h3>
       <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken. Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
-      <input type="email" placeholder="f.eks. info@klinik.dk">
-      <button>Send til klinikken</button>
+      <input type="email" id="clinicEmail" placeholder="f.eks. info@klinik.dk">
+      <button onclick="sendToClinic()">Send til klinikken</button>
     </div>
   </main>
+
+  <script>
+    function sendToClinic() {
+      const email = document.getElementById("clinicEmail").value;
+      if (!email) {
+        alert("Udfyld venligst klinikkens e-mailadresse.");
+        return;
+      }
+      const subject = encodeURIComponent("CalmClinic-type: Intuitiv Tænker – patientens kommunikationsbehov");
+      const body = encodeURIComponent(`Indhold til journal / intern vejledning:
+
+Patienten har gennemført CalmClinic-testen og identificerer sig som: Intuitiv Tænker
+
+Denne type patient orienterer sig gennem idéer og mønstre og ønsker forståelse og overblik. Det er vigtigt, at patienten ser meningen bag forløbet og føler sig inddraget i beslutningerne.
+
+Anbefalet kommunikation i klinikken:
+
+✅ Inddrag patienten i plan og valg
+✅ Giv forklaringer og vis respekt
+✅ Giv overblik over hele forløbet
+✅ Anerkend patientens behov for sammenhæng
+
+❌ Undgå at udstede ordrer uden forklaring
+❌ Undgå uklare eller modstridende beskeder
+❌ Undgå at nedtone behovet for overblik
+
+Formålet med CalmClinic-testen:
+Testen hjælper med at identificere den kommunikationsform, der giver den enkelte patient mest tryghed og ro under tandbehandling. Ved at tage udgangspunkt i patientens oplevelse og behov, kan behandlingen tilpasses mere præcist – hvilket ofte fører til bedre samarbejde og øget tillid.
+
+Vil I vide mere?
+Læs mere på www.calmclinic.dk eller kontakt os direkte.`);
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    }
+  </script>
 </body>
 </html>
+
