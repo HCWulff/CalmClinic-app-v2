@@ -1,127 +1,160 @@
+
+
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CalmClinic Resultat – Sansende Tænker</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>CalmClinic – Sansende Tænker</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f2f9fc;
       margin: 0;
-      padding: 0;
-      background-color: #e6f3fa;
+      padding: 0 20px;
+      color: #003366;
     }
-    header {
-      background-image: url('images/havbaggrund.jpg.png');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-      box-shadow: inset 0 -80px 80px rgba(0, 0, 0, 0.3);
-    }
-    header img {
-      max-height: 120px;
-      margin-bottom: 10px;
-      width: auto;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 26px;
-      font-weight: bold;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-    }
-    main {
+    .wrapper {
       max-width: 700px;
       margin: 40px auto;
       background: white;
       padding: 30px;
-      border-radius: 10px;
+      border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .profile-img {
-      width: 100%;
-      border-radius: 10px;
+    .logo {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 150px;
+      height: auto;
+    }
+    h1 {
+      color: #003366;
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #000;
       margin-bottom: 20px;
     }
-    .section-title {
-      color: #003366;
-      margin-top: 30px;
-    }
     ul {
-      padding-left: 20px;
-      margin: 10px 0 30px 0;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px;
     }
-    li {
-      margin-bottom: 10px;
+    ul li {
+      font-size: 18px;
+      margin-bottom: 12px;
+      padding-left: 28px;
+      position: relative;
     }
-    .good li::before {
-      content: "✅ ";
+    ul.positiv li::before {
+      content: "✔";
       color: green;
+      position: absolute;
+      left: 0;
     }
-    .bad li::before {
-      content: "❌ ";
+    ul.negativ li::before {
+      content: "✖";
       color: red;
+      position: absolute;
+      left: 0;
     }
-    .email-section {
-      background: #f2f8fc;
-      padding: 20px;
-      border-radius: 8px;
+    .section-title {
+      font-weight: bold;
+      margin-top: 30px;
+      color: #003366;
+      font-size: 18px;
     }
-    .email-section input {
+    input[type=email] {
+      width: 100%;
       padding: 10px;
-      width: calc(100% - 130px);
-      border-radius: 5px;
-      border: 1px solid #ccc;
       margin-bottom: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
-    .email-section button {
-      background-color: #0077cc;
+    .send-button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #28a745;
       color: white;
       border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
+      display: block;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-    .email-section button:hover {
-      background-color: #005fa3;
+    .send-button:hover {
+      background-color: #218838;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="images/logo.png" alt="CalmClinic logo">
+  <div class="wrapper">
+    <img src="images/logo.png" alt="CalmClinic logo" class="logo" />
     <h1>Sansende Tænker</h1>
-  </header>
-  <main>
-    <img src="images/sansende_taenker.jpg.png" alt="Sansende Tænker" class="profile-img" />
+    <img src="images/sansende_taenker.jpg.png" alt="Illustration" class="hero-image" style="width:100%;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.2);margin:20px 0;">
+    <p><strong>Du sætter pris på struktur og har fokus på konkrete detaljer.</strong></p>
+    <p>Du bliver tryg, når du får klar information og kan følge med i, hvad der sker undervejs i behandlingen.</p>
 
-    <p><strong>Du orienterer dig gennem konkrete sanseindtryk og har brug for overblik og forståelig information.</strong> Du føler dig tryg, når du ved, hvad der sker, og der ikke er for mange ubekendte faktorer.</p>
-
-    <h2 class="section-title">Det hjælper dig, når:</h2>
-    <ul class="good">
-      <li>Du bliver informeret klart og enkelt</li>
-      <li>Du får lov til at se instrumenter og forstå proceduren</li>
-      <li>Du får besked om næste trin og kan følge med</li>
-      <li>Miljøet er roligt og genkendeligt</li>
+    <div class="section-title">Det hjælper dig, når:</div>
+    <ul class="positiv">
+      <li>Du får tydelig og konkret information</li>
+      <li>Behandlingsforløbet er forudsigeligt og struktureret</li>
+      <li>Du får lov at følge med trin for trin</li>
+      <li>Miljøet er roligt og velorganiseret</li>
     </ul>
 
-    <h2 class="section-title">Du har ikke brug for:</h2>
-    <ul class="bad">
-      <li>Overraskelser eller skift i procedure uden forklaring</li>
-      <li>Uklare beskeder og forvirrende information</li>
-      <li>Støj og for mange stimuli samtidig</li>
+    <div class="section-title">Du har ikke brug for:</div>
+    <ul class="negativ">
+      <li>Uventede situationer eller skift i planen</li>
+      <li>At blive behandlet uden forklaring</li>
+      <li>For meget fokus på følelser og stemninger</li>
     </ul>
 
-    <div class="email-section">
-      <h3>Send til klinikken</h3>
-      <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken. Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
-      <input type="email" placeholder="f.eks. info@klinik.dk">
-      <button>Send til klinikken</button>
-    </div>
-  </main>
+    <h2>Send til klinikken</h2>
+    <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken.<br>Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
+
+    <input type="email" id="clinicEmail" placeholder="f.eks. info@klinik.dk">
+    <button onclick="sendToClinic()" class="send-button">Send til klinikken</button>
+  </div>
+
+  <script>
+    function sendToClinic() {
+      const email = document.getElementById("clinicEmail").value;
+      if (!email) {
+        alert("Udfyld venligst klinikkens e-mailadresse.");
+        return;
+      }
+      const subject = encodeURIComponent("CalmClinic-type: Sansende Tænker – patientens kommunikationsbehov");
+      const body = encodeURIComponent(`Indhold til journal / intern vejledning:
+
+Patienten har gennemført CalmClinic-testen og identificerer sig som: Sansende Tænker
+
+Denne type patient sætter pris på konkrete detaljer og strukturerede forløb. Det er vigtigt, at patienten oplever overblik og tydelig information undervejs.
+
+Anbefalet kommunikation i klinikken:
+
+✅ Giv tydelig og konkret information
+✅ Beskriv behandlingsforløbet trin for trin
+✅ Undgå uforudsigelighed og skift i planen
+✅ Sørg for et roligt og velorganiseret miljø
+
+❌ Undgå at springe forklaringer over
+❌ Undgå følelsesladet kommunikation uden fakta
+❌ Undgå stressede omgivelser og rod i planlægningen
+
+Formålet med CalmClinic-testen:
+Testen hjælper med at identificere den kommunikationsform, der giver den enkelte patient mest tryghed og ro under tandbehandling. Ved at tage udgangspunkt i patientens oplevelse og behov, kan behandlingen tilpasses mere præcist – hvilket ofte fører til bedre samarbejde og øget tillid.
+
+Vil I vide mere?
+Hvis I ønsker at vide mere om CalmClinic-metoden eller få jeres klinik med i systemet, kan I læse mere på www.calmclinic.dk eller kontakte os direkte.`);
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    }
+  </script>
 </body>
 </html>
-
 
