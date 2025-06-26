@@ -1,10 +1,11 @@
+
+
 <!DOCTYPE html>
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CalmClinic Resultat – Føler Sansende</title>
-  <link rel="stylesheet" href="style.css">
+  <title>CalmClinic Resultat – Sansende Føler</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -95,7 +96,7 @@
     <h1>Sansende Føler</h1>
   </header>
   <main>
-    <img src="images/sansende_foeler.jpg.png" alt="Føler Sansende" class="profile-img" />
+    <img src="images/sansende_foeler.jpg.png" alt="Sansende Føler" class="profile-img" />
 
     <p><strong>Du registrerer hurtigt stemninger, signaler og lyde – og dine følelser er ofte knyttet til dine kropslige reaktioner.</strong> Du føler dig tryg, når der er ro, varme og menneskelig kontakt omkring dig.</p>
 
@@ -117,10 +118,44 @@
     <div class="email-section">
       <h3>Send til klinikken</h3>
       <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken. Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
-      <input type="email" placeholder="f.eks. info@klinik.dk">
-      <button>Send til klinikken</button>
+      <input type="email" id="clinicEmail" placeholder="f.eks. info@klinik.dk">
+      <button onclick="sendToClinic()">Send til klinikken</button>
     </div>
   </main>
+
+  <script>
+    function sendToClinic() {
+      const email = document.getElementById("clinicEmail").value;
+      if (!email) {
+        alert("Udfyld venligst klinikkens e-mailadresse.");
+        return;
+      }
+      const subject = encodeURIComponent("CalmClinic-type: Sansende Føler – patientens kommunikationsbehov");
+      const body = encodeURIComponent(`Indhold til journal / intern vejledning:
+
+Patienten har gennemført CalmClinic-testen og identificerer sig som: Sansende Føler
+
+Denne type patient registrerer hurtigt stemninger, signaler og lyde – og har ofte følelser knyttet til kropslige reaktioner. Det er vigtigt, at patienten mødes med ro, varme og menneskelig kontakt.
+
+Anbefalet kommunikation i klinikken:
+
+✅ Behandlingen foregår i rolige omgivelser
+✅ Talt til på en tryg og beroligende måde
+✅ Patienten mærker, at vedkommende bliver mødt som menneske
+✅ Der er tid og nærvær
+
+❌ Undgå støj, uro eller travl stemning
+❌ Undgå korte svar uden varme
+❌ Undgå at ignorere følelsesmæssige reaktioner
+
+Formålet med CalmClinic-testen:
+Testen hjælper med at identificere den kommunikationsform, der giver den enkelte patient mest tryghed og ro under tandbehandling. Ved at tage udgangspunkt i patientens oplevelse og behov, kan behandlingen tilpasses mere præcist – hvilket ofte fører til bedre samarbejde og øget tillid.
+
+Vil I vide mere?
+Hvis I ønsker at vide mere om CalmClinic-metoden eller få jeres klinik med i systemet, kan I læse mere på www.calmclinic.dk eller kontakte os direkte.`);
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    }
+  </script>
 </body>
 </html>
 
