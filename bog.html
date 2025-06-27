@@ -3,111 +3,128 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Slip tandlægeskræk</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalmClinic - Slip tandlægeskræk</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #e6f3fa;
+      background-color: #f0f8ff;
     }
     header {
-      text-align: center;
-      padding: 30px 20px;
-      background-image: url('images/havbaggrund.jpg.png');
+      background-image: url('images/header.jpg');
       background-size: cover;
-      background-position: center;
-      color: white;
+      text-align: center;
+      padding: 40px 20px;
     }
     header img {
-      max-height: 100px;
+      max-width: 150px;
     }
-    main {
-      max-width: 800px;
-      margin: 30px auto;
+    header h1 {
+      color: #003366;
+      font-size: 28px;
+      margin-top: 10px;
+    }
+    header p {
+      color: #003366;
+      font-size: 16px;
+    }
+    .section {
       background-color: white;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 700px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    .exercise {
-      margin-bottom: 40px;
+    .section img {
+      width: 64px;
+      height: 64px;
+      float: left;
+      margin-right: 15px;
     }
-    .exercise h2 {
-      display: flex;
-      align-items: center;
+    .section h2 {
+      margin: 0;
       font-size: 20px;
       color: #003366;
     }
-    .exercise h2 img {
-      width: 32px;
-      height: 32px;
-      margin-right: 10px;
+    .section p {
+      margin: 5px 0 10px 0;
+      font-size: 15px;
+      color: #333;
     }
-    .exercise p {
-      margin: 10px 0;
-    }
-    audio {
-      width: 100%;
+    .player {
+      clear: both;
       margin-top: 10px;
     }
-    .pdf-download {
-      display: block;
-      margin: 30px auto 0;
-      padding: 12px 20px;
-      background-color: #0077cc;
-      color: white;
-      border: none;
-      border-radius: 6px;
+    .button-container {
       text-align: center;
-      text-decoration: none;
-      font-size: 16px;
-      width: fit-content;
+      margin: 30px;
     }
-    .pdf-download:hover {
-      background-color: #005fa3;
+    .button-container a {
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 6px;
+    }
+    @media (max-width: 600px) {
+      .section img {
+        float: none;
+        display: block;
+        margin: 0 auto 10px auto;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="images/logo.png" alt="CalmClinic Logo" />
+    <img src="images/Logo.png" alt="CalmClinic Logo">
     <h1>Slip tandlægeskræk</h1>
-    <p>Her finder du tre lette afspændingsteknikker og mulighed for at downloade vores mini e-bog som PDF.</p>
+    <p>Her finder du tre lette afspændingsteknikker og mulighed for at<br> downloade vores mini e-bog som PDF.</p>
   </header>
 
-  <main>
-    <div class="exercise">
-      <h2><img src="images/pustud.png" alt="Pust ud ikon" />1. Pust ud</h2>
+  <div class="section">
+    <img src="images/Pust ud.png" alt="Pust ud ikon">
+    <h2>1. Pust ud</h2>
+    <p>En simpel vejrtrækningsteknik, hvor du fokuserer på en lang udånding for at berolige kroppen.</p>
+    <div class="player">
       <audio controls>
-        <source src="./Vejrtrækning1 pust ud.m4a" type="audio/mp4">
-        Din browser understøtter ikke lydafspilning.
+        <source src="pustud.mp3" type="audio/mpeg">
+        Din browser understøtter ikke lydafspilleren.
       </audio>
-      <p>En simpel vejrtrækningsteknik, hvor du fokuserer på en lang udånding for at berolige kroppen.</p>
     </div>
+  </div>
 
-    <div class="exercise">
-      <h2><img src="images/4x4.png" alt="4x4 ikon" />2. 4x4 vejrtrækning</h2>
+  <div class="section">
+    <img src="images/4X4.png" alt="4x4 ikon">
+    <h2>2. 4x4 vejrtrækning</h2>
+    <p>Fire sekunders indånding – fire sekunders udånding. En teknik der skaber ro og rytme i åndedrættet.</p>
+    <div class="player">
       <audio controls>
-        <source src="./Vejrtrækning2 4x4.m4a" type="audio/mp4">
-        Din browser understøtter ikke lydafspilning.
+        <source src="4x4.mp3" type="audio/mpeg">
+        Din browser understøtter ikke lydafspilleren.
       </audio>
-      <p>Fire sekunders indånding – fire sekunders udånding. En teknik der skaber ro og rytme i åndedrættet.</p>
     </div>
+  </div>
 
-    <div class="exercise">
-      <h2><img src="images/10x.png" alt="10x ikon" />3. 10 hurtige vejrtrækninger</h2>
+  <div class="section">
+    <img src="images/1ohurtige.png" alt="10 hurtige ikon">
+    <h2>3. 10 hurtige vejrtrækninger</h2>
+    <p>En hurtig teknik, der giver energi og fornemmelse af kontrol før dit tandlægebesøg.</p>
+    <div class="player">
       <audio controls>
-        <source src="./Vejrtrækning3 10xfast.m4a" type="audio/mp4">
-        Din browser understøtter ikke lydafspilning.
+        <source src="10hurtige.mp3" type="audio/mpeg">
+        Din browser understøtter ikke lydafspilleren.
       </audio>
-      <p>En hurtig teknik, der giver energi og fornemmelse af kontrol før dit tandlægebesøg.</p>
     </div>
+  </div>
 
-    <a class="pdf-download" href="./CalmClinic SLIP TANDLÆGE SKRÆK Introduktion til lette afstressningsteknikker.pdf" download>📥 Download hele e-bogen som PDF</a>
-  </main>
+  <div class="button-container">
+    <a href="CalmClinic_guide.pdf" target="_blank">📘 Download mini e-bogen som PDF</a>
+  </div>
 </body>
 </html>
