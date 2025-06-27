@@ -6,7 +6,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Slip tandlægeskræk – CalmClinic</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -38,6 +37,15 @@
       padding: 20px 30px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .icon-block {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .icon-block img {
+      width: 60px;
+      height: 60px;
     }
     h2 {
       color: #003366;
@@ -74,21 +82,30 @@
     <p>Her finder du tre lette afspændingsteknikker og mulighed for at downloade vores mini e-bog som PDF.</p>
   </header>
   <div class="container">
-    <h2>1. Pust ud</h2>
+    <div class="icon-block">
+      <img src="images/Pust ud.png" alt="Pust ud ikon" />
+      <h2>1. Pust ud</h2>
+    </div>
     <audio controls>
       <source src="Vejrtrækning1 pust ud.m4a" type="audio/mp4">
       Din browser understøtter ikke lydafspilning.
     </audio>
     <p>En simpel vejrtrækningsteknik, hvor du fokuserer på en lang udånding for at berolige kroppen.</p>
 
-    <h2>2. 4x4 vejrtrækning</h2>
+    <div class="icon-block">
+      <img src="images/4X4.png" alt="4x4 ikon" />
+      <h2>2. 4x4 vejrtrækning</h2>
+    </div>
     <audio controls>
       <source src="Vejrtrækning2 4x4.m4a" type="audio/mp4">
       Din browser understøtter ikke lydafspilning.
     </audio>
     <p>Fire sekunders indånding – fire sekunders udånding. En teknik der skaber ro og rytme i åndedrættet.</p>
 
-    <h2>3. 10 hurtige vejrtrækninger</h2>
+    <div class="icon-block">
+      <img src="images/1ohurtige.png" alt="10 hurtige ikon" />
+      <h2>3. 10 hurtige vejrtrækninger</h2>
+    </div>
     <audio controls>
       <source src="Vejrtrækning3 10xfast.m4a" type="audio/mp4">
       Din browser understøtter ikke lydafspilning.
