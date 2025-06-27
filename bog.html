@@ -3,19 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mini E-bog – CalmClinic</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Slip tandlægeskræk – CalmClinic</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+    }
+    header {
+      text-align: center;
+      padding: 30px 20px 10px;
+      background-image: url('images/havbaggrund.jpg.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      box-shadow: inset 0 -80px 80px rgba(0, 0, 0, 0.3);
+    }
+    header img {
+      max-height: 120px;
+      margin-bottom: 10px;
+    }
+    header h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #003366;
+      margin-top: 30px;
+    }
+    audio {
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .download {
+      display: block;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .download a {
+      display: inline-block;
+      background-color: #0077cc;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    .download a:hover {
+      background-color: #005fa3;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <img src="images/logo.png" alt="CalmClinic Logo" style="max-width: 220px; height: auto; display: block; margin: 0 auto 20px;" />
-    <h1>Mini E-bog</h1>
-    <p>Her kan du læse eller downloade vores korte e-bog om tandlægeskræk og hvordan du kan få mere ro.</p>
+    <img src="images/logo.png" alt="CalmClinic Logo" />
+    <h1>Slip tandlægeskræk</h1>
+    <p>Her finder du tre lette afspændingsteknikker og mulighed for at downloade vores mini e-bog som PDF.</p>
   </header>
+  <div class="container">
+    <h2>1. Pust ud</h2>
+    <audio controls>
+      <source src="Vejrtrækning1 pust ud.m4a" type="audio/mp4">
+      Din browser understøtter ikke lydafspilning.
+    </audio>
+    <p>En simpel vejrtrækningsteknik, hvor du fokuserer på en lang udånding for at berolige kroppen.</p>
 
-  <main>
-    <p><strong>Indholdet kommer snart…</strong></p>
-    <!-- Når klar: <a href="pdf/mini_ebog.pdf" target="_blank">Læs e-bogen (PDF)</a> -->
-  </main>
+    <h2>2. 4x4 vejrtrækning</h2>
+    <audio controls>
+      <source src="Vejrtrækning2 4x4.m4a" type="audio/mp4">
+      Din browser understøtter ikke lydafspilning.
+    </audio>
+    <p>Fire sekunders indånding – fire sekunders udånding. En teknik der skaber ro og rytme i åndedrættet.</p>
+
+    <h2>3. 10 hurtige vejrtrækninger</h2>
+    <audio controls>
+      <source src="Vejrtrækning3 10xfast.m4a" type="audio/mp4">
+      Din browser understøtter ikke lydafspilning.
+    </audio>
+    <p>En hurtig teknik, der giver energi og fornemmelse af kontrol før dit tandlægebesøg.</p>
+
+    <div class="download">
+      <a href="CalmClinic SLIP TANDLÆGE SKRÆK Introduktion til lette afstressningsteknikker.pdf" download>📥 Download hele e-bogen som PDF</a>
+    </div>
+  </div>
 </body>
 </html>
