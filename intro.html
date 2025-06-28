@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <title>Velkommen til CalmClinic</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #eef6f9;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    video {
+      width: 90%;
+      max-width: 800px;
+      margin-top: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .start-button {
+      margin: 30px;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .start-button:hover {
+      background-color: #005f87;
+    }
+  </style>
+</head>
+<body>
+  <h1>Velkommen til CalmClinic</h1>
+  <p>Her finder du din vej til et trygt og roligt tandlægebesøg.</p>
+
+  <video controls autoplay>
+    <source src="videoer/intro.mp4" type="video/mp4">
+    Din browser understøtter ikke videoafspilning.
+  </video>
+
+  <br>
+  <button class="start-button" onclick="location.href='forside.html'">Start her</button>
+</body>
+</html>
 
