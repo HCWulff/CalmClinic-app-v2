@@ -94,12 +94,12 @@
       </div>
 
       <p><strong>2. Hvad tror du udløser din tandlægeskræk?</strong></p>
-      <div class="cause-options" id="causeOptions">
+      <div class="cause-options">
         <label><input type="radio" name="cause" value="tidligere"> En dårlig oplevelse hos tandlægen/lægen</label>
         <label><input type="radio" name="cause" value="ukendt"> Jeg ved det ikke – det kommer bare</label>
         <label><input type="radio" name="cause" value="barndom"> Minder om noget fra barndommen</label>
         <label><input type="radio" name="cause" value="generel"> Jeg har angst i mange situationer</label>
-        <label style="display:none;" id="noAnxietyOption"><input type="radio" name="cause" value="ingen"> Jeg har ikke tandlægeskræk</label>
+        <label><input type="radio" name="cause" value="ingen"> Jeg føler ikke, at jeg har tandlægeskræk</label>
       </div>
 
       <button type="button" onclick="visResultat()">Se resultat</button>
@@ -109,18 +109,6 @@
   </div>
 
   <script>
-    const sudRadios = document.querySelectorAll('input[name="sud"]');
-    sudRadios.forEach(radio => {
-      radio.addEventListener('change', () => {
-        const noAnxiety = document.getElementById("noAnxietyOption");
-        if (radio.value === "0") {
-          noAnxiety.style.display = "block";
-        } else {
-          noAnxiety.style.display = "none";
-        }
-      });
-    });
-
     function visResultat() {
       const sud = document.querySelector('input[name="sud"]:checked');
       const cause = document.querySelector('input[name="cause"]:checked');
@@ -134,28 +122,28 @@
 
       const sudVal = parseInt(sud.value);
       const causeVal = cause.value;
-      let userMessage = "";
-      let clinicMessage = "";
+      let resultText = "";
+      let mailText = "";
 
       if (sudVal === 0 && causeVal === "ingen") {
-        userMessage = "Du oplever ikke tandlægeskræk – det er godt! Du kan dog stadig få glæde af øvelserne, hvis du ønsker ekstra ro.";
-        clinicMessage = "Patienten angiver ikke at have tandlægeskræk og har et SUD-tal på 0.";
+        resultText = "Du angiver, at du ikke føler tandlægeskræk. Det er rigtig godt! Alligevel kan nogle af CalmClinics værktøjer – som afspænding og forberedelse – være rare at bruge før eller under tandbehandling.";
+        mailText = "Patienten angiver et SUD-tal på 0 og føler ikke tandlægeskræk. CalmClinic-værktøjerne kan dog stadig være relevante som støtte til tryghed og ro under behandlingen.";
       } else if (sudVal >= 7 && causeVal === "barndom") {
-        userMessage = "Din angst er udtalt og hænger sandsynligvis sammen med gamle mønstre. CalmClinic kan hjælpe dig roligt og nænsomt – også uden at du skal kende den præcise årsag.";
-        clinicMessage = "Patienten har høj angst (SUD " + sudVal + ") og angiver ubevidste mønstre fra barndommen som mulig årsag. Behandling bør ske nænsomt og gradvist, med fokus på tryghed.";
+        resultText = "Du oplever stor utryghed, og det kan hænge sammen med ubevidste mønstre fra barndommen. Appens rolige metoder virker uden, at du behøver at kende den præcise årsag.";
+        mailText = "Patienten angiver et højt SUD-tal og peger på barndomsminder som mulig årsag. En blid, tillidsfuld tilgang anbefales.";
       } else if (causeVal === "tidligere") {
-        userMessage = "Din angst skyldes nok tidligere dårlige oplevelser. Det er forståeligt. Med CalmClinic får du støtte til at genvinde tilliden og føle dig tryg igen.";
-        clinicMessage = "Patienten angiver tidligere tandlæge- eller lægebesøg som årsag. Behandling bør ske med særlig opmærksomhed på kontrol og forudsigelighed.";
+        resultText = "Din utryghed stammer sandsynligvis fra tidligere tandlæge- eller lægebesøg. Appen kan give dig værktøjer til at genvinde trygheden trin for trin.";
+        mailText = "Patienten oplever tandlægeskræk grundet tidligere oplevelser. Det anbefales at informere tydeligt, tage små skridt og sikre medbestemmelse.";
       } else {
-        userMessage = "Du har symptomer, som ikke passer til én bestemt forklaring – og netop derfor kan du få ekstra meget ud af CalmClinic.";
-        clinicMessage = "Patientens angst (SUD " + sudVal + ") har ikke en entydig forklaring, men appen vurderes relevant som støttende indsats.";
+        resultText = "Du har reaktioner, der ikke helt passer ind i én forklaring – men det betyder blot, at du har endnu mere gavn af de forskellige funktioner i CalmClinic.";
+        mailText = "Patientens svar indikerer blandede årsager. Anbefalet at give bred støtte og følge patientens tempo.";
       }
 
-      const mailLink = `mailto:klinik@calmclinic.dk?subject=Resultat af CalmClinic test&body=${encodeURIComponent(clinicMessage)}`;
+      const mailLink = `mailto:klinik@calmclinic.dk?subject=Resultat af CalmClinic test&body=Mit SUD-tal: ${sudVal}%0D%0AÅrsag (selvangivet): ${causeVal}%0D%0ABeskrivelse til klinik: ${mailText}`;
 
       resultDiv.innerHTML = `
         <p><strong>Dit resultat:</strong></p>
-        <p>${userMessage}</p>
+        <p>${resultText}</p>
         <p><a href="${mailLink}" style="color: #0077cc;">📤 Send resultat til din tandlæge</a></p>
       `;
       resultDiv.style.display = 'block';
