@@ -1,53 +1,69 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8">
-  <title>Velkommen til CalmClinic</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CalmClinic - Velkommen</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #eef6f9;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f8ff;
       text-align: center;
     }
-
-    video {
-      width: 90%;
+    header {
+      padding: 1em;
+      background-color: #ffffff;
+    }
+    header img {
+      max-width: 180px;
+      height: auto;
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
       max-width: 800px;
-      margin-top: 40px;
+      margin: auto;
+      overflow: hidden;
+    }
+    video {
+      width: 100%;
+      height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-
     .start-button {
-      margin: 30px;
-      padding: 15px 30px;
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 24px;
       font-size: 18px;
       background-color: #0077b6;
       color: white;
       border: none;
       border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
+      text-decoration: none;
+      transition: background 0.3s ease;
     }
-
     .start-button:hover {
-      background-color: #005f87;
+      background-color: #005f8c;
     }
   </style>
 </head>
 <body>
-  <h1>Velkommen til CalmClinic</h1>
-  <p>Her finder du din vej til et trygt og roligt tandlægebesøg.</p>
 
-  <video controls autoplay>
-    <source src="videoer/intro.mp4" type="video/mp4">
-    Din browser understøtter ikke videoafspilning.
-  </video>
+  <header>
+    <img src="images/Logo.png" alt="CalmClinic logo" />
+  </header>
 
-  <br>
-  <button class="start-button" onclick="location.href='forside.html'">Start her</button>
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="videoer/intro.mp4" type="video/mp4" />
+      Din browser understøtter ikke video-tagget.
+    </video>
+  </div>
+
+  <a href="forside.html" class="start-button">Start din rejse</a>
+
 </body>
 </html>
 
