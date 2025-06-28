@@ -74,6 +74,14 @@
       background-color: #eaf4fc;
       border-radius: 8px;
     }
+    .knap {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #005fa3;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -122,36 +130,35 @@
 
       const sudVal = parseInt(sud.value);
       const causeVal = cause.value;
-      let resultText = "";
+      let patientText = "";
       let mailText = "";
 
       if (sudVal === 0 && causeVal === "ingen") {
-        resultText = "Du angiver, at du ikke føler tandlægeskræk. Det er rigtig godt! Alligevel kan nogle af CalmClinics værktøjer – som afspænding og forberedelse – være rare at bruge før eller under tandbehandling.";
+        patientText = "Du angiver, at du ikke føler tandlægeskræk. Det er rigtig godt! Alligevel kan nogle af CalmClinics værktøjer – som afspænding og forberedelse – være rare at bruge før eller under tandbehandling.";
         mailText = "Patienten angiver et SUD-tal på 0 og føler ikke tandlægeskræk. CalmClinic-værktøjerne kan dog stadig være relevante som støtte til tryghed og ro under behandlingen.";
       } else if (sudVal >= 7 && causeVal === "barndom") {
-        resultText = "Du oplever stor utryghed, og det kan hænge sammen med ubevidste mønstre fra barndommen. Appens rolige metoder virker uden, at du behøver at kende den præcise årsag.";
+        patientText = "Du oplever stor utryghed, og det kan hænge sammen med ubevidste mønstre fra barndommen. Appens rolige metoder virker uden, at du behøver at kende den præcise årsag.";
         mailText = "Patienten angiver et højt SUD-tal og peger på barndomsminder som mulig årsag. En blid, tillidsfuld tilgang anbefales.";
       } else if (causeVal === "tidligere") {
-        resultText = "Din utryghed stammer sandsynligvis fra tidligere tandlæge- eller lægebesøg. Appen kan give dig værktøjer til at genvinde trygheden trin for trin.";
+        patientText = "Din utryghed stammer sandsynligvis fra tidligere tandlæge- eller lægebesøg. Appen kan give dig værktøjer til at genvinde trygheden trin for trin.";
         mailText = "Patienten oplever tandlægeskræk grundet tidligere oplevelser. Det anbefales at informere tydeligt, tage små skridt og sikre medbestemmelse.";
       } else {
-        resultText = "Du har reaktioner, der ikke helt passer ind i én forklaring – men det betyder blot, at du har endnu mere gavn af de forskellige funktioner i CalmClinic.";
+        patientText = "Du har reaktioner, der ikke helt passer ind i én forklaring – men det betyder blot, at du har endnu mere gavn af de forskellige funktioner i CalmClinic.";
         mailText = "Patientens svar indikerer blandede årsager. Anbefalet at give bred støtte og følge patientens tempo.";
       }
 
       const mailLink = `mailto:klinik@calmclinic.dk?subject=Resultat af CalmClinic test&body=Mit SUD-tal: ${sudVal}%0D%0AÅrsag (selvangivet): ${causeVal}%0D%0ABeskrivelse til klinik: ${mailText}`;
 
-resultDiv.innerHTML = `
-  <p><strong>Dit resultat:</strong></p>
-  <p>${patientText}</p>
-
-  <p><a href="${mailLink}" style="color: #0077cc;">📤 Send resultat til din tandlæge</a></p>
-
-  <p style="margin-top: 20px;">
-    <a href="type-test.html" class="knap" style="display: inline-block; padding: 12px 20px; background-color: #005fa3; color: white; border-radius: 6px; text-decoration: none;">
-      👉 Klar til trin 3: Hvordan kommunikerer du bedst med tandlægen?
-    </a>
-  </p>
-`;
-
-
+      resultDiv.innerHTML = `
+        <p><strong>Dit resultat:</strong></p>
+        <p>${patientText}</p>
+        <p><a href="${mailLink}" style="color: #0077cc;">📤 Send resultat til din tandlæge</a></p>
+        <p style="margin-top: 20px;">
+          <a href="type-test.html" class="knap">👉 Klar til trin 3: Hvordan kommunikerer du bedst med tandlægen?</a>
+        </p>
+      `;
+      resultDiv.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
