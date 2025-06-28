@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -120,25 +122,29 @@
       const sudVal = parseInt(sud.value);
       const causeVal = cause.value;
       let resultText = "";
+      let kliniktekst = "";
 
       if (sudVal >= 7 && causeVal === "barndom") {
-        resultText = "Du oplever stor utryghed, og det kan hænge sammen med ubevidste mønstre fra barndommen. Appens rolige metoder virker uden, at du behøver at kende den præcise årsag.";
+        resultText = "Patienten angiver et højt angstniveau og forbinder det med ubevidste mønstre fra barndommen. Patienten har svært ved at forklare præcist hvorfor, men kroppen reagerer alligevel kraftigt.";
+        kliniktekst = "Anbefaling: Brug tryghedsskabende rutiner og introducer behandling gradvist. Undgå for mange stimuli og giv plads til forklaringer og pauser.";
       } else if (causeVal === "tidligere") {
-        resultText = "Din utryghed stammer sandsynligvis fra tidligere tandlæge- eller lægebesøg. Appen kan give dig værktøjer til at genvinde trygheden trin for trin.";
+        resultText = "Patientens tandlægeskræk er forbundet med én eller flere tidligere ubehagelige oplevelser i forbindelse med tandlæge- eller lægebesøg.";
+        kliniktekst = "Anbefaling: Undgå at gentage lignende situationer. Inddrag patienten aktivt og tilbyd medbestemmelse og mulighed for at stoppe undervejs.";
       } else {
-        resultText = "Du har reaktioner, der ikke helt passer ind i én forklaring – men det betyder blot, at du har endnu mere gavn af de forskellige funktioner i CalmClinic.";
+        resultText = "Patienten har svært ved at pege på en specifik årsag til tandlægeskrækken. Det kan være en generel sensitivitet over for angstfyldte situationer.";
+        kliniktekst = "Anbefaling: Sørg for et roligt forløb med tydelige forklaringer og mulighed for tryg kontakt. Øvelserne i CalmClinic kan støtte behandlingsparathed.";
       }
 
-      const mailLink = `mailto:klinik@calmclinic.dk?subject=Resultat af CalmClinic test&body=Mit SUD-tal: ${sudVal}%0D%0AMulig årsag: ${causeVal}%0D%0ABeskrivelse: ${resultText}`;
+      const mailLink = `mailto:klinik@calmclinic.dk?subject=Resultat af CalmClinic test&body=Patientens SUD-tal: ${sudVal}%0D%0AÅrsagstype: ${causeVal}%0D%0ABeskrivelse: ${resultText}%0D%0A${kliniktekst}`;
 
       resultDiv.innerHTML = `
-        <p><strong>Dit resultat:</strong></p>
+        <p><strong>Resultat til tandlægen:</strong></p>
         <p>${resultText}</p>
-        <p><a href="${mailLink}" style="color: #0077cc;">📤 Send resultat til din tandlæge</a></p>
+        <p>${kliniktekst}</p>
+        <p><a href="${mailLink}" style="color: #0077cc;">📤 Send resultat til tandlægen</a></p>
       `;
       resultDiv.style.display = 'block';
     }
   </script>
 </body>
 </html>
-
