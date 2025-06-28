@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -79,7 +77,7 @@
     .send-button {
       padding: 12px 24px;
       font-size: 16px;
-      background-color: #28a745;
+      background-color: #0077cc;
       color: white;
       border: none;
       border-radius: 8px;
@@ -88,7 +86,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     .send-button:hover {
-      background-color: #218838;
+      background-color: #005fa3;
     }
     .hero-image {
       width: 100%;
@@ -96,11 +94,22 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       margin: 20px 0;
     }
-    .next-step {
+    .next-link {
       display: block;
-      text-align: center;
       margin-top: 30px;
+      text-align: center;
       font-size: 18px;
+    }
+    .next-link a {
+      text-decoration: none;
+      background-color: #005fa3;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .next-link a:hover {
+      background-color: #004d80;
     }
   </style>
 </head>
@@ -109,31 +118,33 @@
     <img src="images/logo.png" alt="CalmClinic logo" class="logo" />
     <h1>Din CalmClinic-type: Intuitiv Tænker</h1>
     <img src="images/intuitiv_taenker.jpg.png" alt="Illustration" class="hero-image" />
-    <p><strong>Du foretrækker struktur og logik, også når du er utryg.</strong></p>
-    <p>Du bliver mere tryg, når du forstår, hvad der foregår, og kan få overblik over hele forløbet.</p>
+    <p><strong>Du søger sammenhæng, struktur og mening med behandlingen.</strong></p>
+    <p>Du bliver tryg, når du forstår, hvad der skal ske, og når du oplever ro og logik i samtalen med tandlægen.</p>
 
     <div class="section-title">Det hjælper dig, når:</div>
     <ul class="positiv">
-      <li>Du får forklaret behandlingens trin og formål</li>
-      <li>Du føler, at tandlægen har en tydelig plan</li>
-      <li>Du kan stille spørgsmål og få klare svar</li>
-      <li>Du kan følge med i processen</li>
+      <li>Du får overblik og forklaringer</li>
+      <li>Tandlægen forklarer før han/hun gør noget</li>
+      <li>Der er struktur og fremdrift i behandlingen</li>
+      <li>Du ved, hvornår og hvordan noget bliver gjort</li>
     </ul>
 
     <div class="section-title">Du har ikke brug for:</div>
     <ul class="negativ">
-      <li>At blive overrasket undervejs</li>
-      <li>At mærke, at tandlægen improviserer</li>
-      <li>At føle dig uden kontrol eller overblik</li>
+      <li>At blive overrumplet med information, du ikke forstår</li>
+      <li>Uventede skift i plan eller tilgang</li>
+      <li>Uforklarlig ventetid eller følelse af kaos</li>
     </ul>
 
     <h2>Send til klinikken</h2>
-    <p>Indtast klinikkens e-mailadresse for at sende dit testresultat direkte til dem.</p>
+    <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken.<br>Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
 
     <input type="email" id="clinicEmail" placeholder="f.eks. info@klinik.dk">
     <button onclick="sendToClinic()" class="send-button">Send til klinikken</button>
 
-    <a href="calmcoach.html" class="next-step">📋 Klar til trin 4: Forbered dig til tandlægebesøget</a>
+    <div class="next-link">
+      <a href="calmcoach.html">📋 Klar til trin 4: Forbered dig til tandlægebesøget</a>
+    </div>
   </div>
 
   <script>
@@ -149,26 +160,27 @@
 
 Patienten har gennemført CalmClinic-testen og identificerer sig som: Intuitiv Tænker
 
-Denne type patient søger overblik og logiske forklaringer for at føle sig tryg. Det er vigtigt at skabe en tydelig ramme og formidle behandlingsplanen klart.
+Denne type patient søger struktur og mening. Det er vigtigt, at patienten forstår, hvad der skal ske, og føler sig inddraget i processen.
 
 Anbefalet kommunikation i klinikken:
 
-✅ Giv et klart overblik over hele behandlingsforløbet
-✅ Forklar behandlingens formål og fremgang
-✅ Giv mulighed for spørgsmål og svar
-✅ Vis ro, plan og struktur
+✅ Giv overblik og brug forklaringer
+✅ Forklar handlinger før de udføres
+✅ Skab struktur og ro i forløbet
+✅ Kommunikér klart og forudsigeligt
 
-❌ Undgå uforudsete handlinger uden forklaring
-❌ Undgå at improvisere eller springe over forklaringer
-❌ Undgå at efterlade patienten i uvished
+❌ Undgå uforklarlige skift eller beslutninger
+❌ Undgå kaos eller mangel på retning
+❌ Undgå at patienten føler sig uden kontrol
 
 Formålet med CalmClinic-testen:
 Testen hjælper med at identificere den kommunikationsform, der giver den enkelte patient mest tryghed og ro under tandbehandling. Ved at tage udgangspunkt i patientens oplevelse og behov, kan behandlingen tilpasses mere præcist – hvilket ofte fører til bedre samarbejde og øget tillid.
 
-Læs mere på www.calmclinic.dk hvis I ønsker at blive en CalmClinic-certificeret klinik.`);
+Læs mere på www.calmclinic.dk`);
 
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     }
   </script>
 </body>
 </html>
+
