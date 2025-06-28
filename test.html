@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -108,7 +106,7 @@
     <div class="section">
       <h2>Hvordan virker testen?</h2>
       <p>Når du vælger billeder, aktiveres din intuitive måde at bearbejde følelser og information uden lange spørgsmål. Testen afslører, om du f.eks. har brug for forklaringer eller tryg stemning. Resultatet viser din kommunikationstype og hvordan tandlægen bedst støtter dig.</p>
-       <p>Det kan være svært at vælge og det er helt normalt. Her er det bedst at lade intuitionen bestemme uden at tænke for meget over valget.
+      <p>Det kan være svært at vælge og det er helt normalt. Her er det bedst at lade intuitionen bestemme uden at tænke for meget over valget.</p>
     </div>
     <div class="section">
       <h2>Sådan tager du testen</h2>
@@ -153,8 +151,9 @@
         return;
       }
       const combined = `${selection.second}_${selection.first}`;
-      window.location.href = `result_${combined}.html`;
+      window.location.href = `result_${combined}.html?type=${combined}`;
     }
   </script>
 </body>
 </html>
+
