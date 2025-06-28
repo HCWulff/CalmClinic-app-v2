@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -41,13 +39,20 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     .instructions {
-      font-size: 18px;
+      font-size: 16px;
       color: #003366;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
-    .instructions strong {
-      display: block;
-      margin-top: 10px;
+    .instructions h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .instructions p {
+      margin: 8px 0;
+    }
+    .instructions ul {
+      padding-left: 20px;
+      margin: 8px 0;
     }
     .image-row {
       display: flex;
@@ -66,12 +71,6 @@
       background-color: #fff;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .image-option[data-step="first"] {
-      border-color: #cc0000; /* red */
-    }
-    .image-option[data-step="second"] {
-      border-color: #0066cc; /* blue */
-    }
     .image-option img {
       width: 100%;
       height: 160px;
@@ -88,7 +87,7 @@
       transform: scale(1.05);
     }
     .selected {
-      outline: 4px solid #0077cc;
+      border-color: #0077cc;
     }
     .result-button {
       display: block;
@@ -121,57 +120,30 @@
     <h1>Find din CalmClinic-type</h1>
   </header>
   <div class="container">
-
- <div class="instructions">
-  <h2>🔍 Hvordan virker testen – og hvad skal jeg gøre?</h2>
-  <p>Denne test hjælper dig og tandlægen med at finde ud af, hvordan du bedst føler dig tryg under behandlingen.</p>
-
-  <h3>🖼️ Sådan gør du:</h3>
-  <p>
-    👉 Du ser fire billeder. Der er to med <strong style="color: red;">rød ramme</strong> og to med <strong style="color: #005fa3;">blå ramme</strong>.<br>
-    – Vælg <strong>ét billede med rød ramme</strong>: Det handler om, hvordan du bedst <em>tager beslutninger</em>.<br>
-    – Vælg <strong>ét billede med blå ramme</strong>: Det handler om, hvordan du bedst <em>opfanger information</em>.
-  </p>
-  <p>🧭 Det handler ikke om, hvilket billede du synes er pænest – men hvilket du <strong>føler dig mest tilpas ved</strong>.</p>
-
-  <h3>🤔 Hvad hvis det er svært at vælge?</h3>
-  <p>
-    Det er <strong>helt normalt</strong>, at det kan være svært at vælge ét billede – især hvis du ikke helt passer i en bestemt type.<br>
-    Hvis du er i tvivl, så stol på din <strong>mavefornemmelse</strong>:
-  </p>
-  <blockquote style="background:#f5f5f5; border-left: 4px solid #0077cc; padding: 10px 20px;">
-    Vælg det billede, du hælder en lille smule mere til end det andet.
-  </blockquote>
-  <p>Ingen svar er forkerte – men testen virker kun, når du har valgt <strong>ét billede med rød ramme og ét med blå ramme</strong>.</p>
-
-  <h3>🧠 Hvorfor virker testen?</h3>
-  <p>
-    Når du vælger billeder, aktiveres din intuitive måde at bearbejde følelser og information på – uden lange spørgsmål.<br>
-    Det afslører, om du f.eks.:
-    <ul>
-      <li>Har brug for <em>klare forklaringer</em> eller <em>tryg stemning</em></li>
-      <li>Foretrækker <em>detaljer</em> eller <em>overblik</em></li>
-    </ul>
-    Dit resultat viser din <strong>kommunikationstype</strong> – og hvordan tandlægen bedst kan støtte dig i behandlingen.
-  </p>
-</div>
-
+    <div class="instructions">
+      <h2>🔍 Hvordan virker testen?</h2>
+      <p>Testen viser, hvordan du bedst kommunikerer trygt hos tandlægen.</p>
+      <p><strong>1. Vælg ét billede med <span style="color:red">rød ramme</span></strong><br>
+      – Det handler om, hvordan du bedst træffer beslutninger.</p>
+      <p><strong>2. Vælg ét billede med <span style="color:#005fa3">blå ramme</span></strong><br>
+      – Det handler om, hvordan du bedst opfatter information.</p>
+      <p>Det kan være svært at vælge – men bare vælg det billede, du hælder en lille smule mere til. Så virker testen.</p>
     </div>
 
     <div class="image-row">
-      <div class="image-option" data-type="taenker" data-step="first" onclick="selectOption(this, 'first')">
+      <div class="image-option" data-type="taenker" data-step="first" onclick="selectOption(this, 'first')" style="border-color:red">
         <img src="images/taenker.jpg.png" alt="Tænker">
         <span>Information</span>
       </div>
-      <div class="image-option" data-type="foeler" data-step="first" onclick="selectOption(this, 'first')">
+      <div class="image-option" data-type="foeler" data-step="first" onclick="selectOption(this, 'first')" style="border-color:red">
         <img src="images/foeler.jpg.png" alt="Føler">
         <span>Empati</span>
       </div>
-      <div class="image-option" data-type="intuitiv" data-step="second" onclick="selectOption(this, 'second')">
+      <div class="image-option" data-type="intuitiv" data-step="second" onclick="selectOption(this, 'second')" style="border-color:#005fa3">
         <img src="images/intuitiv.jpg.png" alt="Intuitiv">
         <span>Overblik</span>
       </div>
-      <div class="image-option" data-type="sansende" data-step="second" onclick="selectOption(this, 'second')">
+      <div class="image-option" data-type="sansende" data-step="second" onclick="selectOption(this, 'second')" style="border-color:#005fa3">
         <img src="images/sensitiv.jpg.png" alt="Sansende">
         <span>Detaljer</span>
       </div>
@@ -191,7 +163,7 @@
 
     function showResult() {
       if (!selection.first || !selection.second) {
-        alert("Vælg ét billede i hver farvegruppe for at se dit resultat.");
+        alert("Vælg ét billede i hver gruppe for at se dit resultat.");
         return;
       }
       const combined = `${selection.second}_${selection.first}`;
