@@ -1,185 +1,97 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8">
-  <title>CalmClinic – Intuitiv Føler</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trin 5 – Din CalmClinic-type: Intuitiv Føler</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f2f9fc;
       margin: 0;
-      padding: 0 20px;
+      padding: 0;
       color: #003366;
     }
+
+    .hero {
+      background-image: url('images/havbaggrund.jpg.png');
+      background-size: cover;
+      background-position: center;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0,0,0,0.3);
+      z-index: 1;
+    }
+
+    .hero img {
+      max-height: 100px;
+      z-index: 2;
+    }
+
     .wrapper {
       max-width: 700px;
-      margin: 40px auto;
+      margin: 30px auto;
       background: white;
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .logo {
-      display: block;
-      margin: 0 auto 20px;
-      max-width: 150px;
-      height: auto;
-    }
+
     h1 {
-      color: #003366;
       text-align: center;
       font-size: 24px;
       margin-bottom: 10px;
     }
+
     p {
       font-size: 18px;
       line-height: 1.6;
-      color: #000;
       margin-bottom: 20px;
     }
+
+    .section-title {
+      font-weight: bold;
+      margin-top: 30px;
+      font-size: 18px;
+    }
+
     ul {
       list-style: none;
       padding: 0;
       margin: 0 0 30px;
     }
+
     ul li {
       font-size: 18px;
       margin-bottom: 12px;
       padding-left: 28px;
       position: relative;
     }
+
     ul.positiv li::before {
       content: "✔";
       color: green;
       position: absolute;
       left: 0;
     }
+
     ul.negativ li::before {
       content: "✖";
       color: red;
       position: absolute;
       left: 0;
     }
-    .section-title {
-      font-weight: bold;
-      margin-top: 30px;
-      color: #003366;
-      font-size: 18px;
-    }
+
     input[type=email] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    .send-button {
-      padding: 12px 24px;
-      font-size: 16px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      display: block;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-    .send-button:hover {
-      background-color: #218838;
-    }
-    .hero-image {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      margin: 20px 0;
-    }
-    .next-step {
-      margin-top: 40px;
-      text-align: center;
-    }
-    .next-step a {
-      display: inline-block;
-      padding: 14px 24px;
-      background-color: #005fa3;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 16px;
-    }
-    .next-step a:hover {
-      background-color: #004080;
-    }
-  </style>
-</head>
-<body>
-  <div class="wrapper">
-    <img src="images/logo.png" alt="CalmClinic logo" class="logo" />
-    <h1>Din CalmClinic-type: Intuitiv Føler</h1>
-    <img src="images/intuitiv_foeler.jpg.png" alt="Illustration" class="hero-image" />
-    <p><strong>Du mærker hurtigt stemninger og søger mening i det, du oplever.</strong></p>
-    <p>Du bliver tryg, når du føler dig forstået og set som menneske – ikke bare som patient.</p>
 
-    <div class="section-title">Det hjælper dig, når:</div>
-    <ul class="positiv">
-      <li>Du kan opbygge en relation med tandlægen</li>
-      <li>Du mærker ægte interesse og forståelse</li>
-      <li>Du har mulighed for afledning, hvis du ønsker det</li>
-      <li>Du føler dig inkluderet og imødekommet</li>
-    </ul>
-
-    <div class="section-title">Du har ikke brug for:</div>
-    <ul class="negativ">
-      <li>At opleve professionel distance uden personlig kontakt</li>
-      <li>En mekanisk behandling uden dialog</li>
-      <li>At være i et miljø med stress eller uro</li>
-    </ul>
-
-    <h2>Send til klinikken</h2>
-    <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken.<br>Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
-
-    <input type="email" id="clinicEmail" placeholder="f.eks. info@klinik.dk">
-    <button onclick="sendToClinic()" class="send-button">Send til klinikken</button>
-
-    <div class="next-step">
-      <a href="calmcoach.html">📋 Klar til trin 4: Forbered dig til tandlægebesøget</a>
-    </div>
-  </div>
-
-  <script>
-    function sendToClinic() {
-      const email = document.getElementById("clinicEmail").value;
-      if (!email) {
-        alert("Udfyld venligst klinikkens e-mailadresse.");
-        return;
-      }
-
-      const subject = encodeURIComponent("CalmClinic-type: Intuitiv Føler – patientens kommunikationsbehov");
-      const body = encodeURIComponent(`Indhold til journal / intern vejledning:
-
-Patienten har gennemført CalmClinic-testen og identificerer sig som: Intuitiv Føler
-
-Denne type patient mærker hurtigt stemninger og søger mening i det, der foregår. Det er vigtigt, at patienten føler sig forstået som menneske – ikke kun som patient.
-
-Anbefalet kommunikation i klinikken:
-
-✅ Skab en relation og vis ægte interesse
-✅ Giv plads til dialog og vis forståelse
-✅ Tilbyd afledning (fx musik eller billeder), hvis ønsket
-✅ Vær inkluderende og imødekommende i din tilgang
-
-❌ Undgå professionel distance og mekanisk fremgangsmåde
-❌ Undgå stresset stemning og utrygge omgivelser
-❌ Undgå at ignorere patientens behov for relation og kontakt
-
-Formålet med CalmClinic-testen:
-Testen hjælper med at identificere den kommunikationsform, der giver den enkelte patient mest tryghed og ro under tandbehandling. Ved at tage udgangspunkt i patientens oplevelse og behov, kan behandlingen tilpasses mere præcist – hvilket ofte fører til bedre samarbejde og øget tillid.
-
-Vil I vide mere?
-Hvis I ønsker at vide mere om CalmClinic-metoden eller få jeres klinik med i systemet, kan I læse mere på www.calmclinic.dk eller kontakte os direkte.`);
-
-      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-    }
-  </script>
-</body>
-</html>
