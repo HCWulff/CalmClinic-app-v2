@@ -1,1 +1,118 @@
 
+
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trin 5 – Del din profil med tandlægen</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f0f9ff;
+      margin: 0;
+      padding: 0;
+      color: #003366;
+    }
+    header {
+      background-image: url('images/havbaggrund.jpg.png');
+      background-size: cover;
+      background-position: center;
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+    }
+    .container {
+      max-width: 700px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    p, label {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    .result-box {
+      background-color: #e8f4fd;
+      padding: 15px;
+      border-left: 5px solid #0077cc;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="CalmClinic logo" style="max-width: 150px;" />
+  </header>
+  <div class="container">
+    <h1>📤 Trin 5: Del din profil med tandlægen</h1>
+    <p>Her kan du sende dine testresultater direkte til din tandlæge – så er I på samme side, før dit besøg.</p>
+
+    <div class="result-box">
+      <strong>Din CalmClinic-type:</strong> <span id="typeResult">[Loading...]</span><br />
+      <strong>Din SUD-score:</strong> <span id="sudScore">[Loading...]</span><br />
+      <strong>Årsag:</strong> <span id="sudReason">[Loading...]</span>
+    </div>
+
+    <label for="email">Tandlægens e-mail:</label>
+    <input type="email" id="email" placeholder="fx info@din-klinik.dk" />
+
+    <button onclick="sendResults()">📧 Send min profil til klinikken</button>
+  </div>
+
+  <script>
+    // Hent data fra localStorage
+    const calmType = localStorage.getItem("calmClinicType") || "[Ikke udfyldt]";
+    const sudScore = localStorage.getItem("sudScore") || "[Ikke udfyldt]";
+    const sudReason = localStorage.getItem("sudReason") || "[Ikke udfyldt]";
+
+    document.getElementById("typeResult").textContent = calmType;
+    document.getElementById("sudScore").textContent = sudScore;
+    document.getElementById("sudReason").textContent = sudReason;
+
+    function sendResults() {
+      const email = document.getElementById("email").value;
+      if (!email) return alert("Udfyld venligst tandlægens e-mailadresse.");
+
+      const subject = "CalmClinic-profil for patient";
+      const body = `Her er mine testresultater fra CalmClinic-appen:%0D%0A%0D%0A` +
+                   `CalmClinic-type: ${calmType}%0D%0A` +
+                   `SUD-score: ${sudScore}%0D%0A` +
+                   `Årsag til tandlægeskræk: ${sudReason}%0D%0A%0D%0A` +
+                   `Med venlig hilsen`;
+
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
