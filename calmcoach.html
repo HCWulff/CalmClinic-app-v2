@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -13,23 +12,29 @@
       padding: 0;
       color: #003366;
     }
-    header {
-      background-image: url('images/havbillede.jpg');
+    .header {
+      background-image: url('images/havbaggrund.jpg.png');
       background-size: cover;
       background-position: center;
-      padding: 40px 20px;
-      text-align: center;
-      color: white;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo {
+      max-height: 80px;
     }
     .container {
       max-width: 700px;
-      margin: 0 auto;
+      margin: -40px auto 40px;
       background: white;
       padding: 30px 20px;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    h1, h2 {
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
       text-align: center;
     }
     p {
@@ -69,51 +74,30 @@
       border-left: 5px solid #f9a825;
       display: none;
     }
-    .scroll-button {
-      display: block;
-      margin: 20px auto 40px;
-      background-color: #004080;
-    }
-    .section {
-      margin-bottom: 40px;
-    }
   </style>
 </head>
 <body>
-  <header>
-    <img src="images/logo.png" alt="CalmClinic logo" style="max-width: 150px;" />
-  </header>
+  <div class="header">
+    <img src="images/logo.png" alt="CalmClinic logo" class="logo" />
+  </div>
+
   <div class="container">
+    <h1>CalmCoach</h1>
+    <p><strong>Velkommen til din personlige tandlæge-coach!</strong></p>
+    <p>CalmCoach hjælper dig med at holde fast i din beslutning og føle dig tryg frem mod dit tandlægebesøg. Du vil modtage små beskeder med ro, opmuntring og gode råd i dagene op til besøget.</p>
 
-    <div class="section">
-      <h1>📘 Trin 1: Før dit første tandlægebesøg</h1>
-      <p><strong>Velkommen til CalmCoach – din støtte frem mod et trygt tandlægebesøg.</strong></p>
-      <p>Til det første tandeftersyn vil du normalt blive mødt af en rolig samtale om dine ønsker og tidligere erfaringer. Tandlægen laver en grundig undersøgelse og tager røntgenbilleder. Der udføres ikke behandling samme dag.</p>
-      <p>Når du ringer og bestiller tid, kan du sige:</p>
-      <ul>
-        <li>”Jeg vil gerne bestille tid til et tandeftersyn.”</li>
-        <li>”Jeg har tandlægeskræk og ønsker en rolig opstart.”</li>
-        <li>”Jeg har lavet en test og har noget materiale, jeg gerne vil sende til jer.”</li>
-      </ul>
-      <p>Det materiale du kan sende er:<br>
-        – En vurdering af din tandlægeskræk (SUD-score)<br>
-        – En vejledning til hvordan du bedst kommunikeres med
-      </p>
-      <button class="scroll-button" onclick="document.getElementById('step2').scrollIntoView({ behavior: 'smooth' });">📅 Gå til Trin 2 – Indtast tandlægedato</button>
+    <h2>Sådan virker det</h2>
+    <p>Vælg datoen for dit næste tandlægebesøg herunder, og klik på knappen. Vi sørger for at sende dig små påmindelser og beroligende beskeder i dagene op til din aftale.</p>
+
+    <input type="date" id="visitDate" />
+    <button onclick="registerDate()">📅 Indsend tandlægedato</button>
+
+    <div class="confirmation" id="confirmationBox">
+      ✅ Din tandlægetid er registreret til <span id="chosenDate"></span>.<br />
+      Du vil modtage små beskeder med støtte og gode råd op til besøget. Godt gået!
     </div>
 
-    <div id="step2" class="section">
-      <h2>📅 Trin 2: Indtast din tandlægedato</h2>
-      <p>Vælg datoen for dit næste tandlægebesøg, så sender vi dig små opmuntrende beskeder i dagene op til.</p>
-      <input type="date" id="visitDate" />
-      <button onclick="registerDate()">Indsend tandlægedato</button>
-      <div class="confirmation" id="confirmationBox">
-        ✅ Din tandlægetid er registreret til <span id="chosenDate"></span>.<br />
-        Du vil modtage små beskeder med støtte og gode råd op til besøget. Godt gået!
-      </div>
-      <div class="message-box" id="coachMessage"></div>
-    </div>
-
+    <div class="message-box" id="coachMessage"></div>
   </div>
 
   <script>
@@ -130,6 +114,7 @@
     function registerDate() {
       const input = document.getElementById("visitDate").value;
       if (!input) return alert("Vælg venligst en dato.");
+
       localStorage.setItem("visitDate", input);
       document.getElementById("chosenDate").textContent = new Date(input).toLocaleDateString('da-DK');
       document.getElementById("confirmationBox").style.display = "block";
@@ -139,9 +124,11 @@
     function showMessage() {
       const savedDate = localStorage.getItem("visitDate");
       if (!savedDate) return;
+
       const today = new Date();
       const visit = new Date(savedDate);
       const diffDays = Math.floor((visit - today) / (1000 * 60 * 60 * 24));
+
       const msg = messages.find(m => m.daysBefore === diffDays);
       if (msg) {
         document.getElementById("coachMessage").innerHTML = `<p>${msg.text}</p>`;
