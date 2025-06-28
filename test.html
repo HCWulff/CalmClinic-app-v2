@@ -40,28 +40,19 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .instructions {
-      font-size: 18px;
-      color: #003366;
-      margin-bottom: 20px;
+    .explanation {
+      margin-bottom: 30px;
     }
-    .instructions strong {
-      display: block;
-      margin-top: 10px;
-    }
-    .info-block {
-      background-color: #f2f9ff;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-    .info-block h2 {
+    .explanation h2 {
       font-size: 20px;
-      margin-top: 0;
+      color: #003366;
     }
-    .info-block p {
-      margin: 6px 0;
-      line-height: 1.5;
+    .explanation p {
+      font-size: 16px;
+      margin: 8px 0;
+    }
+    .highlight {
+      font-weight: bold;
     }
     .image-row {
       display: flex;
@@ -129,33 +120,33 @@
     <h1>Find din CalmClinic-type</h1>
   </header>
   <div class="container">
-
-    <div class="info-block">
+    <div class="explanation">
+      <h2>🔍 Hvordan virker testen – og hvad skal jeg gøre?</h2>
+      <p>Denne test hjælper dig og tandlægen med at finde ud af, hvordan du bedst føler dig tryg under behandlingen.</p>
       <h2>💡 Hvorfor virker testen?</h2>
       <p>Når du vælger billeder, aktiveres din intuitive måde at bearbejde følelser og information på – uden lange spørgsmål.</p>
-      <p>Testen afslører fx om du: <strong>har brug for forklaringer eller tryg stemning – og foretrækker detaljer eller overblik.</strong></p>
-      <p>Dit resultat viser din <strong>kommunikationstype</strong> – og hvordan tandlægen bedst kan støtte dig i behandlingen.</p>
-    </div>
-
-    <div class="info-block">
+      <p>Testen afslører, om du f.eks.: har brug for <span class="highlight">forklaringer</span> eller tryg <span class="highlight">stemning</span>, foretrækker <span class="highlight">detaljer</span> eller <span class="highlight">overblik</span>.</p>
+      <p>Dit resultat viser din <span class="highlight">kommunikationstype</span> – og hvordan tandlægen bedst kan støtte dig i behandlingen.</p>
       <h2>🧭 Sådan tager du testen</h2>
-      <p><strong>1.</strong> Vælg et billede med <span style="color: red;">rød ramme</span> &nbsp;&nbsp;&nbsp;&nbsp; <strong>2.</strong> Vælg et billede med <span style="color: blue;">blå ramme</span></p>
+      <p><strong>1.</strong> Vælg ét billede med <span class="highlight" style="color: red;">rød ramme</span> &nbsp;&nbsp;&nbsp; <strong>2.</strong> Vælg ét billede med <span class="highlight" style="color: #0077cc;">blå ramme</span></p>
+      <h2>❓Hvad lægger du mest vægt på under dit tandlægebesøg?</h2>
+      <p>Vælg ét billede med <span class="highlight" style="color: red;">rød ramme</span> og ét billede med <span class="highlight" style="color: #0077cc;">blå ramme</span>, der bedst viser, hvad der giver dig mest tryghed og ro under behandlingen.</p>
     </div>
 
     <div class="image-row">
-      <div class="image-option" data-type="taenker" data-step="first" onclick="selectOption(this, 'first')" style="border-color: red;">
+      <div class="image-option" data-type="taenker" data-step="first" onclick="selectOption(this, 'first')">
         <img src="images/taenker.jpg.png" alt="Tænker">
         <span>Information</span>
       </div>
-      <div class="image-option" data-type="foeler" data-step="first" onclick="selectOption(this, 'first')" style="border-color: red;">
+      <div class="image-option" data-type="foeler" data-step="first" onclick="selectOption(this, 'first')">
         <img src="images/foeler.jpg.png" alt="Føler">
         <span>Empati</span>
       </div>
-      <div class="image-option" data-type="intuitiv" data-step="second" onclick="selectOption(this, 'second')" style="border-color: blue;">
+      <div class="image-option" data-type="intuitiv" data-step="second" onclick="selectOption(this, 'second')">
         <img src="images/intuitiv.jpg.png" alt="Intuitiv">
         <span>Overblik</span>
       </div>
-      <div class="image-option" data-type="sansende" data-step="second" onclick="selectOption(this, 'second')" style="border-color: blue;">
+      <div class="image-option" data-type="sansende" data-step="second" onclick="selectOption(this, 'second')">
         <img src="images/sensitiv.jpg.png" alt="Sansende">
         <span>Detaljer</span>
       </div>
@@ -184,3 +175,4 @@
   </script>
 </body>
 </html>
+
