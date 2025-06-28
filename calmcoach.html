@@ -20,10 +20,20 @@
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
+    .logo {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 160px;
+    }
     h1 {
       font-size: 28px;
       margin-bottom: 10px;
       text-align: center;
+    }
+    h2 {
+      font-size: 22px;
+      margin-top: 30px;
+      color: #004b7f;
     }
     p {
       font-size: 18px;
@@ -32,18 +42,22 @@
     }
     input[type="date"] {
       font-size: 18px;
-      padding: 10px;
+      padding: 12px;
       width: 100%;
       margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
     }
     button {
       background-color: #0077cc;
       color: white;
       border: none;
-      padding: 12px 20px;
+      padding: 12px 24px;
       font-size: 18px;
       border-radius: 8px;
       cursor: pointer;
+      display: block;
+      margin-top: 10px;
     }
     button:hover {
       background-color: #005fa3;
@@ -54,18 +68,28 @@
       padding: 15px;
       margin-top: 20px;
       display: none;
+      border-radius: 8px;
     }
     .message-box {
       margin-top: 30px;
       background-color: #fff8e1;
       padding: 20px;
       border-left: 5px solid #f9a825;
+      border-radius: 8px;
       display: none;
+    }
+    a {
+      color: #0077cc;
+      text-decoration: underline;
+    }
+    a:hover {
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <img src="images/logo.png" alt="CalmClinic logo" class="logo" />
     <h1>CalmCoach</h1>
     <p><strong>Velkommen til din personlige tandlæge-coach!</strong></p>
     <p>CalmCoach hjælper dig med at holde fast i din beslutning og føle dig tryg frem mod dit tandlægebesøg. Du vil modtage små beskeder med ro, opmuntring og gode råd i dagene op til besøget.</p>
@@ -86,42 +110,7 @@
 
   <script>
     const messages = [
-      { daysBefore: 21, text: "📘 Start roligt – læs vores guide: <a href='CalmClinic SLIP TANDLÆGE SKRÆK Introduktion til lette afstressningsteknikker.pdf'>SLIP TANDLÆGESKRÆK</a>" },
-      { daysBefore: 17, text: "🎧 Prøv denne korte lydøvelse: <a href='Vejrtrækning1 pust ud.m4a'>Pust ud – slip spændingen</a>" },
-      { daysBefore: 13, text: "🌿 Træk vejret roligt: <a href='Vejrtrækning2 4x4.m4a'>4x4 vejrtrækning</a>" },
-      { daysBefore: 9,  text: "🎯 Styrk din ro: <a href='Vejrtrækning3 10xfast.m4a'>10x hurtig fokus</a>" },
-      { daysBefore: 5,  text: "🧠 Tag CalmClinic-testen igen: <a href='test.html'>Gå til testen</a>" },
-      { daysBefore: 2,  text: "💓 Hjælp din krop med at slappe af: <a href='hjertemeditation_video.html'>Se hjertemeditationen</a>" },
-      { daysBefore: 0,  text: "👏 Det er i dag! Du klarer det. Tag en dyb indånding – du er godt på vej. 💪" },
-    ];
-
-    function registerDate() {
-      const input = document.getElementById("visitDate").value;
-      if (!input) return alert("Vælg venligst en dato.");
-
-      localStorage.setItem("visitDate", input);
-      document.getElementById("chosenDate").textContent = new Date(input).toLocaleDateString('da-DK');
-      document.getElementById("confirmationBox").style.display = "block";
-      showMessage();
-    }
-
-    function showMessage() {
-      const savedDate = localStorage.getItem("visitDate");
-      if (!savedDate) return;
-
-      const today = new Date();
-      const visit = new Date(savedDate);
-      const diffDays = Math.floor((visit - today) / (1000 * 60 * 60 * 24));
-
-      const msg = messages.find(m => m.daysBefore === diffDays);
-      if (msg) {
-        document.getElementById("coachMessage").innerHTML = `<p>${msg.text}</p>`;
-        document.getElementById("coachMessage").style.display = "block";
-      }
-    }
-
-    window.onload = showMessage;
-  </script>
-</body>
-</html>
+      { daysBefore: 21, text: "📘 Start roligt – læs vores guide: <a href='pdfs/SLIP TANDLÆGE SKRÆK Introduktion til lette afstressningsteknikker.pdf'>SLIP TANDLÆGESKRÆK</a>" },
+      { daysBefore: 17, text: "🎧 Prøv denne korte lydøvelse: <a href='media/Vejrtrækning1 pust ud.m4a'>Pust ud – slip spændingen</a>" },
+      { daysBefore: 13, text: "🌿 Tr
 
