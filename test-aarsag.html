@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CalmClinic – Test din tandlægeskræk</title>
+  <title>Trin 2 – Fortæl os hvordan du har det hos tandlægen</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -130,6 +128,11 @@
 
       const sudVal = parseInt(sud.value);
       const causeVal = cause.value;
+
+      // Gem resultatet i localStorage til Trin 5
+      localStorage.setItem("sudScore", sudVal);
+      localStorage.setItem("sudReason", causeVal);
+
       let patientText = "";
       let mailText = "";
 
