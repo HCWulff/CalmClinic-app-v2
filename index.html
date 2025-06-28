@@ -2,75 +2,73 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CalmClinic - Velkommen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CalmClinic – Velkommen</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
     }
-
-    .video-container {
-      position: relative;
+    #videoContainer {
+      display: none;
       width: 100%;
       max-width: 800px;
-      margin: auto;
+      position: relative;
     }
-
     video {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-
-    .logo-overlay {
-      position: absolute;
-      top: 40px;               /* længere ned */
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-    }
-
-    .logo-overlay img {
-      width: 200px;            /* større logo */
-      height: auto;
-    }
-
-    .start-button {
-      display: block;
-      margin: 30px auto;
-      padding: 12px 24px;
-      font-size: 18px;
-      background-color: #0077b6;
+    #startButton {
+      padding: 16px 32px;
+      background-color: #0077cc;
       color: white;
+      font-size: 20px;
       border: none;
       border-radius: 8px;
-      text-decoration: none;
-      text-align: center;
-      width: fit-content;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
     }
-
-    .start-button:hover {
-      background-color: #005f8c;
+    #startButton:hover {
+      background-color: #005fa3;
+    }
+    img.logo {
+      max-height: 120px;
+      margin-bottom: 30px;
     }
   </style>
 </head>
 <body>
 
-  <div class="video-container">
-    <div class="logo-overlay">
-      <img src="images/Logo.png" alt="CalmClinic logo" />
-    </div>
-    <video autoplay muted loop playsinline>
+  <img src="images/logo.png" alt="CalmClinic Logo" class="logo" />
+  <button id="startButton">Start appen</button>
+
+  <div id="videoContainer">
+    <video id="introVideo" controls>
       <source src="videoer/intro.mp4" type="video/mp4" />
-      Din browser understøtter ikke video-tagget.
+      Din browser understøtter ikke videoafspilning.
     </video>
   </div>
 
-  <a href="forside.html" class="start-button">Start din rejse</a>
+  <script>
+    const startButton = document.getElementById('startButton');
+    const videoContainer = document.getElementById('videoContainer');
+    const video = document.getElementById('introVideo');
 
+    startButton.addEventListener('click', () => {
+      startButton.style.display = 'none';
+      videoContainer.style.display = 'block';
+      video.play();
+    });
+  </script>
 </body>
 </html>
