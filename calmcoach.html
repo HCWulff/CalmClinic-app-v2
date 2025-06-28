@@ -2,107 +2,112 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8">
-  <title>CalmCoach – Forberedelse til tandlægebesøg</title>
+  <title>CalmCoach</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background: #f2f9fc;
       margin: 0;
-      padding: 0 20px;
+      padding: 0;
       color: #003366;
     }
     .wrapper {
-      max-width: 800px;
-      margin: 40px auto;
+      max-width: 600px;
+      margin: 20px auto;
       background: white;
-      padding: 30px;
-      border-radius: 16px;
+      padding: 20px;
+      border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
     }
-    h1, h2 {
-      color: #003366;
+    h1 {
+      text-align: center;
+      font-size: 24px;
     }
-    .section {
-      margin-bottom: 30px;
+    label {
+      font-weight: bold;
     }
     input[type=date] {
       padding: 10px;
       font-size: 16px;
+      width: 100%;
+      margin: 10px 0 20px;
       border-radius: 8px;
       border: 1px solid #ccc;
-      width: 100%;
-      margin-top: 10px;
     }
-    .reminder {
-      background-color: #e6f4ff;
-      border-left: 4px solid #0077cc;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-    .breathing-link {
-      display: inline-block;
-      background-color: #0077cc;
+    .badge {
+      background-color: orange;
       color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-top: 10px;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 16px;
+      right: 16px;
     }
-    .breathing-link:hover {
-      background-color: #005fa3;
+    .message-box {
+      background-color: #e6f7ff;
+      border-left: 4px solid #1890ff;
+      padding: 15px;
+      margin-top: 10px;
+      display: none;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
-    <h1>📋 CalmCoach – Forberedelse til dit tandlægebesøg</h1>
+    <h1>CalmCoach</h1>
+    <label for="visitDate">Hvornår har du tid hos tandlægen?</label>
+    <input type="date" id="visitDate" onchange="saveDate()">
 
-    <div class="section">
-      <h2>📞 Inden du ringer til klinikken</h2>
-      <ul>
-        <li>Find dine personlige oplysninger frem: CPR-nummer og evt. tidligere klinik.</li>
-        <li>Fortæl, at du har tandlægeskræk – det er helt okay.</li>
-        <li>Sig, at du gerne vil have en forsamtale eller en rolig start.</li>
-        <li>Spørg hvad der sker ved første besøg – fx røntgen, snak eller undersøgelse.</li>
-      </ul>
-      <p>Føler du dig nervøs for at ringe? Du kan starte med en kort vejrtrækningsøvelse:</p>
-      <a href="vejrtraekning.html" class="breathing-link">🌬️ Lav en vejrtrækningsøvelse først</a>
-    </div>
+    <div id="newMessageBadge" class="badge" style="display:none;">1</div>
 
-    <div class="section">
-      <h2>🗓️ Hvornår skal du til tandlæge?</h2>
-      <p>Vælg den dato, du har fået en tid hos tandlægen:</p>
-      <input type="date" id="visitDate" onchange="updateReminder()">
-
-      <div id="reminderBox" class="reminder" style="display:none;"></div>
-    </div>
+    <div class="message-box" id="messageBox"></div>
   </div>
 
   <script>
-    function updateReminder() {
-      const input = document.getElementById("visitDate").value;
-      if (!input) return;
+    const messages = [
+      { offset: -21, text: "🔔 Tid til at komme i gang med din forberedelse! Start med at læse vores guide: <a href='pdfs/SLIP%20TANDL%C3%86GESKR%C3%86K%20Introduktion%20til%20lette%20afstressningsteknikker.pdf' target='_blank'>Slip tandlægeskræk</a>" },
+      { offset: -17, text: "💡 Brug din ro-øvelse allerede nu. Forbered dig med: <a href='pdfs/navngivandetlink.pdf'>Lydfil 1</a>" },
+      { offset: -12, text: "🫁 Husk vejrtrækning: <a href='media/Vejrtrækning1%20pust%20ud.m4a'>Pust ud</a>" },
+      { offset: -8, text: "🔄 Øv 4x4-åndedrættet: <a href='media/Vejrtrækning2%204x4.m4a'>4x4</a>" },
+      { offset: -5, text: "🧘‍♂️ Styrk din vejrtrækningsrytme: <a href='media/Vejrtrækning3%2010xfast.m4a'>10x fast</a>" },
+      { offset: -2, text: "📋 Tag testen: <a href='test.html'>Find din CalmClinic-type</a>" },
+      { offset: 0, text: "❤️ I dag er dagen! Se hjertemeditationen og ønsk dig selv et roligt besøg: <a href='hjertemeditation_video.html'>Se video</a>" }
+    ];
 
-      const visitDate = new Date(input);
+    function saveDate() {
+      const date = document.getElementById("visitDate").value;
+      localStorage.setItem("visitDate", date);
+      checkMessage();
+    }
+
+    function checkMessage() {
+      const dateStr = localStorage.getItem("visitDate");
+      if (!dateStr) return;
       const today = new Date();
-      const diffTime = visitDate - today;
-      const daysToGo = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      const box = document.getElementById("reminderBox");
+      const visitDate = new Date(dateStr);
+      const diffDays = Math.floor((visitDate - today) / (1000 * 60 * 60 * 24));
 
-      if (daysToGo > 0) {
-        box.innerHTML = `
-          <strong>Der er ${daysToGo} dag(e) til dit tandlægebesøg.</strong><br>
-          Super godt gået – du har holdt fast i din tid!<br><br>
-          Vi ved godt, at du måske tænker på at ringe og udskyde – men hold fast 🌟<br>
-          Du er godt på vej mod et trygt og godt første tandlægebesøg.`;
-        box.style.display = "block";
+      const todayMessage = messages.find(m => m.offset === diffDays);
+
+      if (todayMessage) {
+        document.getElementById("messageBox").innerHTML = todayMessage.text;
+        document.getElementById("messageBox").style.display = "block";
+        document.getElementById("newMessageBadge").style.display = "block";
       } else {
-        box.innerHTML = "Det ser ud til, at datoen er passeret. Du kan vælge en ny dato ovenfor.";
-        box.style.display = "block";
+        document.getElementById("messageBox").style.display = "none";
+        document.getElementById("newMessageBadge").style.display = "none";
       }
     }
+
+    window.onload = checkMessage;
   </script>
 </body>
 </html>
