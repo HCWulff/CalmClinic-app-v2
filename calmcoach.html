@@ -1,113 +1,127 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8">
-  <title>CalmCoach</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CalmCoach – Din vej til et trygt tandlægebesøg</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f2f9fc;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f0f9ff;
       margin: 0;
-      padding: 0;
+      padding: 0 20px;
       color: #003366;
     }
-    .wrapper {
-      max-width: 600px;
-      margin: 20px auto;
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
       background: white;
-      padding: 20px;
-      border-radius: 12px;
+      padding: 30px;
+      border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      position: relative;
     }
     h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
       text-align: center;
-      font-size: 24px;
     }
-    label {
-      font-weight: bold;
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
     }
-    input[type=date] {
+    input[type="date"] {
+      font-size: 18px;
       padding: 10px;
-      font-size: 16px;
       width: 100%;
-      margin: 10px 0 20px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
+      margin-bottom: 20px;
     }
-    .badge {
-      background-color: orange;
+    button {
+      background-color: #0077cc;
       color: white;
-      font-weight: bold;
-      border-radius: 50%;
-      width: 22px;
-      height: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      top: 16px;
-      right: 16px;
+      border: none;
+      padding: 12px 20px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    .confirmation {
+      background-color: #e0f7e9;
+      border-left: 5px solid #28a745;
+      padding: 15px;
+      margin-top: 20px;
+      display: none;
     }
     .message-box {
-      background-color: #e6f7ff;
-      border-left: 4px solid #1890ff;
-      padding: 15px;
-      margin-top: 10px;
+      margin-top: 30px;
+      background-color: #fff8e1;
+      padding: 20px;
+      border-left: 5px solid #f9a825;
       display: none;
-      border-radius: 8px;
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
+  <div class="container">
     <h1>CalmCoach</h1>
-    <label for="visitDate">Hvornår har du tid hos tandlægen?</label>
-    <input type="date" id="visitDate" onchange="saveDate()">
+    <p><strong>Velkommen til din personlige tandlæge-coach!</strong></p>
+    <p>CalmCoach hjælper dig med at holde fast i din beslutning og føle dig tryg frem mod dit tandlægebesøg. Du vil modtage små beskeder med ro, opmuntring og gode råd i dagene op til besøget.</p>
 
-    <div id="newMessageBadge" class="badge" style="display:none;">1</div>
+    <h2>Sådan virker det</h2>
+    <p>Vælg datoen for dit næste tandlægebesøg herunder, og klik på knappen. Vi sørger for at sende dig små påmindelser og beroligende beskeder i dagene op til din aftale.</p>
 
-    <div class="message-box" id="messageBox"></div>
+    <input type="date" id="visitDate" />
+    <button onclick="registerDate()">📅 Indsend tandlægedato</button>
+
+    <div class="confirmation" id="confirmationBox">
+      ✅ Din tandlægetid er registreret til <span id="chosenDate"></span>.<br />
+      Du vil modtage små beskeder med støtte og gode råd op til besøget. Godt gået!
+    </div>
+
+    <div class="message-box" id="coachMessage"></div>
   </div>
 
   <script>
     const messages = [
-      { offset: -21, text: "🔔 Tid til at komme i gang med din forberedelse! Start med at læse vores guide: <a href='pdfs/SLIP%20TANDL%C3%86GESKR%C3%86K%20Introduktion%20til%20lette%20afstressningsteknikker.pdf' target='_blank'>Slip tandlægeskræk</a>" },
-      { offset: -17, text: "💡 Brug din ro-øvelse allerede nu. Forbered dig med: <a href='pdfs/navngivandetlink.pdf'>Lydfil 1</a>" },
-      { offset: -12, text: "🫁 Husk vejrtrækning: <a href='media/Vejrtrækning1%20pust%20ud.m4a'>Pust ud</a>" },
-      { offset: -8, text: "🔄 Øv 4x4-åndedrættet: <a href='media/Vejrtrækning2%204x4.m4a'>4x4</a>" },
-      { offset: -5, text: "🧘‍♂️ Styrk din vejrtrækningsrytme: <a href='media/Vejrtrækning3%2010xfast.m4a'>10x fast</a>" },
-      { offset: -2, text: "📋 Tag testen: <a href='test.html'>Find din CalmClinic-type</a>" },
-      { offset: 0, text: "❤️ I dag er dagen! Se hjertemeditationen og ønsk dig selv et roligt besøg: <a href='hjertemeditation_video.html'>Se video</a>" }
+      { daysBefore: 21, text: "📘 Start roligt – læs vores guide: <a href='pdfs/SLIP%20TANDLÆGESKRÆK.pdf'>SLIP TANDLÆGESKRÆK</a>" },
+      { daysBefore: 17, text: "🎧 Prøv denne korte lydøvelse: <a href='media/Vejrtrækning1%20pust%20ud.m4a'>Pust ud – slip spændingen</a>" },
+      { daysBefore: 13, text: "🌿 Træk vejret roligt: <a href='media/Vejrtrækning2%204x4.m4a'>4x4 vejrtrækning</a>" },
+      { daysBefore: 9,  text: "🎯 Styrk din ro: <a href='media/Vejrtrækning3%2010xfast.m4a'>10x hurtig fokus</a>" },
+      { daysBefore: 5,  text: "🧠 Tag CalmClinic-testen igen: <a href='test.html'>Gå til testen</a>" },
+      { daysBefore: 2,  text: "💓 Hjælp din krop med at slappe af: <a href='hjertemeditation_video.html'>Se hjertemeditationen</a>" },
+      { daysBefore: 0,  text: "👏 Det er i dag! Du klarer det. Tag en dyb indånding – du er godt på vej. 💪" },
     ];
 
-    function saveDate() {
-      const date = document.getElementById("visitDate").value;
-      localStorage.setItem("visitDate", date);
-      checkMessage();
+    function registerDate() {
+      const input = document.getElementById("visitDate").value;
+      if (!input) return alert("Vælg venligst en dato.");
+
+      localStorage.setItem("visitDate", input);
+      document.getElementById("chosenDate").textContent = new Date(input).toLocaleDateString('da-DK');
+      document.getElementById("confirmationBox").style.display = "block";
+      showMessage();
     }
 
-    function checkMessage() {
-      const dateStr = localStorage.getItem("visitDate");
-      if (!dateStr) return;
+    function showMessage() {
+      const savedDate = localStorage.getItem("visitDate");
+      if (!savedDate) return;
+
       const today = new Date();
-      const visitDate = new Date(dateStr);
-      const diffDays = Math.floor((visitDate - today) / (1000 * 60 * 60 * 24));
+      const visit = new Date(savedDate);
+      const diffDays = Math.floor((visit - today) / (1000 * 60 * 60 * 24));
 
-      const todayMessage = messages.find(m => m.offset === diffDays);
-
-      if (todayMessage) {
-        document.getElementById("messageBox").innerHTML = todayMessage.text;
-        document.getElementById("messageBox").style.display = "block";
-        document.getElementById("newMessageBadge").style.display = "block";
-      } else {
-        document.getElementById("messageBox").style.display = "none";
-        document.getElementById("newMessageBadge").style.display = "none";
+      const msg = messages.find(m => m.daysBefore === diffDays);
+      if (msg) {
+        document.getElementById("coachMessage").innerHTML = `<p>${msg.text}</p>`;
+        document.getElementById("coachMessage").style.display = "block";
       }
     }
 
-    window.onload = checkMessage;
+    window.onload = showMessage;
   </script>
 </body>
 </html>
+
