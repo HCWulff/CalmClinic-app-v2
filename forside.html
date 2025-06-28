@@ -7,16 +7,16 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #ffffff;
+      background-color: #f8fcff;
       margin: 0;
       padding: 0;
     }
 
     .hero {
-     background-image: url('images/havbaggrund.jpg.png');
+      background-image: url("images/havbaggrund.jpg.png");
       background-size: cover;
       background-position: center;
-      height: 250px;
+      height: 200px;
       position: relative;
       display: flex;
       align-items: center;
@@ -26,51 +26,80 @@
     .hero img {
       max-height: 100px;
       width: auto;
-      position: relative;
       z-index: 2;
     }
 
     .overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
+      top: 0; left: 0;
       width: 100%;
-      background-color: rgba(0,0,0,0.3); /* Mørk overlay for kontrast */
+      height: 100%;
+      background-color: rgba(0,0,0,0.3);
       z-index: 1;
     }
 
     .content {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
       text-align: center;
-      padding: 40px 20px;
     }
 
-    .content p {
+    .step-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .step-box {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      max-width: 500px;
+      width: 100%;
       font-size: 18px;
-      color: #333;
-      margin-bottom: 30px;
+      text-align: left;
     }
 
-    .knap {
-      display: block;
-      margin: 12px auto;
-      padding: 14px 26px;
-      background: #0077cc;
-      color: white;
+    .step-box a {
       text-decoration: none;
-      border-radius: 8px;
-      font-size: 16px;
-      max-width: 320px;
-      transition: background 0.3s;
+      color: #0077cc;
+      font-weight: 600;
     }
 
-    .knap:hover {
-      background: #005fa3;
+    .step-box a:hover {
+      text-decoration: underline;
+    }
+
+    .arrow {
+      font-size: 30px;
+      color: #0077cc;
     }
 
     .footer-link {
       margin-top: 50px;
-      font-size: 14px;
+    }
+
+    .footer-link a {
+      text-decoration: none;
+      color: #ffffff;
+      background: #0077cc;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .footer-link a:hover {
+      background: #005fa3;
+    }
+
+    @media (max-width: 600px) {
+      .step-box {
+        font-size: 16px;
+        padding: 16px;
+      }
     }
   </style>
 </head>
@@ -78,24 +107,48 @@
 
   <div class="hero">
     <div class="overlay"></div>
-    <img src="images/logo.png" alt="CalmClinic Logo" />
+    <img src="images/logo.png" alt="CalmClinic logo" />
   </div>
 
   <div class="content">
-    <p>Din støtte til at overvinde tandlægeskræk – trin for trin.</p>
-    <p>Sådan bruger du appen:</p>
+    <h2>Sådan bruger du CalmClinic appen – trin for trin</h2>
+    <div class="step-container">
 
-    <a href="mini-eboeg-tandlaegeskraek.pdf" class="knap" target="_blank">📘 Trin 1: Værd at vide om tandlægeskræk</a>
-    <a href="forsta-skraek.html" class="knap">🧠 Trin 2: Forstå din tandlægeskræk</a>
-    <a href="type-test.html" class="knap">💬 Trin 3: Find din CalmClinic-type</a>
-    <a href="forberedelse.html" class="knap">📋 Trin 4: Forbered dig til dit tandlægebesøg</a>
-    <a href="del.html" class="knap">📤 Del din profil med tandlægen</a>
+      <div class="step-box">
+        📘 <a href="mini-eboeg-tandlaegeskraek.pdf" target="_blank">Trin 1: Værd at vide om tandlægeskræk</a><br>
+        Læs vores mini e-bog og få overblik over, hvordan du håndterer utryghed.
+      </div>
+      <div class="arrow">↓</div>
 
-    <div class="footer-link">
-      <a href="oversigt.html" class="knap">🗂️ Se alle funktioner i CalmClinic</a>
+      <div class="step-box">
+        🧠 <a href="forsta-skraek.html">Trin 2: Forstå din tandlægeskræk</a><br>
+        Bliv klogere på, hvad der sker i kroppen – og hvorfor du reagerer, som du gør.
+      </div>
+      <div class="arrow">↓</div>
+
+      <div class="step-box">
+        💬 <a href="type-test.html">Trin 3: Find din CalmClinic-type</a><br>
+        Tag testen og se, hvordan du bedst kommunikerer med tandlægen.
+      </div>
+      <div class="arrow">↓</div>
+
+      <div class="step-box">
+        📋 <a href="forberedelse.html">Trin 4: Forbered dig til tandlægebesøget</a><br>
+        Få styr på, hvad du kan gøre før og under besøget.
+      </div>
+      <div class="arrow">↓</div>
+
+      <div class="step-box">
+        📤 <a href="del.html">Trin 5: Del din profil med tandlægen</a><br>
+        Send dine oplysninger direkte til tandlægen – så I er på samme side.
+      </div>
+
+      <div class="footer-link">
+        <a href="oversigt.html">Se alle funktioner i CalmClinic</a>
+      </div>
+
     </div>
   </div>
 
 </body>
 </html>
-
