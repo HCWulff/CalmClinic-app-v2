@@ -9,32 +9,38 @@
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #f0f8ff;
-      text-align: center;
     }
-    header {
-      padding: 1em;
-      background-color: #ffffff;
-    }
-    header img {
-      max-width: 180px;
-      height: auto;
-    }
+
     .video-container {
       position: relative;
       width: 100%;
       max-width: 800px;
       margin: auto;
-      overflow: hidden;
     }
+
     video {
       width: 100%;
       height: auto;
+      display: block;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
+
+    .logo-overlay {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+    }
+
+    .logo-overlay img {
+      width: 140px;
+      height: auto;
+    }
+
     .start-button {
-      display: inline-block;
-      margin-top: 24px;
+      display: block;
+      margin: 30px auto;
       padding: 12px 24px;
       font-size: 18px;
       background-color: #0077b6;
@@ -42,8 +48,10 @@
       border: none;
       border-radius: 8px;
       text-decoration: none;
-      transition: background 0.3s ease;
+      text-align: center;
+      width: fit-content;
     }
+
     .start-button:hover {
       background-color: #005f8c;
     }
@@ -51,11 +59,10 @@
 </head>
 <body>
 
-  <header>
-    <img src="images/Logo.png" alt="CalmClinic logo" />
-  </header>
-
   <div class="video-container">
+    <div class="logo-overlay">
+      <img src="images/Logo.png" alt="CalmClinic logo" />
+    </div>
     <video autoplay muted loop playsinline>
       <source src="videoer/intro.mp4" type="video/mp4" />
       Din browser understøtter ikke video-tagget.
@@ -66,4 +73,5 @@
 
 </body>
 </html>
+
 
