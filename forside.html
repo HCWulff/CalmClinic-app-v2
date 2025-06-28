@@ -2,26 +2,55 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CalmClinic – Kom godt i gang</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
+      background-color: #ffffff;
       margin: 0;
-      padding: 40px 20px;
+      padding: 0;
+    }
+
+    .hero {
+      background-image: url("images/hav.jpg"); /* Ret stien hvis nødvendigt */
+      background-size: cover;
+      background-position: center;
+      height: 250px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero img {
+      max-height: 100px;
+      width: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0,0,0,0.3); /* Mørk overlay for kontrast */
+      z-index: 1;
+    }
+
+    .content {
       text-align: center;
+      padding: 40px 20px;
     }
-    h1 {
-      font-size: 28px;
-      color: #003366;
-      margin-bottom: 10px;
-    }
-    p {
+
+    .content p {
       font-size: 18px;
-      margin-bottom: 30px;
       color: #333;
+      margin-bottom: 30px;
     }
+
     .knap {
       display: block;
       margin: 12px auto;
@@ -34,30 +63,38 @@
       max-width: 320px;
       transition: background 0.3s;
     }
+
     .knap:hover {
       background: #005fa3;
     }
+
     .footer-link {
-      margin-top: 40px;
+      margin-top: 50px;
       font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Velkommen til CalmClinic™</h1>
-  <p>Din støtte til at overvinde tandlægeskræk – trin for trin.</p>
-  <p>Sådan bruger du appen:</p>
+  <div class="hero">
+    <div class="overlay"></div>
+    <img src="images/logo.png" alt="CalmClinic Logo" />
+  </div>
 
-  <a href="mini-eboeg-tandlaegeskraek.pdf" class="knap" target="_blank">📘 Trin 1: Værd at vide om tandlægeskræk</a>
-  <a href="øvelser.html" class="knap">🎧 Trin 2: Start med en ro-øvelse</a>
-  <a href="forsta-skraek.html" class="knap">🧠 Trin 3: Forstå din tandlægeskræk</a>
-  <a href="type-test.html" class="knap">💬 Trin 4: Find din CalmClinic-type</a>
-  <a href="forberedelse.html" class="knap">📋 Trin 5: Forbered dig til dit tandlægebesøg</a>
-  <a href="del.html" class="knap">📤 Del din profil med tandlægen</a>
+  <div class="content">
+    <p>Din støtte til at overvinde tandlægeskræk – trin for trin.</p>
+    <p>Sådan bruger du appen:</p>
 
-  <div class="footer-link">
-    <a href="index.html" class="knap">🗂️ Se alle funktioner i CalmClinic</a>
+    <a href="mini-eboeg-tandlaegeskraek.pdf" class="knap" target="_blank">📘 Trin 1: Værd at vide om tandlægeskræk</a>
+    <a href="øvelser.html" class="knap">🎧 Trin 2: Start med en ro-øvelse</a>
+    <a href="forsta-skraek.html" class="knap">🧠 Trin 3: Forstå din tandlægeskræk</a>
+    <a href="type-test.html" class="knap">💬 Trin 4: Find din CalmClinic-type</a>
+    <a href="forberedelse.html" class="knap">📋 Trin 5: Forbered dig til dit tandlægebesøg</a>
+    <a href="del.html" class="knap">📤 Del din profil med tandlægen</a>
+
+    <div class="footer-link">
+      <a href="index.html" class="knap">🗂️ Se alle funktioner i CalmClinic</a>
+    </div>
   </div>
 
 </body>
