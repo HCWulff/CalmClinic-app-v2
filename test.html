@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -47,6 +49,20 @@
       display: block;
       margin-top: 10px;
     }
+    .info-block {
+      background-color: #f2f9ff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .info-block h2 {
+      font-size: 20px;
+      margin-top: 0;
+    }
+    .info-block p {
+      margin: 6px 0;
+      line-height: 1.5;
+    }
     .image-row {
       display: flex;
       justify-content: space-around;
@@ -82,12 +98,6 @@
     .selected {
       border-color: #0077cc;
     }
-    .red-border {
-      border-color: red !important;
-    }
-    .blue-border {
-      border-color: blue !important;
-    }
     .result-button {
       display: block;
       margin: 0 auto;
@@ -119,38 +129,33 @@
     <h1>Find din CalmClinic-type</h1>
   </header>
   <div class="container">
-    <div class="instructions">
-      <p>🔍 <strong>Hvorfor virker testen?</strong></p>
-      <p>Denne test hjælper dig og tandlægen med at finde ud af, hvordan du bedst føler dig tryg under behandlingen.</p>
-      <p>Når du vælger billeder, aktiveres din intuitive måde at bearbejde følelser og information på – uden lange spørgsmål.
-      Testen afslører, om du fx:</p>
-      <ul>
-        <li>Har brug for <strong>forklaringer</strong> eller <strong>tryg stemning</strong></li>
-        <li>Foretrækker <strong>detaljer</strong> eller <strong>overblik</strong></li>
-      </ul>
-      <p>Dit resultat viser din <strong>kommunikationstype</strong> – og hvordan tandlægen bedst kan støtte dig i behandlingen.</p>
 
-      <p style="margin-top: 30px;">🧭 <strong>Sådan tager du testen:</strong></p>
-      <ol>
-        <li>Vælg ét billede med <strong>rød ramme</strong></li>
-        <li>Vælg ét billede med <strong>blå ramme</strong></li>
-      </ol>
+    <div class="info-block">
+      <h2>💡 Hvorfor virker testen?</h2>
+      <p>Når du vælger billeder, aktiveres din intuitive måde at bearbejde følelser og information på – uden lange spørgsmål.</p>
+      <p>Testen afslører fx om du: <strong>har brug for forklaringer eller tryg stemning – og foretrækker detaljer eller overblik.</strong></p>
+      <p>Dit resultat viser din <strong>kommunikationstype</strong> – og hvordan tandlægen bedst kan støtte dig i behandlingen.</p>
+    </div>
+
+    <div class="info-block">
+      <h2>🧭 Sådan tager du testen</h2>
+      <p><strong>1.</strong> Vælg et billede med <span style="color: red;">rød ramme</span> &nbsp;&nbsp;&nbsp;&nbsp; <strong>2.</strong> Vælg et billede med <span style="color: blue;">blå ramme</span></p>
     </div>
 
     <div class="image-row">
-      <div class="image-option red-border" data-type="taenker" data-step="first" onclick="selectOption(this, 'first')">
+      <div class="image-option" data-type="taenker" data-step="first" onclick="selectOption(this, 'first')" style="border-color: red;">
         <img src="images/taenker.jpg.png" alt="Tænker">
         <span>Information</span>
       </div>
-      <div class="image-option red-border" data-type="foeler" data-step="first" onclick="selectOption(this, 'first')">
+      <div class="image-option" data-type="foeler" data-step="first" onclick="selectOption(this, 'first')" style="border-color: red;">
         <img src="images/foeler.jpg.png" alt="Føler">
         <span>Empati</span>
       </div>
-      <div class="image-option blue-border" data-type="intuitiv" data-step="second" onclick="selectOption(this, 'second')">
+      <div class="image-option" data-type="intuitiv" data-step="second" onclick="selectOption(this, 'second')" style="border-color: blue;">
         <img src="images/intuitiv.jpg.png" alt="Intuitiv">
         <span>Overblik</span>
       </div>
-      <div class="image-option blue-border" data-type="sansende" data-step="second" onclick="selectOption(this, 'second')">
+      <div class="image-option" data-type="sansende" data-step="second" onclick="selectOption(this, 'second')" style="border-color: blue;">
         <img src="images/sensitiv.jpg.png" alt="Sansende">
         <span>Detaljer</span>
       </div>
