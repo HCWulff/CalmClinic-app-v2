@@ -141,15 +141,17 @@
 
       const mailLink = `mailto:klinik@calmclinic.dk?subject=Resultat af CalmClinic test&body=Mit SUD-tal: ${sudVal}%0D%0AÅrsag (selvangivet): ${causeVal}%0D%0ABeskrivelse til klinik: ${mailText}`;
 
-      resultDiv.innerHTML = `
-        <p><strong>Dit resultat:</strong></p>
-        <p>${resultText}</p>
-        <p><a href="${mailLink}" style="color: #0077cc;">📤 Send resultat til din tandlæge</a></p>
-      `;
-      resultDiv.style.display = 'block';
-    }
-  </script>
-</body>
-</html>
+resultDiv.innerHTML = `
+  <p><strong>Dit resultat:</strong></p>
+  <p>${patientText}</p>
+
+  <p><a href="${mailLink}" style="color: #0077cc;">📤 Send resultat til din tandlæge</a></p>
+
+  <p style="margin-top: 20px;">
+    <a href="type-test.html" class="knap" style="display: inline-block; padding: 12px 20px; background-color: #005fa3; color: white; border-radius: 6px; text-decoration: none;">
+      👉 Klar til trin 3: Hvordan kommunikerer du bedst med tandlægen?
+    </a>
+  </p>
+`;
 
 
