@@ -94,6 +94,22 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       margin: 20px 0;
     }
+    .next-step {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .next-step a {
+      display: inline-block;
+      padding: 14px 24px;
+      background-color: #005fa3;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .next-step a:hover {
+      background-color: #004080;
+    }
   </style>
 </head>
 <body>
@@ -124,6 +140,10 @@
 
     <input type="email" id="clinicEmail" placeholder="f.eks. info@klinik.dk">
     <button onclick="sendToClinic()" class="send-button">Send til klinikken</button>
+
+    <div class="next-step">
+      <a href="calmcoach.html">📋 Trin 4: Forbered dig til tandlægebesøget</a>
+    </div>
   </div>
 
   <script>
