@@ -9,16 +9,26 @@
       font-family: 'Segoe UI', Tahoma, sans-serif;
       background: #f0f9ff;
       margin: 0;
-      padding: 0 20px;
+      padding: 0;
       color: #003366;
+    }
+    .hero {
+      width: 100%;
+      height: 180px;
+      background-image: url('images/header.jpg');
+      background-size: cover;
+      background-position: center;
+      border-bottom: 4px solid #0077cc;
     }
     .container {
       max-width: 700px;
-      margin: 40px auto;
+      margin: -40px auto 40px;
       background: white;
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 2;
     }
     .logo {
       display: block;
@@ -88,6 +98,7 @@
   </style>
 </head>
 <body>
+  <div class="hero"></div>
   <div class="container">
     <img src="images/logo.png" alt="CalmClinic logo" class="logo" />
     <h1>CalmCoach</h1>
@@ -112,5 +123,39 @@
     const messages = [
       { daysBefore: 21, text: "📘 Start roligt – læs vores guide: <a href='pdfs/SLIP TANDLÆGE SKRÆK Introduktion til lette afstressningsteknikker.pdf'>SLIP TANDLÆGESKRÆK</a>" },
       { daysBefore: 17, text: "🎧 Prøv denne korte lydøvelse: <a href='media/Vejrtrækning1 pust ud.m4a'>Pust ud – slip spændingen</a>" },
-      { daysBefore: 13, text: "🌿 Tr
+      { daysBefore: 13, text: "🌿 Træk vejret roligt: <a href='media/Vejrtrækning2 4x4.m4a'>4x4 vejrtrækning</a>" },
+      { daysBefore: 9,  text: "🎯 Styrk din ro: <a href='media/Vejrtrækning3 10xfast.m4a'>10x hurtig fokus</a>" },
+      { daysBefore: 5,  text: "🧠 Tag CalmClinic-testen igen: <a href='test.html'>Gå til testen</a>" },
+      { daysBefore: 2,  text: "💓 Hjælp din krop med at slappe af: <a href='hjertemeditation_video.html'>Se hjertemeditationen</a>" },
+      { daysBefore: 0,  text: "👏 Det er i dag! Du klarer det. Tag en dyb indånding – du er godt på vej. 💪" },
+    ];
 
+    function registerDate() {
+      const input = document.getElementById("visitDate").value;
+      if (!input) return alert("Vælg venligst en dato.");
+
+      localStorage.setItem("visitDate", input);
+      document.getElementById("chosenDate").textContent = new Date(input).toLocaleDateString('da-DK');
+      document.getElementById("confirmationBox").style.display = "block";
+      showMessage();
+    }
+
+    function showMessage() {
+      const savedDate = localStorage.getItem("visitDate");
+      if (!savedDate) return;
+
+      const today = new Date();
+      const visit = new Date(savedDate);
+      const diffDays = Math.floor((visit - today) / (1000 * 60 * 60 * 24));
+
+      const msg = messages.find(m => m.daysBefore === diffDays);
+      if (msg) {
+        document.getElementById("coachMessage").innerHTML = `<p>${msg.text}</p>`;
+        document.getElementById("coachMessage").style.display = "block";
+      }
+    }
+
+    window.onload = showMessage;
+  </script>
+</body>
+</html>
