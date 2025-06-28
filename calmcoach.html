@@ -1,21 +1,108 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CalmCoach – CalmClinic</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <title>CalmCoach – Forberedelse til tandlægebesøg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f2f9fc;
+      margin: 0;
+      padding: 0 20px;
+      color: #003366;
+    }
+    .wrapper {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #003366;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    input[type=date] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .reminder {
+      background-color: #e6f4ff;
+      border-left: 4px solid #0077cc;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .breathing-link {
+      display: inline-block;
+      background-color: #0077cc;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+    .breathing-link:hover {
+      background-color: #005fa3;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <img src="images/logo.png" alt="CalmClinic Logo" style="max-width: 220px; height: auto; display: block; margin: 0 auto 20px;" />
-    <h1>CalmCoach</h1>
-    <p>Din personlige støtte frem mod tandlægebesøget. Her vil du få små påmindelser og opmuntringer, som hjælper dig frem til den store dag.</p>
-  </header>
+  <div class="wrapper">
+    <h1>📋 CalmCoach – Forberedelse til dit tandlægebesøg</h1>
 
-  <main>
-    <p><strong>Indholdet kommer snart…</strong></p>
-    <!-- Her kan vi senere tilføje: dato-input, countdown, beskeder -->
-  </main>
+    <div class="section">
+      <h2>📞 Inden du ringer til klinikken</h2>
+      <ul>
+        <li>Find dine personlige oplysninger frem: CPR-nummer og evt. tidligere klinik.</li>
+        <li>Fortæl, at du har tandlægeskræk – det er helt okay.</li>
+        <li>Sig, at du gerne vil have en forsamtale eller en rolig start.</li>
+        <li>Spørg hvad der sker ved første besøg – fx røntgen, snak eller undersøgelse.</li>
+      </ul>
+      <p>Føler du dig nervøs for at ringe? Du kan starte med en kort vejrtrækningsøvelse:</p>
+      <a href="vejrtraekning.html" class="breathing-link">🌬️ Lav en vejrtrækningsøvelse først</a>
+    </div>
+
+    <div class="section">
+      <h2>🗓️ Hvornår skal du til tandlæge?</h2>
+      <p>Vælg den dato, du har fået en tid hos tandlægen:</p>
+      <input type="date" id="visitDate" onchange="updateReminder()">
+
+      <div id="reminderBox" class="reminder" style="display:none;"></div>
+    </div>
+  </div>
+
+  <script>
+    function updateReminder() {
+      const input = document.getElementById("visitDate").value;
+      if (!input) return;
+
+      const visitDate = new Date(input);
+      const today = new Date();
+      const diffTime = visitDate - today;
+      const daysToGo = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const box = document.getElementById("reminderBox");
+
+      if (daysToGo > 0) {
+        box.innerHTML = `
+          <strong>Der er ${daysToGo} dag(e) til dit tandlægebesøg.</strong><br>
+          Super godt gået – du har holdt fast i din tid!<br><br>
+          Vi ved godt, at du måske tænker på at ringe og udskyde – men hold fast 🌟<br>
+          Du er godt på vej mod et trygt og godt første tandlægebesøg.`;
+        box.style.display = "block";
+      } else {
+        box.innerHTML = "Det ser ud til, at datoen er passeret. Du kan vælge en ny dato ovenfor.";
+        box.style.display = "block";
+      }
+    }
+  </script>
 </body>
 </html>
