@@ -1,71 +1,77 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Velkommen – CalmClinic</title>
+  <meta charset="UTF-8">
+  <title>Velkommen til CalmClinic</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #e6f2f8;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background-color: #f0f8ff;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
-    header {
-      width: 100%;
-      text-align: center;
-      padding: 20px;
-      background-color: white;
+
+    .container {
+      position: relative;
+      max-width: 720px;
+      width: 90%;
+      cursor: pointer;
     }
-    header img {
-      max-height: 100px;
-    }
-    .video-container {
-      width: 100%;
-      max-width: 800px;
-      padding: 0 20px;
-    }
-    video {
+
+    .thumbnail {
       width: 100%;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
     }
-    .button-container {
-      margin-top: 20px;
+
+    .video {
+      display: none;
+      width: 100%;
+      border-radius: 12px;
     }
+
     .start-button {
-      padding: 14px 28px;
-      background-color: #0077cc;
-      color: white;
+      margin-top: 20px;
+      padding: 12px 24px;
       font-size: 18px;
+      background-color: #005b96;
+      color: white;
       border: none;
       border-radius: 8px;
-      text-decoration: none;
-      display: inline-block;
+      cursor: pointer;
     }
+
     .start-button:hover {
-      background-color: #005fa3;
+      background-color: #003f6f;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="images/logo.png" alt="CalmClinic logo" />
-  </header>
-
-  <div class="video-container">
-    <video controls autoplay muted playsinline>
+  <div class="container" onclick="playVideo()">
+    <img src="images/1ohurtige (1).png" alt="Start CalmClinic" class="thumbnail" id="thumbnail">
+    <video id="introVideo" class="video" controls>
       <source src="videoer/intro.mp4" type="video/mp4">
-      Din browser understøtter ikke video.
+      Din browser understøtter ikke videoafspilning.
     </video>
   </div>
 
-  <div class="button-container">
-    <a href="oversigt.html" class="start-button">Start din rejse til et behageligt tandlægebesøg her</a>
-  </div>
+  <button class="start-button" onclick="window.location.href='oversigt.html'">Spring intro over og start din rejse</button>
+
+  <script>
+    function playVideo() {
+      const thumbnail = document.getElementById("thumbnail");
+      const video = document.getElementById("introVideo");
+
+      thumbnail.style.display = "none";
+      video.style.display = "block";
+      video.play();
+    }
+  </script>
 
 </body>
 </html>
