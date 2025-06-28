@@ -39,20 +39,13 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     .instructions {
-      font-size: 16px;
+      font-size: 18px;
       color: #003366;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
-    .instructions h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-    .instructions p {
-      margin: 8px 0;
-    }
-    .instructions ul {
-      padding-left: 20px;
-      margin: 8px 0;
+    .instructions strong {
+      display: block;
+      margin-top: 10px;
     }
     .image-row {
       display: flex;
@@ -89,6 +82,12 @@
     .selected {
       border-color: #0077cc;
     }
+    .red-border {
+      border-color: red !important;
+    }
+    .blue-border {
+      border-color: blue !important;
+    }
     .result-button {
       display: block;
       margin: 0 auto;
@@ -121,29 +120,37 @@
   </header>
   <div class="container">
     <div class="instructions">
-      <h2>🔍 Hvordan virker testen?</h2>
-      <p>Testen viser, hvordan du bedst kommunikerer trygt hos tandlægen.</p>
-      <p><strong>1. Vælg ét billede med <span style="color:red">rød ramme</span></strong><br>
-      – Det handler om, hvordan du bedst træffer beslutninger.</p>
-      <p><strong>2. Vælg ét billede med <span style="color:#005fa3">blå ramme</span></strong><br>
-      – Det handler om, hvordan du bedst opfatter information.</p>
-      <p>Det kan være svært at vælge – men bare vælg det billede, du hælder en lille smule mere til. Så virker testen.</p>
+      <p>🔍 <strong>Hvorfor virker testen?</strong></p>
+      <p>Denne test hjælper dig og tandlægen med at finde ud af, hvordan du bedst føler dig tryg under behandlingen.</p>
+      <p>Når du vælger billeder, aktiveres din intuitive måde at bearbejde følelser og information på – uden lange spørgsmål.
+      Testen afslører, om du fx:</p>
+      <ul>
+        <li>Har brug for <strong>forklaringer</strong> eller <strong>tryg stemning</strong></li>
+        <li>Foretrækker <strong>detaljer</strong> eller <strong>overblik</strong></li>
+      </ul>
+      <p>Dit resultat viser din <strong>kommunikationstype</strong> – og hvordan tandlægen bedst kan støtte dig i behandlingen.</p>
+
+      <p style="margin-top: 30px;">🧭 <strong>Sådan tager du testen:</strong></p>
+      <ol>
+        <li>Vælg ét billede med <strong>rød ramme</strong></li>
+        <li>Vælg ét billede med <strong>blå ramme</strong></li>
+      </ol>
     </div>
 
     <div class="image-row">
-      <div class="image-option" data-type="taenker" data-step="first" onclick="selectOption(this, 'first')" style="border-color:red">
+      <div class="image-option red-border" data-type="taenker" data-step="first" onclick="selectOption(this, 'first')">
         <img src="images/taenker.jpg.png" alt="Tænker">
         <span>Information</span>
       </div>
-      <div class="image-option" data-type="foeler" data-step="first" onclick="selectOption(this, 'first')" style="border-color:red">
+      <div class="image-option red-border" data-type="foeler" data-step="first" onclick="selectOption(this, 'first')">
         <img src="images/foeler.jpg.png" alt="Føler">
         <span>Empati</span>
       </div>
-      <div class="image-option" data-type="intuitiv" data-step="second" onclick="selectOption(this, 'second')" style="border-color:#005fa3">
+      <div class="image-option blue-border" data-type="intuitiv" data-step="second" onclick="selectOption(this, 'second')">
         <img src="images/intuitiv.jpg.png" alt="Intuitiv">
         <span>Overblik</span>
       </div>
-      <div class="image-option" data-type="sansende" data-step="second" onclick="selectOption(this, 'second')" style="border-color:#005fa3">
+      <div class="image-option blue-border" data-type="sansende" data-step="second" onclick="selectOption(this, 'second')">
         <img src="images/sensitiv.jpg.png" alt="Sansende">
         <span>Detaljer</span>
       </div>
