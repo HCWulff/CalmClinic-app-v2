@@ -5,6 +5,7 @@
   "display": "standalone",
   "background_color": "#f0f8ff",
   "theme_color": "#005b96",
+  "description": "En rolig og støttende app til dig med tandlægeskræk – få hjælp før, under og efter tandlægebesøget.",
   "icons": [
     {
       "src": "icon-192.png",
