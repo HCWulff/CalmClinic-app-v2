@@ -82,7 +82,7 @@
   <div class="container">
     <h1>📮 Trin 5: Del din profil med tandlægen</h1>
     <p>Her kan du sende dine testresultater direkte til din tandlæge – så er I på samme side, før dit besøg.</p>
-    
+
     <div class="summary-box">
       <strong>Din CalmClinic-type:</strong> <span id="type"></span>
       <strong>Din SUD-score:</strong> <span id="sud"></span>
@@ -95,13 +95,40 @@
   </div>
 
   <script>
-    const calmClinicType = sessionStorage.getItem("calmClinicType") || "Ukendt";
-    const sudScore = sessionStorage.getItem("sudScore") || "–";
-    const sudReason = sessionStorage.getItem("sudReason") || "Ingen årsag registreret. Prøv evt. testen igen.";
+    const types = {
+      "sansende_taenker": {
+        name: "Sansende Tænker",
+        reasonText: "Du registrerer mange detaljer og har brug for logisk overblik og tydelig information. Du bliver tryg, når du kan forudse, hvad der skal ske, og når der er ro og overensstemmelse mellem det, der bliver sagt og gjort."
+      },
+      "intuitiv_taenker": {
+        name: "Intuitiv Tænker",
+        reasonText: "Patienten har brug for at forstå formål og sammenhænge, og søger overblik og struktur i kommunikationen."
+      },
+      "sansende_foeler": {
+        name: "Sansende Føler",
+        reasonText: "Patienten registrerer stemninger og detaljer og har brug for ro, varme og følelsesmæssig kontakt for at føle sig tryg."
+      },
+      "intuitiv_foeler": {
+        name: "Intuitiv Føler",
+        reasonText: "Patienten er åben og tillidsfuld, men bliver let påvirket af stemninger og har brug for relationel kontakt og overblik."
+      }
+    };
 
-    document.getElementById("type").innerText = calmClinicType;
-    document.getElementById("sud").innerText = sudScore;
-    document.getElementById("reason").innerText = sudReason;
+    const params = new URLSearchParams(window.location.search);
+    const typeKey = params.get("type");
+    const sud = sessionStorage.getItem("sudScore") || "–";
+    const cause = sessionStorage.getItem("sudReason") || "–";
+
+    const typeObj = types[typeKey];
+
+    if (typeObj) {
+      document.getElementById("type").innerText = typeObj.name;
+      document.getElementById("sud").innerText = sud;
+      document.getElementById("reason").innerText = typeObj.reasonText;
+    } else {
+      document.getElementById("type").innerText = "Ukendt";
+      document.getElementById("reason").innerText = "Resultat ikke genkendt. Prøv venligst testen igen.";
+    }
 
     function sendToClinic() {
       const email = document.getElementById("clinicEmail").value;
@@ -110,19 +137,16 @@
         return;
       }
 
-      const subject = encodeURIComponent(`CalmClinic-type: ${calmClinicType}`);
-      const body = encodeURIComponent(`Patientens CalmClinic-type: ${calmClinicType}
-SUD-score: ${sudScore}
-Årsag: ${sudReason}
-
-Formålet med CalmClinic-testen:
-Testen hjælper med at identificere den kommunikationsform, der giver patienten mest tryghed og ro under tandbehandling. Ved at tage udgangspunkt i patientens behov, kan behandlingen tilpasses mere præcist – hvilket ofte fører til bedre samarbejde og øget tillid.
-
-Læs mere på www.calmclinic.dk`);
+      const subject = encodeURIComponent("CalmClinic-type: " + (typeObj?.name || "Ukendt"));
+      const body = encodeURIComponent(
+        `Patientens CalmClinic-type: ${typeObj?.name || "Ukendt"}
+SUD-score: ${sud}
+Årsag: ${cause}
+Forklaring: ${typeObj?.reasonText || "Ukendt type"}`
+      );
 
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     }
   </script>
 </body>
 </html>
-
