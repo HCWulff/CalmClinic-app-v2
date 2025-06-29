@@ -2,6 +2,7 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Velkommen til CalmClinic</title>
   <style>
     body {
@@ -12,17 +13,19 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     .container {
-      position: relative;
+      width: 100%;
       max-width: 720px;
-      width: 90%;
       cursor: pointer;
+      position: relative;
     }
 
-    .thumbnail {
+    .thumbnail, .video {
       width: 100%;
       border-radius: 12px;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
@@ -30,23 +33,30 @@
 
     .video {
       display: none;
-      width: 100%;
-      border-radius: 12px;
     }
 
     .start-button {
       margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 18px;
+      padding: 14px 28px;
+      font-size: 1.1rem;
       background-color: #005b96;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
     .start-button:hover {
       background-color: #003f6f;
+    }
+
+    @media (max-width: 480px) {
+      .start-button {
+        width: 100%;
+        padding: 16px;
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -60,7 +70,9 @@
     </video>
   </div>
 
-  <button class="start-button" onclick="window.location.href='forside.html'">Spring intro over og start din rejse</button>
+  <button class="start-button" onclick="window.location.href='forside.html'">
+    Spring intro over og start din rejse
+  </button>
 
   <script>
     function playVideo() {
@@ -75,4 +87,5 @@
 
 </body>
 </html>
+
 
