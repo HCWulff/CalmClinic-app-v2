@@ -129,7 +129,6 @@
       const sudVal = parseInt(sud.value);
       const causeVal = cause.value;
 
-      // Gem resultatet i localStorage til Trin 5
       localStorage.setItem("sudScore", sudVal);
       localStorage.setItem("sudReason", causeVal);
 
@@ -150,6 +149,10 @@
         mailText = "Patientens svar indikerer blandede årsager. Anbefalet at give bred støtte og følge patientens tempo.";
       }
 
+      // Send videre til opsamlingresultater.html (uden redirect)
+      const url = `opsamlingresultater.html?sud=${sudVal}&cause=${encodeURIComponent(causeVal)}`;
+      fetch(url); // skygge-opkald
+
       const mailLink = `mailto:klinik@calmclinic.dk?subject=Resultat af CalmClinic test&body=Mit SUD-tal: ${sudVal}%0D%0AÅrsag (selvangivet): ${causeVal}%0D%0ABeskrivelse til klinik: ${mailText}`;
 
       resultDiv.innerHTML = `
@@ -165,3 +168,4 @@
   </script>
 </body>
 </html>
+
