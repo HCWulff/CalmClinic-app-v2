@@ -123,8 +123,7 @@
       "ingen": "Jeg føler ikke, at jeg har tandlægeskræk"
     };
 
-    const params = new URLSearchParams(window.location.search);
-    const typeKey = params.get("type");
+    const typeKey = sessionStorage.getItem("type") || "–";
     const sud = sessionStorage.getItem("sudScore") || "–";
     const causeKey = sessionStorage.getItem("sudReason") || "–";
 
@@ -162,4 +161,5 @@ Forklaring: ${typeObj?.reasonText || "Ukendt type"}`
   </script>
 </body>
 </html>
+
 
