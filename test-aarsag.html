@@ -150,7 +150,7 @@
         mailText = "Patientens svar indikerer blandede årsager. Anbefalet at give bred støtte og følge patientens tempo.";
       }
 
-      // Skygge-kald til mellemstation
+      // Send data i baggrunden til mellemstation
       const url = `opsamlingresultater.html?sud=${sudVal}&cause=${encodeURIComponent(causeVal)}`;
       fetch(url).then(() => {
         console.log("Data sendt til opsamlingresultater.html");
@@ -171,4 +171,5 @@
   </script>
 </body>
 </html>
+
 
