@@ -147,31 +147,29 @@
   </style>
 </head>
 <body>
-
   <div class="hero">
     <div class="overlay"></div>
     <img src="images/logo.png" alt="CalmClinic Logo" />
   </div>
-
   <div class="wrapper">
     <h1>Din CalmClinic-type: Intuitiv Tænker</h1>
     <img src="images/intuitiv_taenker.jpg.png" alt="Illustration" class="hero-image" />
-    <p><strong>Du søger sammenhæng, struktur og mening med behandlingen.</strong></p>
-    <p>Du bliver tryg, når du forstår, hvad der skal ske, og når du oplever ro og logik i samtalen med tandlægen.</p>
+    <p><strong>Du har brug for overblik og en rød tråd i informationen.</strong></p>
+    <p>Du bliver tryg, når du forstår formål og sammenhænge, og når der er logik og struktur i forløbet. Det giver dig ro, når du kan orientere dig og se meningen i det, der skal ske.</p>
 
     <div class="section-title">Det hjælper dig, når:</div>
     <ul class="positiv">
-      <li>Du får overblik og forklaringer</li>
-      <li>Tandlægen forklarer før han/hun gør noget</li>
-      <li>Der er struktur og fremdrift i behandlingen</li>
-      <li>Du ved, hvornår og hvordan noget bliver gjort</li>
+      <li>Du får forklaret formål og sammenhænge tydeligt</li>
+      <li>Tandlægen præsenterer behandlingen som en helhed</li>
+      <li>Du får overblik og klar besked i god tid</li>
+      <li>Du oplever struktur og logik i hele behandlingsforløbet</li>
     </ul>
 
     <div class="section-title">Du har ikke brug for:</div>
     <ul class="negativ">
-      <li>At blive overrumplet med information, du ikke forstår</li>
-      <li>Uventede skift i plan eller tilgang</li>
-      <li>Uforklarlig ventetid eller følelse af kaos</li>
+      <li>Rodede forklaringer eller utydelig kommunikation</li>
+      <li>Forvirrende information uden struktur</li>
+      <li>At blive informeret i sidste øjeblik</li>
     </ul>
 
     <h2>Send til klinikken</h2>
@@ -186,6 +184,11 @@
   </div>
 
   <script>
+    // Gem i localStorage til Trin 5-profil
+    localStorage.setItem("calmClinicType", "Intuitiv Tænker");
+    localStorage.setItem("sudScore", "–");
+    localStorage.setItem("sudReason", "Patienten har brug for at forstå formål og sammenhænge, og søger overblik og struktur i kommunikationen.");
+
     function sendToClinic() {
       const email = document.getElementById("clinicEmail").value;
       if (!email) {
@@ -198,18 +201,17 @@
 
 Patienten har gennemført CalmClinic-testen og identificerer sig som: Intuitiv Tænker
 
-Denne type patient søger struktur og mening. Det er vigtigt, at patienten forstår, hvad der skal ske, og føler sig inddraget i processen.
+Denne type patient søger overblik og struktur og har brug for tydelige formål og sammenhænge. Det er vigtigt, at information gives i en logisk og overskuelig form.
 
 Anbefalet kommunikation i klinikken:
 
-✅ Giv overblik og brug forklaringer
-✅ Forklar handlinger før de udføres
-✅ Skab struktur og ro i forløbet
-✅ Kommunikér klart og forudsigeligt
+✅ Forklar tydeligt formål og sammenhænge
+✅ Giv patienten overblik og logisk struktur
+✅ Informer i god tid og skab sammenhæng i forløbet
 
-❌ Undgå uforklarlige skift eller beslutninger
-❌ Undgå kaos eller mangel på retning
-❌ Undgå at patienten føler sig uden kontrol
+❌ Undgå rodede forklaringer og utydelig kommunikation
+❌ Undgå ustrukturerede eller hektiske forløb
+❌ Undgå sidste-øjebliks-information
 
 Formålet med CalmClinic-testen:
 Testen hjælper med at identificere den kommunikationsform, der giver den enkelte patient mest tryghed og ro under tandbehandling. Ved at tage udgangspunkt i patientens oplevelse og behov, kan behandlingen tilpasses mere præcist – hvilket ofte fører til bedre samarbejde og øget tillid.
@@ -221,4 +223,3 @@ Læs mere på www.calmclinic.dk`);
   </script>
 </body>
 </html>
-
