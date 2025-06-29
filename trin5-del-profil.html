@@ -172,7 +172,16 @@ SUD-score: ${sud}
 Forklaring: ${typeObj?.reasonText || "Ukendt type"}`
       );
 
+      // Send mail
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+
+      // Markér at brugeren er færdig
+      sessionStorage.setItem('completed', 'true');
+
+      // Automatisk redirect til afslutningsside efter 2 sekunder
+      setTimeout(() => {
+        window.location.href = "tak.html";
+      }, 2000);
     }
   </script>
 </body>
