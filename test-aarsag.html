@@ -3,165 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trin 2 – Fortæl os hvordan du har det hos tandlægen</title>
+  <title>CalmClinic – Testresultat (Årsag)</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #ffffff;
+      background-color: #e6f3fa;
       margin: 0;
       padding: 0;
     }
-    .hero {
-      background-image: url('images/havbaggrund.jpg.png');
-      background-size: cover;
-      background-position: center;
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .hero img {
-      max-height: 100px;
-      z-index: 2;
-    }
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background-color: rgba(0,0,0,0.3);
-      z-index: 1;
-    }
     .container {
       max-width: 700px;
-      margin: auto;
-      padding: 40px 20px;
-      text-align: center;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     h1 {
-      font-size: 26px;
       color: #003366;
+      font-size: 24px;
     }
     p {
       font-size: 18px;
       margin-bottom: 20px;
-      color: #333;
     }
-    .sud-scale label,
-    .cause-options label {
-      display: block;
-      margin: 6px 0;
-      font-size: 16px;
-      text-align: left;
+    .summary {
+      background: #d8ecfa;
+      padding: 20px;
+      border-left: 6px solid #0077cc;
+      margin-bottom: 30px;
     }
-    button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 16px;
-      border: none;
+    a.button {
+      display: inline-block;
+      padding: 14px 24px;
       background-color: #0077cc;
       color: white;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .result {
-      margin-top: 30px;
-      padding: 20px;
-      background-color: #eaf4fc;
-      border-radius: 8px;
-    }
-    .knap {
-      display: inline-block;
-      padding: 12px 20px;
-      background-color: #005fa3;
-      color: white;
-      border-radius: 6px;
       text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    a.button:hover {
+      background-color: #005fa3;
     }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <div class="overlay"></div>
-    <img src="images/logo.png" alt="CalmClinic Logo" />
-  </div>
   <div class="container">
-    <h1>Test din tandlægeskræk</h1>
-    <form id="testForm">
-      <p><strong>1. Hvor ubehageligt er et tandlægebesøg for dig? (SUD-skala)</strong></p>
-      <div class="sud-scale">
-        <label><input type="radio" name="sud" value="0"> 0 – Helt rolig</label>
-        <label><input type="radio" name="sud" value="3"> 3 – Let nervøs</label>
-        <label><input type="radio" name="sud" value="6"> 6 – Meget ubehageligt</label>
-        <label><input type="radio" name="sud" value="8"> 8 – Svært at gennemføre</label>
-        <label><input type="radio" name="sud" value="10"> 10 – Panikagtig</label>
-      </div>
+    <h1>📋 Dit resultat – Årsag</h1>
+    <div class="summary">
+      <p><strong>Din score (SUD):</strong> <span id="sudValue">7</span></p>
+      <p><strong>Årsag:</strong> <span id="reasonText">Tidligere dårlige erfaringer med rodbehandling.</span></p>
+      <p><strong>Din CalmClinic-type:</strong> <span id="typeValue">Intuitiv Tænker</span></p>
+    </div>
 
-      <p><strong>2. Hvad tror du udløser din tandlægeskræk?</strong></p>
-      <div class="cause-options">
-        <label><input type="radio" name="cause" value="tidligere"> En dårlig oplevelse hos tandlægen/lægen</label>
-        <label><input type="radio" name="cause" value="ukendt"> Jeg ved det ikke – det kommer bare</label>
-        <label><input type="radio" name="cause" value="barndom"> Minder om noget fra barndommen</label>
-        <label><input type="radio" name="cause" value="generel"> Jeg har angst i mange situationer</label>
-        <label><input type="radio" name="cause" value="ingen"> Jeg føler ikke, at jeg har tandlægeskræk</label>
-      </div>
-
-      <button type="button" onclick="visResultat()">Se resultat</button>
-    </form>
-
-    <div id="resultat" class="result" style="display:none;"></div>
+    <a id="nextStep" class="button" href="#">➡️ Videre til trin 5</a>
   </div>
 
   <script>
-    function visResultat() {
-      const sud = document.querySelector('input[name="sud"]:checked');
-      const cause = document.querySelector('input[name="cause"]:checked');
-      const resultDiv = document.getElementById("resultat");
+    // Her indsætter du de faktiske værdier fra testen
+    const sud = "7";
+    const reason = "Tidligere dårlige erfaringer med rodbehandling.";
+    const type = "intuitiv_taenker"; // Vigtigt: skal matche opslagsnavne i trin5-del-profil.html
 
-      if (!sud || !cause) {
-        resultDiv.innerHTML = "<p>Udfyld begge trin, før du kan se dit resultat.</p>";
-        resultDiv.style.display = 'block';
-        return;
-      }
+    // Udskriv i DOM
+    document.getElementById("sudValue").textContent = sud;
+    document.getElementById("reasonText").textContent = reason;
+    document.getElementById("typeValue").textContent = type.replace("_", " ").replace(/\b\w/g, l => l.toUpperCase());
 
-      const sudVal = parseInt(sud.value);
-      const causeVal = cause.value;
-
-      // Gem resultatet i localStorage til Trin 5
-      localStorage.setItem("sudScore", sudVal);
-      localStorage.setItem("sudReason", causeVal);
-
-      let patientText = "";
-      let mailText = "";
-
-      if (sudVal === 0 && causeVal === "ingen") {
-        patientText = "Du angiver, at du ikke føler tandlægeskræk. Det er rigtig godt! Alligevel kan nogle af CalmClinics værktøjer – som afspænding og forberedelse – være rare at bruge før eller under tandbehandling.";
-        mailText = "Patienten angiver et SUD-tal på 0 og føler ikke tandlægeskræk. CalmClinic-værktøjerne kan dog stadig være relevante som støtte til tryghed og ro under behandlingen.";
-      } else if (sudVal >= 7 && causeVal === "barndom") {
-        patientText = "Du oplever stor utryghed, og det kan hænge sammen med ubevidste mønstre fra barndommen. Appens rolige metoder virker uden, at du behøver at kende den præcise årsag.";
-        mailText = "Patienten angiver et højt SUD-tal og peger på barndomsminder som mulig årsag. En blid, tillidsfuld tilgang anbefales.";
-      } else if (causeVal === "tidligere") {
-        patientText = "Din utryghed stammer sandsynligvis fra tidligere tandlæge- eller lægebesøg. Appen kan give dig værktøjer til at genvinde trygheden trin for trin.";
-        mailText = "Patienten oplever tandlægeskræk grundet tidligere oplevelser. Det anbefales at informere tydeligt, tage små skridt og sikre medbestemmelse.";
-      } else {
-        patientText = "Du har reaktioner, der ikke helt passer ind i én forklaring – men det betyder blot, at du har endnu mere gavn af de forskellige funktioner i CalmClinic.";
-        mailText = "Patientens svar indikerer blandede årsager. Anbefalet at give bred støtte og følge patientens tempo.";
-      }
-
-      const mailLink = `mailto:klinik@calmclinic.dk?subject=Resultat af CalmClinic test&body=Mit SUD-tal: ${sudVal}%0D%0AÅrsag (selvangivet): ${causeVal}%0D%0ABeskrivelse til klinik: ${mailText}`;
-
-      resultDiv.innerHTML = `
-        <p><strong>Dit resultat:</strong></p>
-        <p>${patientText}</p>
-        <p><a href="${mailLink}" style="color: #0077cc;">📤 Send resultat til din tandlæge</a></p>
-        <p style="margin-top: 20px;">
-          <a href="test.html" class="knap">👉 Klar til trin 3: Hvordan kommunikerer du bedst med tandlægen?</a>
-        </p>
-      `;
-      resultDiv.style.display = 'block';
-    }
+    // Link til mellemstationen
+    const nextBtn = document.getElementById("nextStep");
+    nextBtn.href = `opsamlingresultater.html?type=${encodeURIComponent(type)}&sud=${encodeURIComponent(sud)}&reason=${encodeURIComponent(reason)}`;
   </script>
 </body>
 </html>
