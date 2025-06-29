@@ -94,4 +94,131 @@
     }
 
     input[type=email] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .send-button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .send-button:hover {
+      background-color: #005fa3;
+    }
+
+    .hero-image {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      margin: 20px 0;
+    }
+
+    .next-step {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .next-step a {
+      display: inline-block;
+      padding: 14px 24px;
+      background-color: #005fa3;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .next-step a:hover {
+      background-color: #004080;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="overlay"></div>
+    <img src="images/logo.png" alt="CalmClinic Logo" />
+  </div>
+  <div class="wrapper">
+    <h1>Din CalmClinic-type: Intuitiv Føler</h1>
+    <img src="images/intuitiv_foeler.jpg.png" alt="Illustration" class="hero-image" />
+    <p><strong>Du har brug for varme, relation og god kontakt med tandlægen.</strong></p>
+    <p>Du bliver tryg, når du føler dig forstået og mødt som menneske. Det betyder noget for dig, at tandlægen er nærværende, og at stemningen i rummet er god og tryg. Du lægger vægt på at blive inddraget og taget alvorligt.</p>
+
+    <div class="section-title">Det hjælper dig, når:</div>
+    <ul class="positiv">
+      <li>Du bliver mødt med varme og oprigtig interesse</li>
+      <li>Tandlægen er nærværende og rolig</li>
+      <li>Der bliver skabt tillid og en god relation</li>
+      <li>Du får mulighed for at give udtryk for dine følelser</li>
+    </ul>
+
+    <div class="section-title">Du har ikke brug for:</div>
+    <ul class="negativ">
+      <li>En kold eller stresset atmosfære</li>
+      <li>At blive behandlet som et nummer i rækken</li>
+      <li>At dine bekymringer bliver overhørt eller bagatelliseret</li>
+    </ul>
+
+    <h2>Send til klinikken</h2>
+    <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken.<br>Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
+
+    <input type="email" id="clinicEmail" placeholder="f.eks. info@klinik.dk">
+    <button onclick="sendToClinic()" class="send-button">Send til klinikken</button>
+
+    <div class="next-step">
+      <a href="calmcoach.html">📋 Klar til trin 4: Forbered dig til tandlægebesøget</a>
+    </div>
+  </div>
+
+  <script>
+    sessionStorage.setItem("type", "intuitiv_foeler");
+
+    function sendToClinic() {
+      const email = document.getElementById("clinicEmail").value;
+      if (!email) {
+        alert("Udfyld venligst klinikkens e-mailadresse.");
+        return;
+      }
+
+      const subject = encodeURIComponent("CalmClinic-type: Intuitiv Føler – patientens kommunikationsbehov");
+      const body = encodeURIComponent(`Indhold til journal / intern vejledning:
+
+Patienten har gennemført CalmClinic-testen og identificerer sig som: Intuitiv Føler
+
+Denne type patient har brug for nærvær, varme og følelsesmæssig kontakt. Det er vigtigt, at stemningen er tryg, og at patienten føler sig inddraget og forstået.
+
+Anbefalet kommunikation i klinikken:
+
+✅ Vis varme og oprigtig interesse
+✅ Vær nærværende og lyt aktivt
+✅ Giv patienten tryghed og tillid gennem relationen
+
+❌ Undgå kold, travl eller distanceret stemning
+❌ Undgå at bagatellisere bekymringer
+❌ Undgå følelsesløs rutinekommunikation
+
+Formålet med CalmClinic-testen:
+Testen hjælper med at identificere den kommunikationsform, der giver den enkelte patient mest tryghed og ro under tandbehandling. Ved at tage udgangspunkt i patientens oplevelse og behov, kan behandlingen tilpasses mere præcist – hvilket ofte fører til bedre samarbejde og øget tillid.
+
+Læs mere på www.calmclinic.dk`);
+
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
+
 
