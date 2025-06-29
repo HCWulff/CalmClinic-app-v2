@@ -66,6 +66,20 @@
       border-radius: 6px;
       cursor: pointer;
     }
+    .result {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #eaf4fc;
+      border-radius: 8px;
+    }
+    .knap {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #005fa3;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -94,30 +108,67 @@
         <label><input type="radio" name="cause" value="ingen"> Jeg føler ikke, at jeg har tandlægeskræk</label>
       </div>
 
-      <button type="button" onclick="sendOgRedirect()">Se resultat</button>
+      <button type="button" onclick="visResultat()">Se resultat</button>
     </form>
+
+    <div id="resultat" class="result" style="display:none;"></div>
   </div>
 
   <script>
-    function sendOgRedirect() {
+    function visResultat() {
       const sud = document.querySelector('input[name="sud"]:checked');
       const cause = document.querySelector('input[name="cause"]:checked');
+      const resultDiv = document.getElementById("resultat");
 
       if (!sud || !cause) {
-        alert("Udfyld begge trin, før du kan gå videre.");
+        resultDiv.innerHTML = "<p>Udfyld begge trin, før du kan se dit resultat.</p>";
+        resultDiv.style.display = 'block';
         return;
       }
 
       const sudVal = parseInt(sud.value);
       const causeVal = cause.value;
 
-      // Gem i sessionStorage i stedet for localStorage
+      // Gem i sessionStorage til trin 5
       sessionStorage.setItem("sudScore", sudVal);
       sessionStorage.setItem("sudReason", causeVal);
 
-      // Send brugeren videre til opsamling
-      window.location.href = `opsamlingresultater.html?sud=${sudVal}&cause=${encodeURIComponent(causeVal)}`;
+      let patientText = "";
+      let mailText = "";
+
+      if (sudVal === 0 && causeVal === "ingen") {
+        patientText = "Du angiver, at du ikke føler tandlægeskræk. Det er rigtig godt! Alligevel kan nogle af CalmClinics værktøjer – som afspænding og forberedelse – være rare at bruge før eller under tandbehandling.";
+        mailText = "Patienten angiver et SUD-tal på 0 og føler ikke tandlægeskræk. CalmClinic-værktøjerne kan dog stadig være relevante som støtte til tryghed og ro under behandlingen.";
+      } else if (sudVal >= 7 && causeVal === "barndom") {
+        patientText = "Du oplever stor utryghed, og det kan hænge sammen med ubevidste mønstre fra barndommen. Appens rolige metoder virker uden, at du behøver at kende den præcise årsag.";
+        mailText = "Patienten angiver et højt SUD-tal og peger på barndomsminder som mulig årsag. En blid, tillidsfuld tilgang anbefales.";
+      } else if (causeVal === "tidligere") {
+        patientText = "Din utryghed stammer sandsynligvis fra tidligere tandlæge- eller lægebesøg. Appen kan give dig værktøjer til at genvinde trygheden trin for trin.";
+        mailText = "Patienten oplever tandlægeskræk grundet tidligere oplevelser. Det anbefales at informere tydeligt, tage små skridt og sikre medbestemmelse.";
+      } else {
+        patientText = "Du har reaktioner, der ikke helt passer ind i én forklaring – men det betyder blot, at du har endnu mere gavn af de forskellige funktioner i CalmClinic.";
+        mailText = "Patientens svar indikerer blandede årsager. Anbefalet at give bred støtte og følge patientens tempo.";
+      }
+
+      // Skygge-kald til mellemstation
+      const url = `opsamlingresultater.html?sud=${sudVal}&cause=${encodeURIComponent(causeVal)}`;
+      fetch(url).then(() => {
+        console.log("Data sendt til opsamlingresultater.html");
+      });
+
+      const mailLink = `mailto:klinik@calmclinic.dk?subject=Resultat af CalmClinic test&body=Mit SUD-tal: ${sudVal}%0D%0AÅrsag (selvangivet): ${causeVal}%0D%0ABeskrivelse til klinik: ${mailText}`;
+
+      resultDiv.innerHTML = `
+        <p><strong>Dit resultat:</strong></p>
+        <p>${patientText}</p>
+        <p><a href="${mailLink}" style="color: #0077cc;">📤 Send resultat til din tandlæge</a></p>
+        <p style="margin-top: 20px;">
+          <a href="test.html" class="knap">👉 Klar til trin 3: Hvordan kommunikerer du bedst med tandlægen?</a>
+        </p>
+      `;
+      resultDiv.style.display = 'block';
     }
   </script>
 </body>
 </html>
+
