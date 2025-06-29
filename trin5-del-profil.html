@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -86,9 +84,9 @@
     <p>Her kan du sende dine testresultater direkte til din tandlæge – så er I på samme side, før dit besøg.</p>
     
     <div class="summary-box">
-      <strong>Din CalmClinic-type:</strong> <span id="type"></span>
-      <strong>Din SUD-score:</strong> <span id="sud"></span>
-      <strong>Årsag:</strong> <span id="reason"></span>
+      <strong>Din CalmClinic-type:</strong> <span id="type">[Indlæser]</span>
+      <strong>Din SUD-score:</strong> <span id="sud">–</span>
+      <strong>Årsag:</strong> <span id="reason">[Indlæser]</span>
     </div>
 
     <label for="clinicEmail">Tandlægens e-mail:</label>
@@ -123,6 +121,7 @@
     const params = new URLSearchParams(window.location.search);
     const typeKey = params.get("type");
 
+    // fallback hvis type mangler
     if (types[typeKey]) {
       document.getElementById("type").innerText = types[typeKey].name;
       document.getElementById("sud").innerText = types[typeKey].sud;
@@ -139,10 +138,19 @@
         return;
       }
 
-      const subject = encodeURIComponent("CalmClinic-type: " + types[typeKey].name);
-      const body = encodeURIComponent(`Patientens CalmClinic-type: ${types[typeKey].name}
-SUD-score: ${types[typeKey].sud}
-Årsag: ${types[typeKey].reason}`);
+      const typeObj = types[typeKey];
+      if (!typeObj) {
+        alert("Testresultat mangler eller er ugyldigt.");
+        return;
+      }
+
+      const subject = encodeURIComponent(`CalmClinic-type: ${typeObj.name}`);
+      const body = encodeURIComponent(
+        `Patientens CalmClinic-type: ${typeObj.name}\n` +
+        `SUD-score: ${typeObj.sud}\n` +
+        `Årsag: ${typeObj.reason}`
+      );
+
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     }
   </script>
