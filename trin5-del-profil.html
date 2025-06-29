@@ -71,6 +71,20 @@
     .send-button:hover {
       background-color: #005fa3;
     }
+    .nav-knap {
+      display: block;
+      margin-top: 20px;
+      background-color: #005b96;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .nav-knap:hover {
+      background-color: #004070;
+    }
   </style>
 </head>
 <body>
@@ -93,6 +107,8 @@
     <label for="clinicEmail">Tandlægens e-mail:</label>
     <input type="email" id="clinicEmail" placeholder="fx info@din-klinik.dk" />
     <button class="send-button" onclick="sendToClinic()">📧 Send min profil til klinikken</button>
+
+    <a href="tak.html" class="nav-knap">🎉 Gå til afslutning og del din oplevelse</a>
   </div>
 
   <script>
@@ -161,5 +177,4 @@ Forklaring: ${typeObj?.reasonText || "Ukendt type"}`
   </script>
 </body>
 </html>
-
 
