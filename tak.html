@@ -4,18 +4,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tak for din rejse med CalmClinic</title>
-  <link rel="stylesheet" href="tak-style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #005b96;
+    }
+    h2 {
+      color: #003366;
+      margin-top: 40px;
+    }
+    p {
+      font-size: 1.1em;
+    }
+    form {
+      margin-top: 20px;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    textarea, input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button[type="submit"] {
+      margin-top: 20px;
+      background-color: #005b96;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #004070;
+    }
+    .share-btn {
+      display: inline-block;
+      margin-top: 15px;
+      background-color: #4267B2;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    .share-btn:hover {
+      background-color: #365899;
+    }
+    .knapper {
+      margin-top: 40px;
+    }
+    .nav-knap {
+      display: inline-block;
+      margin: 10px;
+      background-color: #005b96;
+      color: white;
+      padding: 10px 18px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    .nav-knap:hover {
+      background-color: #004070;
+    }
+  </style>
 </head>
 <body>
+
   <main class="container">
     <h1>🎉 Tak fordi du brugte CalmClinic</h1>
-    <p>Du har nu fundet din personlighedstype og sendt den videre til din tandlæge. Det er et vigtigt skridt på vejen mod et trygt tandlægebesøg.</p>
+    <p>Du har nu fået din personlighedstype og sendt den videre til din tandlæge. Det er et vigtigt skridt – og vi håber, du føler dig lidt mere tryg.</p>
 
     <section class="feedback">
       <h2>🧘 Hvordan var din oplevelse?</h2>
       <p>Del gerne dine tanker – det hjælper både os og andre, der kæmper med tandlægeskræk.</p>
 
-     <form action="https://formspree.io/f/xvgrlgvq" method="POST">
+      <form action="https://formspree.io/f/mayvpkqz" method="POST">
+        <input type="hidden" name="_redirect" value="https://www.calmclinic.dk/tak-tak.html">
 
         <label for="oplevelse">Hvordan har CalmClinic hjulpet dig?</label>
         <textarea id="oplevelse" name="oplevelse" rows="4" required></textarea>
@@ -41,5 +123,6 @@
       <a href="test.html" class="nav-knap">🔁 Tag testen igen</a>
     </div>
   </main>
+
 </body>
 </html>
