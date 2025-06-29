@@ -4,8 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gemmer resultater...</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f8ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .message {
+      font-size: 20px;
+      color: #003366;
+    }
+  </style>
   <script>
-    // Når siden loades
     window.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
       const sud = params.get('sud');
@@ -18,9 +32,16 @@
       } else {
         console.warn('Manglende parametre i URL');
       }
+
+      // Automatisk redirect efter 1,5 sek.
+      setTimeout(() => {
+        window.location.href = 'trin5-del-profil.html';
+      }, 1500);
     });
   </script>
 </head>
 <body>
+  <div class="message">Gemmer dine svar og sender dig videre...</div>
 </body>
 </html>
+
