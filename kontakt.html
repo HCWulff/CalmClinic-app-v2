@@ -4,24 +4,72 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kontakt – CalmClinic</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+      color: #003366;
+    }
+    header {
+      text-align: center;
+      padding: 30px 20px 20px;
+      background-image: url('images/havbaggrund.jpg.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      box-shadow: inset 0 -80px 80px rgba(0, 0, 0, 0.3);
+    }
+    header img {
+      max-height: 100px;
+      margin-bottom: 10px;
+    }
+    header h1 {
+      font-size: 30px;
+      margin-bottom: 5px;
+    }
+    .container {
+      max-width: 700px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .container p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+    .contact-info {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .contact-info a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <img src="images/logo.png" alt="CalmClinic Logo" style="max-width: 220px; height: auto; display: block; margin: 0 auto 20px;" />
+    <img src="images/logo.png" alt="CalmClinic Logo" />
     <h1>Kontakt CalmClinic</h1>
-    <p>Har du spørgsmål, forslag eller ønsker du at høre mere om CalmClinic-konceptet? Kontakt os herunder.</p>
+    <p>Vi vil meget gerne høre fra dig, hvis du har spørgsmål.</p>
   </header>
 
-  <main>
-    <p><strong>Indhold kommer snart…</strong></p>
-    <!-- Eksempel på kontaktinfo eller kontaktformular -->
-    <!--
-    <ul>
-      <li>Email: kontakt@calmclinic.dk</li>
-      <li>Telefon: +45 12 34 56 78</li>
-    </ul>
-    -->
-  </main>
+  <div class="container">
+    <p>Du er velkommen til at kontakte os via e-mail:</p>
+
+    <div class="contact-info">
+      📧 <strong>E-mail:</strong> <a href="mailto:info@calmclinic.dk">info@calmclinic.dk</a><br />
+      📞 <strong>Telefon:</strong> +45 12 34 56 78<br />
+      🕒 <strong>Telefontid:</strong> Hverdage 9.00 – 14.00
+    </div>
+  </div>
 </body>
 </html>
+
