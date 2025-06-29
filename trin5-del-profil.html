@@ -86,7 +86,8 @@
     <div class="summary-box">
       <strong>Din CalmClinic-type:</strong> <span id="type"></span>
       <strong>Din SUD-score:</strong> <span id="sud"></span>
-      <strong>Årsag:</strong> <span id="reason"></span>
+      <strong>Årsag:</strong> <span id="causeText"></span>
+      <strong>Typeforklaring:</strong> <span id="reason"></span>
     </div>
 
     <label for="clinicEmail">Tandlægens e-mail:</label>
@@ -114,16 +115,27 @@
       }
     };
 
+    const causes = {
+      "tidligere": "En dårlig oplevelse hos tandlægen/lægen",
+      "ukendt": "Jeg ved det ikke – det kommer bare",
+      "barndom": "Minder om noget fra barndommen",
+      "generel": "Jeg har angst i mange situationer",
+      "ingen": "Jeg føler ikke, at jeg har tandlægeskræk"
+    };
+
     const params = new URLSearchParams(window.location.search);
     const typeKey = params.get("type");
     const sud = sessionStorage.getItem("sudScore") || "–";
-    const cause = sessionStorage.getItem("sudReason") || "–";
+    const causeKey = sessionStorage.getItem("sudReason") || "–";
 
     const typeObj = types[typeKey];
+    const causeText = causes[causeKey] || "–";
+
+    document.getElementById("sud").innerText = sud;
+    document.getElementById("causeText").innerText = causeText;
 
     if (typeObj) {
       document.getElementById("type").innerText = typeObj.name;
-      document.getElementById("sud").innerText = sud;
       document.getElementById("reason").innerText = typeObj.reasonText;
     } else {
       document.getElementById("type").innerText = "Ukendt";
@@ -141,7 +153,7 @@
       const body = encodeURIComponent(
         `Patientens CalmClinic-type: ${typeObj?.name || "Ukendt"}
 SUD-score: ${sud}
-Årsag: ${cause}
+Årsag: ${causeText}
 Forklaring: ${typeObj?.reasonText || "Ukendt type"}`
       );
 
@@ -150,3 +162,4 @@ Forklaring: ${typeObj?.reasonText || "Ukendt type"}`
   </script>
 </body>
 </html>
+
