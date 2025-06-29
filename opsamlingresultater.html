@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <title>Opsamling af resultater</title>
+  <script>
+    const types = {
+      "sansende_taenker": {
+        name: "Sansende Tænker",
+        sud: "–",
+        reason: "Du registrerer mange detaljer og har brug for logisk overblik og tydelig information. Du bliver tryg, når du kan forudse, hvad der skal ske, og når der er ro og overensstemmelse mellem det, der bliver sagt og gjort."
+      },
+      "intuitiv_taenker": {
+        name: "Intuitiv Tænker",
+        sud: "–",
+        reason: "Patienten har brug for at forstå formål og sammenhænge, og søger overblik og struktur i kommunikationen."
+      },
+      "sansende_foeler": {
+        name: "Sansende Føler",
+        sud: "–",
+        reason: "Patienten registrerer stemninger og detaljer og har brug for ro, varme og følelsesmæssig kontakt for at føle sig tryg."
+      },
+      "intuitiv_foeler": {
+        name: "Intuitiv Føler",
+        sud: "–",
+        reason: "Patienten er åben og tillidsfuld, men bliver let påvirket af stemninger og har brug for relationel kontakt og overblik."
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const typeKey = params.get("type");
+
+    if (types[typeKey]) {
+      const type = types[typeKey];
+      sessionStorage.setItem("calmClinicType", type.name);
+      sessionStorage.setItem("sudScore", type.sud);
+      sessionStorage.setItem("sudReason", type.reason);
+    }
+
+    // Gå direkte videre til Trin 5
+    window.location.href = "trin5-del-profil.html";
+  </script>
+</head>
+<body>
+</body>
+</html>
 
