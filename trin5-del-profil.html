@@ -1,117 +1,150 @@
+
+
 <!DOCTYPE html>
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trin 5 – Del din profil med tandlægen</title>
+  <title>Trin 5: Del din profil med tandlægen</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: #f0f9ff;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e6f3fa;
       margin: 0;
       padding: 0;
-      color: #003366;
     }
-    header {
+    .hero {
       background-image: url('images/havbaggrund.jpg.png');
       background-size: cover;
       background-position: center;
-      padding: 40px 20px;
-      text-align: center;
-      color: white;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero img {
+      max-height: 80px;
     }
     .container {
-      max-width: 700px;
-      margin: 30px auto;
+      max-width: 800px;
+      margin: 40px auto;
       background: white;
-      padding: 30px 20px;
+      padding: 30px;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     h1 {
-      font-size: 26px;
-      text-align: center;
-      margin-bottom: 10px;
+      font-size: 22px;
+      color: #003366;
+      margin-bottom: 20px;
     }
-    p, label {
-      font-size: 18px;
-      line-height: 1.6;
+    p {
+      font-size: 17px;
+      margin-bottom: 16px;
     }
-    input[type="email"] {
+    .summary-box {
+      background-color: #d8ecfa;
+      padding: 16px;
+      border-left: 6px solid #0077cc;
+      margin-bottom: 24px;
+    }
+    .summary-box strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+    input[type=email] {
       width: 100%;
       padding: 10px;
+      margin-bottom: 12px;
       font-size: 16px;
-      margin-top: 10px;
-      margin-bottom: 20px;
+      border-radius: 8px;
       border: 1px solid #ccc;
-      border-radius: 6px;
     }
-    button {
+    .send-button {
+      padding: 14px 20px;
+      font-size: 16px;
       background-color: #0077cc;
       color: white;
       border: none;
-      padding: 12px 20px;
-      font-size: 18px;
       border-radius: 8px;
       cursor: pointer;
       width: 100%;
     }
-    button:hover {
+    .send-button:hover {
       background-color: #005fa3;
-    }
-    .result-box {
-      background-color: #e8f4fd;
-      padding: 15px;
-      border-left: 5px solid #0077cc;
-      margin-top: 20px;
-      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="images/logo.png" alt="CalmClinic logo" style="max-width: 150px;" />
-  </header>
-  <div class="container">
-    <h1>📤 Trin 5: Del din profil med tandlægen</h1>
-    <p>Her kan du sende dine testresultater direkte til din tandlæge – så er I på samme side, før dit besøg.</p>
 
-    <div class="result-box">
-      <strong>Din CalmClinic-type:</strong> <span id="typeResult">[Loading...]</span><br />
-      <strong>Din SUD-score:</strong> <span id="sudScore">[Loading...]</span><br />
-      <strong>Årsag:</strong> <span id="sudReason">[Loading...]</span>
+  <div class="hero">
+    <img src="images/logo.png" alt="CalmClinic Logo">
+  </div>
+
+  <div class="container">
+    <h1>📮 Trin 5: Del din profil med tandlægen</h1>
+    <p>Her kan du sende dine testresultater direkte til din tandlæge – så er I på samme side, før dit besøg.</p>
+    
+    <div class="summary-box">
+      <strong>Din CalmClinic-type:</strong> <span id="type"></span>
+      <strong>Din SUD-score:</strong> <span id="sud"></span>
+      <strong>Årsag:</strong> <span id="reason"></span>
     </div>
 
-    <label for="email">Tandlægens e-mail:</label>
-    <input type="email" id="email" placeholder="fx info@din-klinik.dk" />
-
-    <button onclick="sendResults()">📧 Send min profil til klinikken</button>
+    <label for="clinicEmail">Tandlægens e-mail:</label>
+    <input type="email" id="clinicEmail" placeholder="fx info@din-klinik.dk" />
+    <button class="send-button" onclick="sendToClinic()">📧 Send min profil til klinikken</button>
   </div>
 
   <script>
-    // Hent data fra localStorage
-    const calmType = localStorage.getItem("calmClinicType") || "[Ikke udfyldt]";
-    const sudScore = localStorage.getItem("sudScore") || "[Ikke udfyldt]";
-    const sudReason = localStorage.getItem("sudReason") || "[Ikke udfyldt]";
+    const types = {
+      "sansende_taenker": {
+        name: "Sansende Tænker",
+        sud: "–",
+        reason: "Du registrerer mange detaljer og har brug for logisk overblik og tydelig information. Du bliver tryg, når du kan forudse, hvad der skal ske, og når der er ro og overensstemmelse mellem det, der bliver sagt og gjort."
+      },
+      "intuitiv_taenker": {
+        name: "Intuitiv Tænker",
+        sud: "–",
+        reason: "Patienten har brug for at forstå formål og sammenhænge, og søger overblik og struktur i kommunikationen."
+      },
+      "sansende_foeler": {
+        name: "Sansende Føler",
+        sud: "–",
+        reason: "Patienten registrerer stemninger og detaljer og har brug for ro, varme og følelsesmæssig kontakt for at føle sig tryg."
+      },
+      "intuitiv_foeler": {
+        name: "Intuitiv Føler",
+        sud: "–",
+        reason: "Patienten er åben og tillidsfuld, men bliver let påvirket af stemninger og har brug for relationel kontakt og overblik."
+      }
+    };
 
-    document.getElementById("typeResult").textContent = calmType;
-    document.getElementById("sudScore").textContent = sudScore;
-    document.getElementById("sudReason").textContent = sudReason;
+    const params = new URLSearchParams(window.location.search);
+    const typeKey = params.get("type");
 
-    function sendResults() {
-      const email = document.getElementById("email").value;
-      if (!email) return alert("Udfyld venligst tandlægens e-mailadresse.");
+    if (types[typeKey]) {
+      document.getElementById("type").innerText = types[typeKey].name;
+      document.getElementById("sud").innerText = types[typeKey].sud;
+      document.getElementById("reason").innerText = types[typeKey].reason;
+    } else {
+      document.getElementById("type").innerText = "Ukendt";
+      document.getElementById("reason").innerText = "Resultat ikke genkendt. Prøv venligst testen igen.";
+    }
 
-      const subject = "CalmClinic-profil for patient";
-      const body = `Her er mine testresultater fra CalmClinic-appen:%0D%0A%0D%0A` +
-                   `CalmClinic-type: ${calmType}%0D%0A` +
-                   `SUD-score: ${sudScore}%0D%0A` +
-                   `Årsag til tandlægeskræk: ${sudReason}%0D%0A%0D%0A` +
-                   `Med venlig hilsen`;
+    function sendToClinic() {
+      const email = document.getElementById("clinicEmail").value;
+      if (!email) {
+        alert("Udfyld venligst klinikkens e-mailadresse.");
+        return;
+      }
 
+      const subject = encodeURIComponent("CalmClinic-type: " + types[typeKey].name);
+      const body = encodeURIComponent(`Patientens CalmClinic-type: ${types[typeKey].name}
+SUD-score: ${types[typeKey].sud}
+Årsag: ${types[typeKey].reason}`);
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     }
   </script>
 </body>
 </html>
-
