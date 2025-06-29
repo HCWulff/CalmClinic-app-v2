@@ -147,31 +147,29 @@
   </style>
 </head>
 <body>
-
   <div class="hero">
     <div class="overlay"></div>
     <img src="images/logo.png" alt="CalmClinic Logo" />
   </div>
-
   <div class="wrapper">
     <h1>Din CalmClinic-type: Sansende Føler</h1>
     <img src="images/sansende_foeler.jpg.png" alt="Illustration" class="hero-image" />
-    <p><strong>Du mærker hurtigt stemninger og detaljer i din omverden.</strong></p>
-    <p>Du bliver tryg, når dine sanser ikke bliver overstimuleret, og når du føler dig i ro og tryghed med omgivelser og mennesker.</p>
+    <p><strong>Du lægger mærke til mange detaljer og stemninger i rummet.</strong></p>
+    <p>Du bliver tryg, når atmosfæren er rolig og rar, og når personalet virker oprigtigt og ægte. Du har brug for, at tandlægen er venlig, lytter og tager dig alvorligt. Følelser og stemninger spiller en stor rolle for dig.</p>
 
     <div class="section-title">Det hjælper dig, når:</div>
     <ul class="positiv">
-      <li>Du er i rolige omgivelser uden støj</li>
-      <li>Tandlægen taler roligt og anerkender dine reaktioner</li>
-      <li>Der bliver taget hensyn til dine sanser (lys, lyd, lugt)</li>
-      <li>Du føler dig set og mødt på det, du mærker</li>
+      <li>Du bliver mødt i et roligt og venligt tempo</li>
+      <li>Personalet virker tilstede og ægte</li>
+      <li>Du føler dig lyttet til og taget alvorligt</li>
+      <li>Der er en tryg og behagelig stemning i rummet</li>
     </ul>
 
     <div class="section-title">Du har ikke brug for:</div>
     <ul class="negativ">
-      <li>Hurtige skift, uro og forstyrrende stimuli</li>
-      <li>Overfladisk kommunikation eller for mange informationer</li>
-      <li>At blive ignoreret eller overset i dine reaktioner</li>
+      <li>At blive mødt med hurtighed og travlhed</li>
+      <li>Overfladisk eller rutinepræget kommunikation</li>
+      <li>At personalet virker uinteresseret eller fjern</li>
     </ul>
 
     <h2>Send til klinikken</h2>
@@ -186,6 +184,8 @@
   </div>
 
   <script>
+    sessionStorage.setItem("type", "sansende_foeler");
+
     function sendToClinic() {
       const email = document.getElementById("clinicEmail").value;
       if (!email) {
@@ -198,18 +198,17 @@
 
 Patienten har gennemført CalmClinic-testen og identificerer sig som: Sansende Føler
 
-Denne type patient er følsom over for sanseindtryk og reagerer stærkt på sine omgivelser. Det er vigtigt, at patienten mødes med ro og hensyn til sanseoplevelser.
+Denne type patient er meget opmærksom på stemninger, tonefald og ægthed i kontakten. Det er vigtigt, at personalet fremstår oprigtigt og skaber en rolig og venlig atmosfære.
 
 Anbefalet kommunikation i klinikken:
 
-✅ Giv ro og undgå støj og kaos
-✅ Tag hensyn til lys, lyd og fysiske omgivelser
-✅ Anerkend og berolig patientens sansebaserede reaktioner
-✅ Giv tid og plads uden at presse
+✅ Tal i et roligt tempo og vis ægte nærvær
+✅ Lyt og anerkend patientens oplevelse
+✅ Skab en tryg stemning i behandlingsrummet
 
-❌ Undgå stressede og hurtige situationer
-❌ Undgå for mange forklaringer på én gang
-❌ Undgå at ignorere patientens følelser og signaler
+❌ Undgå travl og rutinepræget kommunikation
+❌ Undgå fjernhed eller manglende opmærksomhed
+❌ Undgå at virke stresset eller uengageret
 
 Formålet med CalmClinic-testen:
 Testen hjælper med at identificere den kommunikationsform, der giver den enkelte patient mest tryghed og ro under tandbehandling. Ved at tage udgangspunkt i patientens oplevelse og behov, kan behandlingen tilpasses mere præcist – hvilket ofte fører til bedre samarbejde og øget tillid.
