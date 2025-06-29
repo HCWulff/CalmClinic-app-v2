@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trin 5 – Din CalmClinic-type: Sansende Tænker</title>
+  <title>Trin 5 – Din CalmClinic-type</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -154,25 +154,16 @@
   </div>
 
   <div class="wrapper">
-    <h1>Din CalmClinic-type: Sansende Tænker</h1>
-    <img src="images/sansende_taenker.jpg.png" alt="Illustration" class="hero-image" />
-    <p><strong>Du registrerer mange detaljer og har brug for logisk overblik og tydelig information.</strong></p>
-    <p>Du bliver tryg, når du kan forudse, hvad der skal ske, og når der er ro og overensstemmelse mellem det, der bliver sagt og gjort.</p>
+    <h1 id="typeHeading">Din CalmClinic-type</h1>
+    <img id="typeImage" src="" alt="Illustration" class="hero-image" />
+    <p id="introText"></p>
+    <p id="explanationText"></p>
 
     <div class="section-title">Det hjælper dig, når:</div>
-    <ul class="positiv">
-      <li>Du får information i logiske trin og i god tid</li>
-      <li>Der er roligt og forudsigeligt i omgivelserne</li>
-      <li>Du oplever, at alt bliver gennemført som aftalt</li>
-      <li>Du får tydelig forklaring på både undersøgelse og behandling</li>
-    </ul>
+    <ul class="positiv" id="positiveList"></ul>
 
     <div class="section-title">Du har ikke brug for:</div>
-    <ul class="negativ">
-      <li>Uforberedte overraskelser</li>
-      <li>At blive talt hen over hovedet</li>
-      <li>At opleve uro, afbrydelser eller ustrukturerede forløb</li>
-    </ul>
+    <ul class="negativ" id="negativeList"></ul>
 
     <h2>Send til klinikken</h2>
     <p>Hvis det er denne kommunikationsform, du ønsker, at din tandlæge bruger under dine besøg, kan du sende testresultatet til klinikken.<br>Indtast klinikkens e-mailadresse og klik for at sende resultatet direkte.</p>
@@ -186,22 +177,24 @@
   </div>
 
   <script>
-    // Gem i localStorage til Trin 5-profil
-    localStorage.setItem("calmClinicType", "Sansende Tænker");
-    localStorage.setItem("sudScore", "–");
-    localStorage.setItem("sudReason", "Patienten registrerer mange detaljer og søger logisk overblik. Har brug for tydelighed og ro.");
-
-    function sendToClinic() {
-      const email = document.getElementById("clinicEmail").value;
-      if (!email) {
-        alert("Udfyld venligst klinikkens e-mailadresse.");
-        return;
-      }
-
-      const subject = encodeURIComponent("CalmClinic-type: Sansende Tænker – patientens kommunikationsbehov");
-      const body = encodeURIComponent(`Indhold til journal / intern vejledning:
-
-Patienten har gennemført CalmClinic-testen og identificerer sig som: Sansende Tænker
+    const descriptions = {
+      "sansende_taenker": {
+        title: "Sansende Tænker",
+        image: "images/sansende_taenker.jpg.png",
+        intro: "Du registrerer mange detaljer og har brug for logisk overblik og tydelig information.",
+        explanation: "Du bliver tryg, når du kan forudse, hvad der skal ske, og når der er ro og overensstemmelse mellem det, der bliver sagt og gjort.",
+        positiv: [
+          "Du får information i logiske trin og i god tid",
+          "Der er roligt og forudsigeligt i omgivelserne",
+          "Du oplever, at alt bliver gennemført som aftalt",
+          "Du får tydelig forklaring på både undersøgelse og behandling"
+        ],
+        negativ: [
+          "Uforberedte overraskelser",
+          "At blive talt hen over hovedet",
+          "At opleve uro, afbrydelser eller ustrukturerede forløb"
+        ],
+        mail: `Patienten har gennemført CalmClinic-testen og identificerer sig som: Sansende Tænker
 
 Denne type patient registrerer mange detaljer og søger logisk overblik. Det er vigtigt, at patienten oplever ro og tydelighed – og at der er overensstemmelse mellem det, der bliver sagt og gjort.
 
@@ -219,11 +212,61 @@ Anbefalet kommunikation i klinikken:
 Formålet med CalmClinic-testen:
 Testen hjælper med at identificere den kommunikationsform, der giver den enkelte patient mest tryghed og ro under tandbehandling. Ved at tage udgangspunkt i patientens oplevelse og behov, kan behandlingen tilpasses mere præcist – hvilket ofte fører til bedre samarbejde og øget tillid.
 
-Læs mere på www.calmclinic.dk`);
+Læs mere på www.calmclinic.dk`
+      }
+      // Her kan du tilføje flere typer som "intuitiv_foeler" osv.
+    };
 
+    function getTypeFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("type") || "sansende_taenker";
+    }
+
+    function populatePage() {
+      const type = getTypeFromURL();
+      const data = descriptions[type];
+
+      document.getElementById("typeHeading").textContent = "Din CalmClinic-type: " + data.title;
+      document.getElementById("typeImage").src = data.image;
+      document.getElementById("introText").textContent = data.intro;
+      document.getElementById("explanationText").textContent = data.explanation;
+
+      const posList = document.getElementById("positiveList");
+      const negList = document.getElementById("negativeList");
+
+      data.positiv.forEach(p => {
+        const li = document.createElement("li");
+        li.textContent = p;
+        posList.appendChild(li);
+      });
+
+      data.negativ.forEach(n => {
+        const li = document.createElement("li");
+        li.textContent = n;
+        negList.appendChild(li);
+      });
+
+      // Gem også resultatet i localStorage for Trin 5
+      localStorage.setItem("calmClinicType", data.title);
+      localStorage.setItem("sudScore", "–");
+      localStorage.setItem("sudReason", data.intro + " " + data.explanation);
+    }
+
+    function sendToClinic() {
+      const email = document.getElementById("clinicEmail").value;
+      const type = getTypeFromURL();
+      const data = descriptions[type];
+      if (!email) {
+        alert("Udfyld venligst klinikkens e-mailadresse.");
+        return;
+      }
+
+      const subject = encodeURIComponent(`CalmClinic-type: ${data.title} – patientens kommunikationsbehov`);
+      const body = encodeURIComponent(`Indhold til journal / intern vejledning:\n\n${data.mail}`);
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     }
+
+    populatePage();
   </script>
 </body>
 </html>
-
