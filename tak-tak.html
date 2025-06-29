@@ -7,22 +7,33 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
+      background-color: #e6f3fa;
       margin: 0;
       padding: 0;
+    }
+
+    .hero {
+      background-image: url('images/havbaggrund.jpg.png');
+      background-size: cover;
+      background-position: center;
+      height: 180px;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      text-align: center;
     }
 
-    .card {
-      background-color: white;
+    .hero img {
+      max-height: 80px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
       padding: 40px 30px;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 500px;
+      text-align: center;
     }
 
     h1 {
@@ -36,28 +47,33 @@
       margin-bottom: 30px;
     }
 
-    a {
+    a.knap {
       display: inline-block;
       padding: 12px 24px;
       background-color: #005b96;
       color: white;
       text-decoration: none;
       border-radius: 8px;
+      font-size: 16px;
     }
 
-    a:hover {
+    a.knap:hover {
       background-color: #004070;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>🎉 Tusind tak!</h1>
-    <p>Vi har modtaget din feedback – og det betyder meget for os.</p>
-    <p>Din støtte er med til at gøre CalmClinic endnu bedre.</p>
-    <a href="index.html">⬅️ Tilbage til forsiden</a>
+  <div class="hero">
+    <img src="images/logo.png" alt="CalmClinic Logo">
+  </div>
+
+  <div class="container">
+    <h1>🎉 Tusind tak for din feedback</h1>
+    <p>Din tilbagemelding hjælper os med at gøre CalmClinic endnu bedre – både for dig og for andre, der kæmper med tandlægeskræk.</p>
+    <a href="index.html" class="knap">⬅️ Tilbage til forsiden</a>
   </div>
 
 </body>
 </html>
+
