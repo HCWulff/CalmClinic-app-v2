@@ -21,8 +21,8 @@
       color: white;
     }
     .container {
-      max-width: 700px;
-      margin: 0 auto;
+      max-width: 900px;
+      margin: 40px auto;
       background: white;
       padding: 30px 20px;
       border-radius: 16px;
@@ -40,29 +40,20 @@
       font-size: 18px;
       margin-bottom: 20px;
     }
-    .button {
-      display: block;
-      width: fit-content;
-      margin: 0 auto;
-      background-color: #0077cc;
-      color: white;
-      padding: 14px 24px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-    }
-    .button:hover {
-      background-color: #005fa3;
-    }
     .note {
       background-color: #fff8e1;
       border-left: 5px solid #f9a825;
       padding: 15px;
       margin-top: 20px;
       font-size: 16px;
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
   </style>
 </head>
@@ -85,8 +76,8 @@
       <strong>Vigtigt:</strong> Undlad at indtaste personlige oplysninger som CPR-nummer, fulde navn eller medicinske diagnoser. CalmBot er kun til generel støtte og information.
     </div>
 
-    <p style="text-align: center; margin-top: 30px;">👇 Klik her for at åbne CalmBot:</p>
-    <a href="https://chat.openai.com/g/g-karmbot" target="_blank" class="button">Start CalmBot</a>
+    <iframe src="https://cdn.botpress.cloud/webchat/v3/index.html?botId=20250630212536-C6BRKJCM" title="CalmBot"></iframe>
   </div>
 </body>
 </html>
+
