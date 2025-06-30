@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CalmBot – Din hjælper i CalmClinic</title>
 
-  <!-- Botpress webchat script -->
+  <!-- Botpress Webchat Script -->
   <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
 
   <style>
@@ -48,15 +48,28 @@
       font-size: 16px;
     }
 
-    /* Bot style */
+    /* Webchat Embed Style */
     #webchat {
       width: 100%;
       max-width: 900px;
-      height: 650px;
+      height: 600px;
       margin: 40px auto;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       overflow: hidden;
+      background: #ffffff;
+    }
+
+    #webchat .bpWebchat {
+      position: unset !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-height: 100% !important;
+      max-width: 100% !important;
+    }
+
+    #webchat .bpFab {
+      display: none !important;
     }
   </style>
 </head>
@@ -79,24 +92,27 @@
     </div>
   </div>
 
-  <!-- CHATBOKS MIDT PÅ SIDEN -->
+  <!-- CHATBOKS INDBYGGET MIDT PÅ SIDEN -->
   <div id="webchat"></div>
 
-  <!-- Botpress init script -->
+  <!-- Init Botpress -->
   <script>
-    window.botpressWebChat.init({
+    window.botpress.on("webchat:ready", () => {
+      window.botpress.open();
+    });
+
+    window.botpress.init({
       botId: "49442fde-d109-472a-98e9-36d04bdbf40d",
       clientId: "bf7fc029-0816-4096-aab7-ef52c8037820",
-      hostUrl: "https://cdn.botpress.cloud/webchat/v3",
-      messagingUrl: "https://messaging.botpress.cloud",
-      containerWidth: "100%",
-      layoutWidth: "100%",
-      hideWidget: true,
-      showCloseButton: false,
-      enableConversationDeletion: false,
-      enableTranscriptDownload: false,
-      stylesheet: "",
-      selector: "#webchat"
+      selector: "#webchat",
+      configuration: {
+        botName: "CalmBot",
+        email: {},
+        website: {},
+        phone: {},
+        termsOfService: {},
+        privacyPolicy: {}
+      }
     });
   </script>
 </body>
