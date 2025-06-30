@@ -5,21 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CalmBot – Din hjælper i CalmClinic</title>
 
-  <!-- Botpress Webchat Script -->
+  <!-- Botpress webchat script -->
   <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
-  <script>
-    window.botpressWebChat.init({
-      "botId": "calmbot-3uov4zb53fpakzmc",
-      "hostUrl": "https://cdn.botpress.cloud/webchat/v3",
-      "messagingUrl": "https://messaging.botpress.cloud",
-      "clientId": "calmbot-3uov4zb53fpakzmc",
-      "containerWidth": "100%",
-      "layoutWidth": "100%",
-      "hideWidget": true,
-      "disableAnimations": false,
-      "showCloseButton": false
-    });
-  </script>
 
   <style>
     body {
@@ -45,7 +32,7 @@
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    h1, h2 {
+    h1 {
       text-align: center;
     }
     p, ul {
@@ -61,13 +48,12 @@
       font-size: 16px;
     }
 
-    /* Bot container styling */
+    /* Bot style */
     #webchat {
       width: 100%;
       max-width: 900px;
-      height: 700px;
-      margin: 40px auto 80px auto;
-      border: none;
+      height: 650px;
+      margin: 40px auto;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       overflow: hidden;
@@ -93,9 +79,25 @@
     </div>
   </div>
 
-  <!-- CalmBot vises her -->
+  <!-- CHATBOKS MIDT PÅ SIDEN -->
   <div id="webchat"></div>
 
+  <!-- Botpress init script -->
+  <script>
+    window.botpressWebChat.init({
+      botId: "49442fde-d109-472a-98e9-36d04bdbf40d",
+      clientId: "bf7fc029-0816-4096-aab7-ef52c8037820",
+      hostUrl: "https://cdn.botpress.cloud/webchat/v3",
+      messagingUrl: "https://messaging.botpress.cloud",
+      containerWidth: "100%",
+      layoutWidth: "100%",
+      hideWidget: true,
+      showCloseButton: false,
+      enableConversationDeletion: false,
+      enableTranscriptDownload: false,
+      stylesheet: "",
+      selector: "#webchat"
+    });
+  </script>
 </body>
 </html>
-
