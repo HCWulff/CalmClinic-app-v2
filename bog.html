@@ -17,7 +17,6 @@
       color: white;
       text-align: center;
       padding: 40px 20px 20px;
-      position: relative;
     }
 
     header img {
@@ -41,11 +40,12 @@
       padding: 0 20px;
     }
 
-    .pdf-viewer {
+    .pdf-viewer, .mobile-message {
       border: 2px solid #ccc;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      overflow: hidden;
+      padding: 20px;
+      text-align: center;
     }
 
     iframe {
@@ -74,6 +74,10 @@
       background-color: #005fa3;
     }
 
+    .mobile-message {
+      display: none;
+    }
+
     @media (max-width: 600px) {
       iframe {
         height: 500px;
@@ -90,8 +94,12 @@
   </header>
 
   <div class="container">
-    <div class="pdf-viewer">
+    <div class="pdf-viewer" id="desktop-viewer">
       <iframe src="CalmClinic SLIP TANDLÆGE SKRÆK Introduktion til lette afstressningsteknikker.pdf#toolbar=0" allowfullscreen></iframe>
+    </div>
+
+    <div class="mobile-message" id="mobile-message">
+      <p>📱 På mobilen er det bedst at <strong>hente minibogen som PDF</strong> og læse den i din PDF-læser.</p>
     </div>
 
     <div class="download">
@@ -100,6 +108,14 @@
       </a>
     </div>
   </div>
+
+  <script>
+    // Detekter mobil og skift visning
+    if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+      document.getElementById("desktop-viewer").style.display = "none";
+      document.getElementById("mobile-message").style.display = "block";
+    }
+  </script>
 
 </body>
 </html>
