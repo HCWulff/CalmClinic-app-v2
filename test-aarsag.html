@@ -3,111 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Find din CalmClinic-type</title>
+  <title>Trin 2 – Fortæl os hvordan du har det hos tandlægen</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
       margin: 0;
-      background-color: #e6f3fb;
+      padding: 0;
     }
     .hero {
       background-image: url('images/havbaggrund.jpg.png');
       background-size: cover;
       background-position: center;
-      height: 180px;
+      height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
     }
     .hero img {
-      max-height: 80px;
+      max-height: 100px;
       z-index: 2;
     }
     .overlay {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.3);
+      width: 100%;
+      background-color: rgba(0,0,0,0.3);
       z-index: 1;
     }
     .container {
-      max-width: 900px;
+      max-width: 700px;
       margin: auto;
-      padding: 30px 20px;
-      background: white;
-      border-radius: 10px;
-      margin-top: -40px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 40px 20px;
+      text-align: center;
     }
     h1 {
-      text-align: center;
       font-size: 26px;
-      color: white;
-      position: relative;
-      z-index: 2;
-    }
-    h2 {
       color: #003366;
     }
     p {
-      font-size: 16px;
+      font-size: 18px;
+      margin-bottom: 20px;
       color: #333;
     }
-    .instructions {
-      margin-bottom: 20px;
+    .sud-scale label,
+    .cause-options label {
+      display: block;
+      margin: 6px 0;
+      font-size: 16px;
+      text-align: left;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 15px;
+    button {
       margin-top: 20px;
-    }
-    .option {
-      border: 3px solid transparent;
-      border-radius: 8px;
-      overflow: hidden;
-      text-align: center;
-      background: #f9f9f9;
-      cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-    .option:hover {
-      transform: scale(1.03);
-    }
-    .option img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .option span {
-      display: block;
-      padding: 8px;
-      font-weight: bold;
-    }
-    .selected-red {
-      border-color: red;
-    }
-    .selected-blue {
-      border-color: #0077cc;
-    }
-    .btn {
-      display: block;
-      margin: 30px auto 0;
       padding: 12px 24px;
+      font-size: 16px;
+      border: none;
       background-color: #0077cc;
       color: white;
-      border: none;
       border-radius: 6px;
-      font-size: 16px;
       cursor: pointer;
     }
-    @media (max-width: 600px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .result {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #eaf4fc;
+      border-radius: 8px;
+    }
+    .knap {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #005fa3;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -117,67 +88,89 @@
     <img src="images/logo.png" alt="CalmClinic Logo" />
   </div>
   <div class="container">
-    <h2>Hvordan virker testen?</h2>
-    <p>Når du vælger billeder, aktiveres din intuitive måde at bearbejde følelser og information uden lange spørgsmål. Testen afslører, om du f.eks. har brug for forklaringer eller tryg stemning. Resultatet viser din kommunikationstype og hvordan tandlægen bedst støtter dig.</p>
-    <p>Det kan være svært at vælge og det er helt normalt. Her er det bedst at lade intuitionen bestemme uden at tænke for meget over valget.</p>
+    <h1>Test din tandlægeskræk</h1>
+    <form id="testForm">
+      <p><strong>1. Hvor ubehageligt er et tandlægebesøg for dig? (SUD-skala)</strong></p>
+      <div class="sud-scale">
+        <label><input type="radio" name="sud" value="0"> 0 – Helt rolig</label>
+        <label><input type="radio" name="sud" value="3"> 3 – Let nervøs</label>
+        <label><input type="radio" name="sud" value="6"> 6 – Meget ubehageligt</label>
+        <label><input type="radio" name="sud" value="8"> 8 – Svært at gennemføre</label>
+        <label><input type="radio" name="sud" value="10"> 10 – Panikagtig</label>
+      </div>
 
-    <h2>Sådan tager du testen</h2>
-    <p class="instructions">
-      1. Vælg et billede med <strong style="color: red;">rød ramme</strong>  &nbsp;&nbsp; 2. Vælg et billede med <strong style="color: #0077cc;">blå ramme</strong><br><br>
-      <strong>Hvad lægger du mest vægt på under dit tandlægebesøg?</strong><br>
-      Vælg de billeder, der bedst viser, hvad der giver dig tryghed og ro under behandlingen.
-    </p>
+      <p><strong>2. Hvad tror du udløser din tandlægeskræk?</strong></p>
+      <div class="cause-options">
+        <label><input type="radio" name="cause" value="tidligere"> En dårlig oplevelse hos tandlægen/lægen</label>
+        <label><input type="radio" name="cause" value="ukendt"> Jeg ved det ikke – det kommer bare</label>
+        <label><input type="radio" name="cause" value="barndom"> Minder om noget fra barndommen</label>
+        <label><input type="radio" name="cause" value="generel"> Jeg har angst i mange situationer</label>
+        <label><input type="radio" name="cause" value="ingen"> Jeg føler ikke, at jeg har tandlægeskræk</label>
+      </div>
 
-    <div class="grid">
-      <div class="option" onclick="selectImage(this, 'red')">
-        <img src="images/information.jpg" alt="Information" />
-        <span>Information</span>
-      </div>
-      <div class="option" onclick="selectImage(this, 'red')">
-        <img src="images/empati.jpg" alt="Empati" />
-        <span>Empati</span>
-      </div>
-      <div class="option" onclick="selectImage(this, 'blue')">
-        <img src="images/overblik.jpg" alt="Overblik" />
-        <span>Overblik</span>
-      </div>
-      <div class="option" onclick="selectImage(this, 'blue')">
-        <img src="images/detaljer.jpg" alt="Detaljer" />
-        <span>Detaljer</span>
-      </div>
-    </div>
+      <button type="button" onclick="visResultat()">Se resultat</button>
+    </form>
 
-    <button class="btn" onclick="goToResult()">Se mit resultat</button>
+    <div id="resultat" class="result" style="display:none;"></div>
   </div>
 
   <script>
-    let selectedRed = null;
-    let selectedBlue = null;
+    function visResultat() {
+      const sud = document.querySelector('input[name="sud"]:checked');
+      const cause = document.querySelector('input[name="cause"]:checked');
+      const resultDiv = document.getElementById("resultat");
 
-    function selectImage(element, color) {
-      if (color === 'red') {
-        if (selectedRed) selectedRed.classList.remove('selected-red');
-        selectedRed = element;
-        element.classList.add('selected-red');
-      } else {
-        if (selectedBlue) selectedBlue.classList.remove('selected-blue');
-        selectedBlue = element;
-        element.classList.add('selected-blue');
-      }
-    }
-
-    function goToResult() {
-      if (!selectedRed || !selectedBlue) {
-        alert("Vælg ét billede med rød og ét med blå ramme for at se dit resultat.");
+      if (!sud || !cause) {
+        resultDiv.innerHTML = "<p>Udfyld begge trin, før du kan se dit resultat.</p>";
+        resultDiv.style.display = 'block';
         return;
       }
-      // gem evt. i sessionStorage og navigér til resultatside
-      sessionStorage.setItem('valgRed', selectedRed.innerText.trim());
-      sessionStorage.setItem('valgBlue', selectedBlue.innerText.trim());
-      window.location.href = "resultatside.html";
+
+      const sudVal = parseInt(sud.value);
+      const causeVal = cause.value;
+
+      // Gem i sessionStorage til trin 5
+      sessionStorage.setItem("sudScore", sudVal);
+      sessionStorage.setItem("sudReason", causeVal);
+
+      let patientText = "";
+      let mailText = "";
+
+      if (sudVal === 0 && causeVal === "ingen") {
+        patientText = "Du angiver, at du ikke føler tandlægeskræk. Det er rigtig godt! Alligevel kan nogle af CalmClinics værktøjer – som afspænding og forberedelse – være rare at bruge før eller under tandbehandling.";
+        mailText = "Patienten angiver et SUD-tal på 0 og føler ikke tandlægeskræk. CalmClinic-værktøjerne kan dog stadig være relevante som støtte til tryghed og ro under behandlingen.";
+      } else if (sudVal >= 7 && causeVal === "barndom") {
+        patientText = "Du oplever stor utryghed, og det kan hænge sammen med ubevidste mønstre fra barndommen. Appens rolige metoder virker uden, at du behøver at kende den præcise årsag.";
+        mailText = "Patienten angiver et højt SUD-tal og peger på barndomsminder som mulig årsag. En blid, tillidsfuld tilgang anbefales.";
+      } else if (causeVal === "tidligere") {
+        patientText = "Din utryghed stammer sandsynligvis fra tidligere tandlæge- eller lægebesøg. Appen kan give dig værktøjer til at genvinde trygheden trin for trin.";
+        mailText = "Patienten oplever tandlægeskræk grundet tidligere oplevelser. Det anbefales at informere tydeligt, tage små skridt og sikre medbestemmelse.";
+      } else {
+        patientText = "Du har reaktioner, der ikke helt passer ind i én forklaring – men det betyder blot, at du har endnu mere gavn af de forskellige funktioner i CalmClinic.";
+        mailText = "Patientens svar indikerer blandede årsager. Anbefalet at give bred støtte og følge patientens tempo.";
+      }
+
+      // Send data i baggrunden til mellemstation
+      const url = `opsamlingresultater.html?sud=${sudVal}&cause=${encodeURIComponent(causeVal)}`;
+      fetch(url).then(() => {
+        console.log("Data sendt til opsamlingresultater.html");
+      });
+
+      const mailLink = `mailto:klinik@calmclinic.dk?subject=Resultat af CalmClinic test&body=Mit SUD-tal: ${sudVal}%0D%0AÅrsag (selvangivet): ${causeVal}%0D%0ABeskrivelse til klinik: ${mailText}`;
+
+      resultDiv.innerHTML = `
+        <p><strong>Dit resultat:</strong></p>
+        <p>${patientText}</p>
+        <p><a href="${mailLink}" style="color: #0077cc;">📤 Send resultat til din tandlæge</a></p>
+        <p style="margin-top: 20px;">
+          <a href="test.html" class="knap">👉 Klar til trin 3: Hvordan kommunikerer du bedst med tandlægen?</a>
+        </p>
+      `;
+      resultDiv.style.display = 'block';
     }
   </script>
 </body>
 </html>
+
 
 
