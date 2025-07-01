@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spørg CalmBot</title>
-  <link rel="icon" href="images/logo.png" />
-  <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
+  <title>CalmBot – Din digitale hjælper</title>
+  <link rel="icon" href="images/favicon.png" />
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
+      background-color: #f0faff;
       margin: 0;
-      background-color: #f4fbff;
+      padding: 0;
     }
 
     .hero {
@@ -18,106 +18,102 @@
       background-size: cover;
       background-position: center;
       height: 200px;
-      position: relative;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
     }
 
     .hero img {
       max-height: 100px;
-      z-index: 2;
     }
 
     .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 30px 20px;
       background: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border-radius: 16px;
-      margin-top: -40px;
-      position: relative;
-      z-index: 5;
+      max-width: 800px;
+      margin: -50px auto 40px auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 28px;
       color: #003366;
     }
 
-    .alert, .disclaimer {
-      background-color: #fff3cd;
-      border-left: 6px solid orange;
-      padding: 12px;
-      margin-top: 20px;
-      border-radius: 4px;
+    .intro p {
+      font-size: 18px;
     }
 
-    .alert strong,
+    .warning, .disclaimer {
+      background-color: #fff3cd;
+      border-left: 8px solid #f0ad4e;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .warning strong,
     .disclaimer strong {
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
-    @media (max-width: 600px) {
-      .container {
-        margin-top: 0;
-        border-radius: 0;
-      }
+    #webchat {
+      width: 100%;
+      height: 500px;
     }
   </style>
+
+  <!-- Botpress script -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
 </head>
 <body>
-
-<div class="hero">
-  <img src="images/logo.png" alt="CalmClinic logo" />
-</div>
-
-<div class="container">
-  <h1>💬 Velkommen til CalmBot</h1>
-  <p>CalmBot er din digitale assistent, som kan hjælpe dig med spørgsmål, støtte og information under dit forløb med CalmClinic.</p>
-  <ul>
-    <li>“Hvordan fungerer SUD-skalaen?”</li>
-    <li>“Hvilken øvelse anbefales før mit besøg?”</li>
-    <li>“Hvordan fortæller jeg min tandlæge om min frygt?”</li>
-  </ul>
-
-  <div class="alert">
-    <strong>Vigtigt:</strong>
-    Undlad at indtaste personlige oplysninger som CPR-nummer, fulde navne eller medicinske diagnoser. CalmBot er kun til generel støtte og information.
+  <div class="hero">
+    <img src="images/logo.png" alt="CalmClinic logo" />
   </div>
 
-  <div class="disclaimer">
-    <strong>Ansvarsfraskrivelse:</strong>
-    CalmBot er et eksperimentelt AI-værktøj og kan ikke erstatte professionel rådgivning. Kontakt altid din tandlæge ved tvivl.
+  <div class="container">
+    <h1>💬 Velkommen til CalmBot</h1>
+    <div class="intro">
+      <p>CalmBot er din digitale assistent, som kan hjælpe dig med spørgsmål, støtte og information under dit forløb med CalmClinic.</p>
+      <ul>
+        <li>“Hvordan fungerer SUD-skalaen?”</li>
+        <li>“Hvilken øvelse anbefales før mit besøg?”</li>
+        <li>“Hvordan fortæller jeg min tandlæge om min frygt?”</li>
+      </ul>
+    </div>
+
+    <div class="warning">
+      <strong>Vigtigt:</strong>
+      Undlad at indtaste personlige oplysninger som CPR-nummer, fulde navne eller medicinske diagnoser. CalmBot er kun til generel støtte og information.
+    </div>
+
+    <div class="disclaimer">
+      <strong>Ansvarsfraskrivelse:</strong>
+      CalmBot er et eksperimentelt AI-værktøj og kan ikke erstatte professionel rådgivning. Kontakt altid din tandlæge ved tvivl.
+    </div>
   </div>
-</div>
 
-<!-- Chat-container -->
-<div id="webchat"></div>
+  <div id="webchat"></div>
 
-<script>
-  window.botpressWebChat.init({
-    "botId": "49442fde-d109-472a-98e9-36d04bdbf40d",
-    "clientId": "bf7fc029-0816-4096-aab7-ef52c8037820",
-    "selector": "#webchat",
-    "enableReset": true,
-    "showCloseButton": false,
-    "showPoweredBy": false,
-    "stylesheet": "https://cdn.botpress.cloud/webchat/v3/themes/default.css",
-    "composerPlaceholder": "Spørg CalmBot...",
-    "botName": "CalmBot",
-    "avatarUrl": "images/logo.png"
-  });
-
-  window.botpressWebChat.onEvent(
-    function () {
-      window.botpressWebChat.sendEvent({ type: "show" });
-    },
-    ["LIFECYCLE.LOADED"]
-  );
-</script>
-
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const checkBotpress = setInterval(() => {
+        if (window.botpress) {
+          clearInterval(checkBotpress);
+          window.botpress.init({
+            "botId": "49442fde-d109-472a-98e9-36d04bdbf40d",
+            "clientId": "bf7fc029-0816-4096-aab7-ef52c8037820",
+            "selector": "#webchat",
+            "showPoweredBy": false,
+            "enableConversationDeletion": false,
+            "layout": "side",
+          });
+        }
+      }, 500);
+    });
+  </script>
 </body>
 </html>
+
