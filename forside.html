@@ -79,16 +79,19 @@
     }
 
     .footer-link {
-      margin-top: 50px;
+      margin-top: 40px;
     }
 
     .footer-link a {
+      display: inline-block;
+      margin: 10px;
       text-decoration: none;
       color: #ffffff;
       background: #0077cc;
       padding: 12px 24px;
       border-radius: 8px;
       font-size: 16px;
+      transition: background 0.3s ease;
     }
 
     .footer-link a:hover {
@@ -99,6 +102,12 @@
       .step-box {
         font-size: 16px;
         padding: 16px;
+      }
+
+      .footer-link a {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
       }
     }
   </style>
@@ -116,7 +125,7 @@
 
       <div class="step-box">
         📘 <a href="vaerdatvide.html" target="_blank">Trin 1: Værd at vide om tandlægeskræk</a><br>
-      Basisviden om tandlægeskræk, få overblik over, hvordan du håndterer utryghed.
+        Basisviden om tandlægeskræk, få overblik over, hvordan du håndterer utryghed.
       </div>
       <div class="arrow">↓</div>
 
@@ -145,6 +154,7 @@
 
       <div class="footer-link">
         <a href="oversigt.html">Se alle funktioner i CalmClinic</a>
+        <a href="calmbot.html">💬 Start CalmBot</a> <!-- ← Her er knappen til CalmBot -->
       </div>
 
     </div>
@@ -152,3 +162,4 @@
 
 </body>
 </html>
+
