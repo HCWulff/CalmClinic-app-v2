@@ -15,8 +15,6 @@
   <meta name="apple-mobile-web-app-title" content="CalmClinic">
   <link rel="apple-touch-icon" href="icon-192.png">
 
-  <!-- Botpress integration -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -51,59 +49,47 @@
       display: none;
     }
 
-    .start-button, .calmbot-button {
+    .start-button {
       margin-top: 20px;
       padding: 14px 28px;
       font-size: 1.1rem;
+      background-color: #005b96;
+      color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .start-button {
-      background-color: #005b96;
-      color: white;
     }
 
     .start-button:hover {
       background-color: #003f6f;
     }
 
-    .calmbot-button {
+    .calmbot-button-link {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 14px 28px;
+      font-size: 1.1rem;
       background-color: #005b96;
       color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .calmbot-button-link:hover {
+      background-color: #003f6f;
     }
 
     @media (max-width: 480px) {
-      .start-button, .calmbot-button {
+      .start-button,
+      .calmbot-button-link {
         width: 100%;
         font-size: 1rem;
+        padding: 16px;
       }
-    }
-
-    #webchat {
-      width: 100%;
-      max-width: 720px;
-      height: 500px;
-      margin-top: 40px;
-    }
-
-    #webchat .bpWebchat {
-      position: unset !important;
-      width: 100% !important;
-      height: 100% !important;
-      max-height: 100% !important;
-      max-width: 100% !important;
-    }
-
-    #webchat .bpFab {
-      display: none !important;
     }
   </style>
 
@@ -116,33 +102,6 @@
         .catch(function(error) {
           console.log('Service Worker fejl:', error);
         });
-    }
-
-    window.botpress.on("webchat:ready", () => {
-      console.log("CalmBot klar");
-    });
-
-    window.botpress.init({
-      "botId": "ffec5578-86e6-40f8-864d-d835fb727e57",
-      "clientId": "a70047f6-efeb-4eef-af4e-75072745cd9c",
-      "selector": "#webchat"
-    });
-
-    function playVideo() {
-      const thumbnail = document.getElementById("thumbnail");
-      const video = document.getElementById("introVideo");
-
-      thumbnail.style.display = "none";
-      video.style.display = "block";
-      video.play();
-    }
-
-    function startCalmBot() {
-      const botContainer = document.getElementById("webchat");
-      if (botContainer) {
-        window.botpress.open();
-        botContainer.scrollIntoView({ behavior: "smooth" });
-      }
     }
   </script>
 </head>
@@ -161,12 +120,22 @@
     Spring intro over og start din rejse
   </button>
 
-  <button class="calmbot-button" onclick="startCalmBot()">
+  <a href="calmbot.html" class="calmbot-button-link">
     💬 Start CalmBot
-  </button>
+  </a>
 
-  <div id="webchat"></div>
+  <script>
+    function playVideo() {
+      const thumbnail = document.getElementById("thumbnail");
+      const video = document.getElementById("introVideo");
+
+      thumbnail.style.display = "none";
+      video.style.display = "block";
+      video.play();
+    }
+  </script>
 
 </body>
 </html>
+
 
