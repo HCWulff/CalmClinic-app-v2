@@ -43,21 +43,40 @@
     h1 {
       font-size: 26px;
       color: #003366;
+      margin-bottom: 10px;
+    }
+    .intro {
+      background: #eaf4fc;
+      padding: 15px;
+      border-left: 4px solid #0077cc;
+      border-radius: 6px;
+      font-size: 16px;
+      margin-bottom: 30px;
+      color: #003366;
     }
     p {
       font-size: 18px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       color: #333;
     }
     .sud-scale label,
     .cause-options label {
       display: block;
-      margin: 6px 0;
+      margin: 8px 0;
       font-size: 16px;
       text-align: left;
+      background: #f5faff;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .sud-scale label:hover,
+    .cause-options label:hover {
+      background: #e6f2ff;
     }
     button {
-      margin-top: 20px;
+      margin-top: 25px;
       padding: 12px 24px;
       font-size: 16px;
       border: none;
@@ -71,6 +90,7 @@
       padding: 20px;
       background-color: #eaf4fc;
       border-radius: 8px;
+      text-align: left;
     }
     .knap {
       display: inline-block;
@@ -79,6 +99,18 @@
       color: white;
       border-radius: 6px;
       text-decoration: none;
+    }
+    .calmbot-hint {
+      font-style: italic;
+      font-size: 14px;
+      margin: 8px 0;
+    }
+    @media (max-width: 600px) {
+      .sud-scale label,
+      .cause-options label {
+        font-size: 15px;
+        padding: 10px;
+      }
     }
   </style>
 </head>
@@ -89,6 +121,10 @@
   </div>
   <div class="container">
     <h1>Test din tandlægeskræk</h1>
+    <div class="intro">
+      🧭 Start med trin 2 – svar på spørgsmålene og se dit personlige resultat.
+    </div>
+
     <form id="testForm">
       <p><strong>1. Hvor ubehageligt er et tandlægebesøg for dig? (SUD-skala)</strong></p>
       <div class="sud-scale">
@@ -99,6 +135,8 @@
         <label><input type="radio" name="sud" value="10"> 10 – Panikagtig</label>
       </div>
 
+      <div class="calmbot-hint">🤔 Har du brug for støtte? <a href="calmbot.html">Start CalmBot her</a></div>
+
       <p><strong>2. Hvad tror du udløser din tandlægeskræk?</strong></p>
       <div class="cause-options">
         <label><input type="radio" name="cause" value="tidligere"> En dårlig oplevelse hos tandlægen/lægen</label>
@@ -107,6 +145,8 @@
         <label><input type="radio" name="cause" value="generel"> Jeg har angst i mange situationer</label>
         <label><input type="radio" name="cause" value="ingen"> Jeg føler ikke, at jeg har tandlægeskræk</label>
       </div>
+
+      <div class="calmbot-hint">❓Er du i tvivl? <a href="calmbot.html">Start CalmBot her</a></div>
 
       <button type="button" onclick="visResultat()">Se resultat</button>
     </form>
@@ -129,7 +169,6 @@
       const sudVal = parseInt(sud.value);
       const causeVal = cause.value;
 
-      // Gem i sessionStorage til trin 5
       sessionStorage.setItem("sudScore", sudVal);
       sessionStorage.setItem("sudReason", causeVal);
 
@@ -150,11 +189,8 @@
         mailText = "Patientens svar indikerer blandede årsager. Anbefalet at give bred støtte og følge patientens tempo.";
       }
 
-      // Send data i baggrunden til mellemstation
       const url = `opsamlingresultater.html?sud=${sudVal}&cause=${encodeURIComponent(causeVal)}`;
-      fetch(url).then(() => {
-        console.log("Data sendt til opsamlingresultater.html");
-      });
+      fetch(url).then(() => console.log("Data sendt"));
 
       const mailLink = `mailto:klinik@calmclinic.dk?subject=Resultat af CalmClinic test&body=Mit SUD-tal: ${sudVal}%0D%0AÅrsag (selvangivet): ${causeVal}%0D%0ABeskrivelse til klinik: ${mailText}`;
 
