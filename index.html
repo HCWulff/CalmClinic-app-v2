@@ -27,8 +27,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
       padding: 20px;
     }
 
@@ -65,10 +63,16 @@
       background-color: #003f6f;
     }
 
+    .button-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     .nav-button {
-      display: inline-block;
       padding: 12px 20px;
-      margin: 10px;
       background-color: #0074cc;
       color: white;
       text-decoration: none;
@@ -118,7 +122,7 @@
     🎬 Spring intro over og start din rejse
   </button>
 
-  <div style="margin-top: 20px;">
+  <div class="button-row">
     <a href="calmbot.html" class="nav-button">💬 Tal med CalmBot</a>
     <a href="forside.html" class="nav-button">🏠 Tilbage til forsiden</a>
   </div>
