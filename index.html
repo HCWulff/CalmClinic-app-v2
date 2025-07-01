@@ -46,7 +46,8 @@
 
     .button-row {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      gap: 15px;
       margin-top: 30px;
     }
 
@@ -57,6 +58,7 @@
       text-decoration: none;
       border-radius: 8px;
       font-size: 1.1rem;
+      text-align: center;
       transition: background-color 0.3s ease;
     }
 
@@ -67,7 +69,6 @@
     @media (max-width: 480px) {
       .nav-button {
         width: 100%;
-        text-align: center;
         font-size: 1rem;
       }
     }
@@ -92,8 +93,9 @@
     </video>
   </div>
 
-  <div class="button-row">
+  <div class="container button-row">
     <a href="calmbot.html" class="nav-button">💬 Tal med CalmBot</a>
+    <a href="forside.html" class="nav-button">⏩ Spring intro over og start din rejse</a>
   </div>
 
   <script>
@@ -109,5 +111,4 @@
 
 </body>
 </html>
-
 
