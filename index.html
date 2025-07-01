@@ -65,11 +65,28 @@
       background-color: #003f6f;
     }
 
+    .nav-button {
+      display: inline-block;
+      padding: 12px 20px;
+      margin: 10px;
+      background-color: #0074cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-button:hover {
+      background-color: #005999;
+    }
+
     @media (max-width: 480px) {
-      .start-button {
+      .start-button, .nav-button {
         width: 100%;
         padding: 16px;
         font-size: 1rem;
+        text-align: center;
       }
     }
   </style>
@@ -98,8 +115,13 @@
   </div>
 
   <button class="start-button" onclick="window.location.href='forside.html'">
-    Spring intro over og start din rejse
+    🎬 Spring intro over og start din rejse
   </button>
+
+  <div style="margin-top: 20px;">
+    <a href="calmbot.html" class="nav-button">💬 Tal med CalmBot</a>
+    <a href="forside.html" class="nav-button">🏠 Tilbage til forsiden</a>
+  </div>
 
   <script>
     function playVideo() {
@@ -114,4 +136,5 @@
 
 </body>
 </html>
+
 
