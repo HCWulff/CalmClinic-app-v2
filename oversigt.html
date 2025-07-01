@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -20,18 +18,24 @@
       background-size: cover;
       background-position: center;
       color: white;
-      padding: 60px 20px 40px;
+      padding: 40px 20px 20px;
       text-align: center;
-      box-shadow: inset 0 -60px 60px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0 -40px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    header img {
+      max-width: 140px;
+      margin-bottom: 10px;
     }
 
     header h1 {
       font-size: 32px;
-      margin-bottom: 10px;
+      margin: 10px 0 5px;
     }
 
     header p {
       font-size: 18px;
+      margin: 0;
     }
 
     .container {
@@ -73,6 +77,33 @@
       color: inherit;
     }
 
+    .extras {
+      text-align: center;
+      margin: 40px 0 20px;
+    }
+
+    .extras a {
+      color: #0077cc;
+      font-weight: bold;
+      font-size: 17px;
+      text-decoration: none;
+    }
+
+    .extras button {
+      margin-top: 20px;
+      background-color: #007bff;
+      color: white;
+      font-size: 18px;
+      padding: 14px 26px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .extras button:hover {
+      background-color: #005fa3;
+    }
+
     footer {
       background-color: #004d73;
       color: white;
@@ -92,6 +123,7 @@
 <body>
 
   <header>
+    <img src="images/logo.png" alt="CalmClinic logo">
     <h1>Velkommen til CalmClinic</h1>
     <p>Her finder du værktøjer, der hjælper dig med at få en tryg og rolig oplevelse hos tandlægen.</p>
   </header>
@@ -107,6 +139,16 @@
     <div class="card"><a href="find.html"><h2>📍 Find behandler</h2><p>Find tandklinikker og terapeuter, der arbejder med CalmClinic-metoden.</p></a></div>
     <div class="card"><a href="kontakt.html"><h2>📩 Kontakt</h2><p>Har du spørgsmål eller brug for hjælp? Kontakt os her.</p></a></div>
   </main>
+
+  <!-- CalmBot + Forside-knap -->
+  <div class="extras">
+    <p style="font-style: italic;">💭 Brug for støtte?<br>
+      <a href="calmbot.html">Start CalmBot</a>
+    </p>
+    <a href="index.html">
+      <button>Se alle funktioner i CalmClinic</button>
+    </a>
+  </div>
 
   <footer>
     © 2025 CalmClinic. Alle rettigheder forbeholdes. | <a href="kontakt.html" style="color:white;">Kontakt os</a>
