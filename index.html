@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Velkommen til CalmClinic</title>
 
+  <!-- Cache-beskyttelse -->
+  <meta http-equiv="Cache-Control" content="no-store">
+
   <!-- App ikon og manifest -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
@@ -24,63 +27,70 @@
       margin: 0;
       font-family: 'Segoe UI', Tahoma, sans-serif;
       background-color: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       padding: 20px;
     }
 
     .container {
       width: 100%;
       max-width: 720px;
-      margin: 0 auto;
+      cursor: pointer;
+      position: relative;
     }
 
     .thumbnail, .video {
       width: 100%;
       border-radius: 12px;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-      display: block;
     }
 
     .video {
       display: none;
     }
 
-    .button-row {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .nav-button {
-      padding: 14px 24px;
-      background-color: #0074cc;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
+    .start-button {
+      margin-top: 20px;
+      padding: 14px 28px;
       font-size: 1.1rem;
-      text-align: center;
+      background-color: #005b96;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
-    .nav-button:hover {
-      background-color: #005fa3;
+    .start-button:hover {
+      background-color: #003f6f;
     }
 
     @media (max-width: 480px) {
-      .nav-button {
+      .start-button {
         width: 100%;
+        padding: 16px;
         font-size: 1rem;
       }
     }
-  </style>
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('Service Worker registreret:', reg))
-        .catch(err => console.log('Service Worker fejl:', err));
+    .chat-button {
+      margin-top: 10px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
     }
-  </script>
+
+    .chat-button:hover {
+      background-color: #1e7e34;
+    }
+  </style>
 </head>
 
 <body>
@@ -93,22 +103,12 @@
     </video>
   </div>
 
-  <div class="container button-row">
-    <a href="calmbot.html" class="nav-button">💬 Tal med CalmBot</a>
-    <a href="forside.html" class="nav-button">⏩ tSpring intro over og start din rejse</a>
-  </div>
+  <button class="start-button" onclick="window.location.href='forside.html'">
+    Spring intro over og start din rejse
+  </button>
+
+  <button class="chat-button" onclick="window.location.href='karmbot.html'">
+    💬 Start CalmBot
+  </button>
 
   <script>
-    function playVideo() {
-      const thumbnail = document.getElementById("thumbnail");
-      const video = document.getElementById("introVideo");
-
-      thumbnail.style.display = "none";
-      video.style.display = "block";
-      video.play();
-    }
-  </script>
-
-</body>
-</html>
-
