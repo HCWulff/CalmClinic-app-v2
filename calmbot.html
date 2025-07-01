@@ -9,19 +9,34 @@
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #e6f3fb;
-      background-image: url('billeder/hav.jpg'); /* tilpas stien hvis nødvendigt */
+    }
+
+    .header {
+      position: relative;
+      background-image: url('billeder/hav.jpg'); /* Tilpas sti hvis nødvendigt */
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
+      height: 200px;
+    }
+
+    .header img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      max-height: 120px;
+      height: auto;
     }
 
     .content {
       background-color: white;
       max-width: 800px;
-      margin: 60px auto;
+      margin: -60px auto 60px auto;
       padding: 30px 40px;
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      position: relative;
     }
 
     h1 {
@@ -45,12 +60,20 @@
 
     @media (max-width: 600px) {
       .content {
-        margin: 20px 10px;
+        margin: -40px 10px 20px 10px;
         padding: 20px;
       }
 
       #webchat {
         height: 500px;
+      }
+
+      .header {
+        height: 140px;
+      }
+
+      .header img {
+        max-height: 80px;
       }
     }
   </style>
@@ -59,6 +82,13 @@
   <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
 </head>
 <body>
+
+  <!-- Top med logo over hav -->
+  <div class="header">
+    <img src="billeder/logo.png" alt="CalmClinic Logo" />
+  </div>
+
+  <!-- Indholdsboks -->
   <div class="content">
     <h1>💬 Velkommen til CalmBot</h1>
     <p>
@@ -79,7 +109,7 @@
       <strong>Ansvarsfraskrivelse:</strong> CalmBot er et eksperimentelt værktøj baseret på kunstig intelligens. Den information, du får, er ikke en erstatning for faglig rådgivning, diagnose eller behandling. Brug altid din sunde fornuft og kontakt klinikken ved tvivl.
     </div>
 
-    <!-- Her indsættes selve botten -->
+    <!-- Botten -->
     <div id="webchat"></div>
   </div>
 
@@ -91,16 +121,11 @@
 
     window.botpress.init({
       "botId": "49442fde-d109-472a-98e9-36d04bdbf40d",
-      "configuration": {
-        "website": {},
-        "email": {},
-        "phone": {},
-        "termsOfService": {},
-        "privacyPolicy": {}
-      },
       "clientId": "bf7fc029-0816-4096-aab7-ef52c8037820",
       "selector": "#webchat"
     });
   </script>
+
 </body>
 </html>
+
