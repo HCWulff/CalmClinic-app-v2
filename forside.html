@@ -45,6 +45,15 @@
       text-align: center;
     }
 
+    .intro-note {
+      font-size: 18px;
+      background: #e6f3ff;
+      padding: 16px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      border-left: 6px solid #0077cc;
+    }
+
     .step-container {
       display: flex;
       flex-direction: column;
@@ -61,16 +70,26 @@
       width: 100%;
       font-size: 18px;
       text-align: left;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .step-box:hover {
+      transform: scale(1.01);
     }
 
     .step-box a {
-      text-decoration: none;
       color: #0077cc;
       font-weight: 600;
+      text-decoration: none;
+      display: block;
     }
 
-    .step-box a:hover {
-      text-decoration: underline;
+    .step-box em {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.95em;
+      color: #555;
     }
 
     .arrow {
@@ -79,7 +98,7 @@
     }
 
     .footer-link {
-      margin-top: 40px;
+      margin-top: 50px;
     }
 
     .footer-link a {
@@ -96,6 +115,13 @@
 
     .footer-link a:hover {
       background: #005fa3;
+    }
+
+    .calmbot-inline {
+      margin-top: 16px;
+      font-style: italic;
+      text-align: left;
+      color: #444;
     }
 
     @media (max-width: 600px) {
@@ -121,40 +147,46 @@
 
   <div class="content">
     <h2>Sådan bruger du CalmClinic appen – trin for trin</h2>
+
+    <div class="intro-note">
+      🧭 Start med trin 1 og følg guiden hele vejen – du kan altid vende tilbage, hvis du går i stå.
+    </div>
+
     <div class="step-container">
 
-      <div class="step-box">
-        📘 <a href="vaerdatvide.html" target="_blank">Trin 1: Værd at vide om tandlægeskræk</a><br>
-        Basisviden om tandlægeskræk, få overblik over, hvordan du håndterer utryghed.
+      <div class="step-box" onclick="location.href='vaerdatvide.html'">
+        📘 <a href="vaerdatvide.html">Trin 1: Værd at vide om tandlægeskræk</a>
+        <em>Viden skaber ro – mange føler sig allerede mere trygge efter denne introduktion.</em>
       </div>
       <div class="arrow">↓</div>
 
-      <div class="step-box">
-        🧠 <a href="test-aarsag.html">Trin 2: Forstå din tandlægeskræk</a><br>
-        Bliv klogere på, hvad der sker i kroppen – og hvorfor du reagerer, som du gør.
+      <div class="step-box" onclick="location.href='test-aarsag.html'">
+        🧠 <a href="test-aarsag.html">Trin 2: Forstå din tandlægeskræk</a>
+        <em>Mange ved ikke, at tandlægeskræk hænger sammen med kroppens alarmberedskab...</em>
       </div>
       <div class="arrow">↓</div>
 
-      <div class="step-box">
-        💬 <a href="test.html">Trin 3: Find din CalmClinic-type</a><br>
-        Tag testen og se, hvordan du bedst kommunikerer med tandlægen.
+      <div class="step-box" onclick="location.href='test.html'">
+        💬 <a href="test.html">Trin 3: Find din CalmClinic-type</a>
+        <em>Ved at kende din type, bliver det lettere at få sagt det rigtige til tandlægen.</em>
+        <div class="calmbot-inline">💬 Har du brug for hjælp? <a href="calmbot.html">Start CalmBot her</a></div>
       </div>
       <div class="arrow">↓</div>
 
-      <div class="step-box">
-        📋 <a href="calmcoach.html">Trin 4: Forbered dig til tandlægebesøget</a><br>
-        Få styr på, hvad du kan gøre før og under besøget.
+      <div class="step-box" onclick="location.href='calmcoach.html'">
+        📋 <a href="calmcoach.html">Trin 4: Forbered dig til tandlægebesøget</a>
+        <em>Rolige tanker, tjeklister og små øvelser hjælper dig godt afsted.</em>
       </div>
       <div class="arrow">↓</div>
 
-      <div class="step-box">
-        📤 <a href="trin5-del-profil.html">Trin 5: Del din profil med tandlægen</a><br>
-        Send dine oplysninger direkte til tandlægen – så I er på samme side.
+      <div class="step-box" onclick="location.href='trin5-del-profil.html'">
+        📤 <a href="trin5-del-profil.html">Trin 5: Del din profil med tandlægen</a>
+        <em>Det gør det nemt for tandlægen at møde dig med den rette tilgang.</em>
+        <div class="calmbot-inline">💬 Brug for støtte? <a href="calmbot.html">Start CalmBot</a></div>
       </div>
 
       <div class="footer-link">
         <a href="oversigt.html">Se alle funktioner i CalmClinic</a>
-        <a href="calmbot.html">💬 Start CalmBot</a> <!-- ← Her er knappen til CalmBot -->
       </div>
 
     </div>
