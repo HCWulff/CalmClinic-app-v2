@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trin 2 – Fortæl os hvordan du har det hos tandlægen</title>
+  <title>Find din CalmClinic-type</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -35,7 +35,7 @@
       z-index: 1;
     }
     .container {
-      max-width: 700px;
+      max-width: 900px;
       margin: auto;
       padding: 40px 20px;
       text-align: center;
@@ -54,26 +54,32 @@
       margin-bottom: 30px;
       color: #003366;
     }
-    p {
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: #333;
+    .billedgruppe {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
     }
-    .sud-scale label,
-    .cause-options label {
-      display: block;
-      margin: 8px 0;
-      font-size: 16px;
-      text-align: left;
-      background: #f5faff;
-      padding: 10px;
-      border-radius: 6px;
+    .billede-valg {
+      border: 4px solid transparent;
+      border-radius: 8px;
+      overflow: hidden;
+      width: 180px;
+      text-align: center;
       cursor: pointer;
-      transition: background 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
-    .sud-scale label:hover,
-    .cause-options label:hover {
-      background: #e6f2ff;
+    .billede-valg img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+    .billede-valg.red { border-color: red; }
+    .billede-valg.blue { border-color: blue; }
+    .billede-valg.selected {
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transform: scale(1.03);
     }
     button {
       margin-top: 25px;
@@ -85,31 +91,14 @@
       border-radius: 6px;
       cursor: pointer;
     }
-    .result {
-      margin-top: 30px;
-      padding: 20px;
-      background-color: #eaf4fc;
-      border-radius: 8px;
-      text-align: left;
-    }
-    .knap {
-      display: inline-block;
-      padding: 12px 20px;
-      background-color: #005fa3;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-    }
     .calmbot-hint {
       font-style: italic;
       font-size: 14px;
-      margin: 8px 0;
+      margin-top: 20px;
     }
     @media (max-width: 600px) {
-      .sud-scale label,
-      .cause-options label {
-        font-size: 15px;
-        padding: 10px;
+      .billede-valg {
+        width: 100%;
       }
     }
   </style>
@@ -120,89 +109,61 @@
     <img src="images/logo.png" alt="CalmClinic Logo" />
   </div>
   <div class="container">
-    <h1>Test din tandlægeskræk</h1>
+    <h1>Find din CalmClinic-type</h1>
     <div class="intro">
-      🧭 Start med trin 2 – svar på spørgsmålene og se dit personlige resultat.
+      🧽 Vælg et billede med <strong>rød ramme</strong> og et med <strong>blå ramme</strong>. Det afslører din kommunikationsstil og hvad der giver dig tryghed.
     </div>
-
-    <form id="testForm">
-      <p><strong>1. Hvor ubehageligt er et tandlægebesøg for dig? (SUD-skala)</strong></p>
-      <div class="sud-scale">
-        <label><input type="radio" name="sud" value="0"> 0 – Helt rolig</label>
-        <label><input type="radio" name="sud" value="3"> 3 – Let nervøs</label>
-        <label><input type="radio" name="sud" value="6"> 6 – Meget ubehageligt</label>
-        <label><input type="radio" name="sud" value="8"> 8 – Svært at gennemføre</label>
-        <label><input type="radio" name="sud" value="10"> 10 – Panikagtig</label>
+    <div class="billedgruppe">
+      <div class="billede-valg red" onclick="vaelgBillede(this, 'red')">
+        <img src="images/checkliste.jpg" alt="Information" />
+        <div><strong>Information</strong></div>
       </div>
-
-      <div class="calmbot-hint">🤔 Har du brug for støtte? <a href="calmbot.html">Start CalmBot her</a></div>
-
-      <p><strong>2. Hvad tror du udløser din tandlægeskræk?</strong></p>
-      <div class="cause-options">
-        <label><input type="radio" name="cause" value="tidligere"> En dårlig oplevelse hos tandlægen/lægen</label>
-        <label><input type="radio" name="cause" value="ukendt"> Jeg ved det ikke – det kommer bare</label>
-        <label><input type="radio" name="cause" value="barndom"> Minder om noget fra barndommen</label>
-        <label><input type="radio" name="cause" value="generel"> Jeg har angst i mange situationer</label>
-        <label><input type="radio" name="cause" value="ingen"> Jeg føler ikke, at jeg har tandlægeskræk</label>
+      <div class="billede-valg red" onclick="vaelgBillede(this, 'red')">
+        <img src="images/haender.jpg" alt="Empati" />
+        <div><strong>Empati</strong></div>
       </div>
-
-      <div class="calmbot-hint">❓Er du i tvivl? <a href="calmbot.html">Start CalmBot her</a></div>
-
-      <button type="button" onclick="visResultat()">Se resultat</button>
-    </form>
-
-    <div id="resultat" class="result" style="display:none;"></div>
+      <div class="billede-valg blue" onclick="vaelgBillede(this, 'blue')">
+        <img src="images/stier.jpg" alt="Overblik" />
+        <div><strong>Overblik</strong></div>
+      </div>
+      <div class="billede-valg blue" onclick="vaelgBillede(this, 'blue')">
+        <img src="images/instrumenter.jpg" alt="Detaljer" />
+        <div><strong>Detaljer</strong></div>
+      </div>
+    </div>
+    <div class="calmbot-hint">
+      🤖 Har du brug for støtte? <a href="calmbot.html">Start CalmBot her</a>
+    </div>
+    <button onclick="sendResultat()">Se mit resultat</button>
   </div>
-
   <script>
-    function visResultat() {
-      const sud = document.querySelector('input[name="sud"]:checked');
-      const cause = document.querySelector('input[name="cause"]:checked');
-      const resultDiv = document.getElementById("resultat");
+    let valgtRed = null;
+    let valgtBlue = null;
 
-      if (!sud || !cause) {
-        resultDiv.innerHTML = "<p>Udfyld begge trin, før du kan se dit resultat.</p>";
-        resultDiv.style.display = 'block';
+    function vaelgBillede(element, type) {
+      const alreadySelected = element.classList.contains('selected');
+      const group = document.querySelectorAll('.' + type);
+
+      group.forEach(el => el.classList.remove('selected'));
+
+      if (!alreadySelected) {
+        element.classList.add('selected');
+        if (type === 'red') valgtRed = element.innerText.trim();
+        else valgtBlue = element.innerText.trim();
+      } else {
+        if (type === 'red') valgtRed = null;
+        else valgtBlue = null;
+      }
+    }
+
+    function sendResultat() {
+      if (!valgtRed || !valgtBlue) {
+        alert("Vælg et billede fra hver kategori (rød og blå) for at få dit resultat.");
         return;
       }
-
-      const sudVal = parseInt(sud.value);
-      const causeVal = cause.value;
-
-      sessionStorage.setItem("sudScore", sudVal);
-      sessionStorage.setItem("sudReason", causeVal);
-
-      let patientText = "";
-      let mailText = "";
-
-      if (sudVal === 0 && causeVal === "ingen") {
-        patientText = "Du angiver, at du ikke føler tandlægeskræk. Det er rigtig godt! Alligevel kan nogle af CalmClinics værktøjer – som afspænding og forberedelse – være rare at bruge før eller under tandbehandling.";
-        mailText = "Patienten angiver et SUD-tal på 0 og føler ikke tandlægeskræk. CalmClinic-værktøjerne kan dog stadig være relevante som støtte til tryghed og ro under behandlingen.";
-      } else if (sudVal >= 7 && causeVal === "barndom") {
-        patientText = "Du oplever stor utryghed, og det kan hænge sammen med ubevidste mønstre fra barndommen. Appens rolige metoder virker uden, at du behøver at kende den præcise årsag.";
-        mailText = "Patienten angiver et højt SUD-tal og peger på barndomsminder som mulig årsag. En blid, tillidsfuld tilgang anbefales.";
-      } else if (causeVal === "tidligere") {
-        patientText = "Din utryghed stammer sandsynligvis fra tidligere tandlæge- eller lægebesøg. Appen kan give dig værktøjer til at genvinde trygheden trin for trin.";
-        mailText = "Patienten oplever tandlægeskræk grundet tidligere oplevelser. Det anbefales at informere tydeligt, tage små skridt og sikre medbestemmelse.";
-      } else {
-        patientText = "Du har reaktioner, der ikke helt passer ind i én forklaring – men det betyder blot, at du har endnu mere gavn af de forskellige funktioner i CalmClinic.";
-        mailText = "Patientens svar indikerer blandede årsager. Anbefalet at give bred støtte og følge patientens tempo.";
-      }
-
-      const url = `opsamlingresultater.html?sud=${sudVal}&cause=${encodeURIComponent(causeVal)}`;
-      fetch(url).then(() => console.log("Data sendt"));
-
-      const mailLink = `mailto:klinik@calmclinic.dk?subject=Resultat af CalmClinic test&body=Mit SUD-tal: ${sudVal}%0D%0AÅrsag (selvangivet): ${causeVal}%0D%0ABeskrivelse til klinik: ${mailText}`;
-
-      resultDiv.innerHTML = `
-        <p><strong>Dit resultat:</strong></p>
-        <p>${patientText}</p>
-        <p><a href="${mailLink}" style="color: #0077cc;">📤 Send resultat til din tandlæge</a></p>
-        <p style="margin-top: 20px;">
-          <a href="test.html" class="knap">👉 Klar til trin 3: Hvordan kommunikerer du bedst med tandlægen?</a>
-        </p>
-      `;
-      resultDiv.style.display = 'block';
+      sessionStorage.setItem("calmTypeRed", valgtRed);
+      sessionStorage.setItem("calmTypeBlue", valgtBlue);
+      window.location.href = "resultatside.html";
     }
   </script>
 </body>
