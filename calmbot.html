@@ -48,11 +48,10 @@
       font-size: 16px;
     }
 
-    /* Webchat Embed Style */
     #webchat {
-      width: 100%;
+      width: 95%;
+      height: 70vh;
       max-width: 900px;
-      height: 600px;
       margin: 40px auto;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
@@ -70,6 +69,12 @@
 
     #webchat .bpFab {
       display: none !important;
+    }
+
+    @media (max-width: 600px) {
+      #webchat {
+        height: 80vh;
+      }
     }
   </style>
 </head>
@@ -92,10 +97,8 @@
     </div>
   </div>
 
-  <!-- CHATBOKS INDBYGGET MIDT PÅ SIDEN -->
   <div id="webchat"></div>
 
-  <!-- Init Botpress -->
   <script>
     window.botpress.on("webchat:ready", () => {
       window.botpress.open();
@@ -107,13 +110,10 @@
       selector: "#webchat",
       configuration: {
         botName: "CalmBot",
-        email: {},
-        website: {},
-        phone: {},
-        termsOfService: {},
-        privacyPolicy: {}
+        useSessionStorage: true
       }
     });
   </script>
 </body>
 </html>
+
