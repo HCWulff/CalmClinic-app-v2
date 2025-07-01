@@ -1,45 +1,106 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8">
-  <title>CalmBot</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CalmBot – Din digitale støtte</title>
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: #eaf6fb;
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e6f3fb;
+      background-image: url('billeder/hav.jpg'); /* tilpas stien hvis nødvendigt */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
+
+    .content {
+      background-color: white;
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #003366;
+    }
+
+    .warning, .disclaimer {
+      background-color: #fff8dc;
+      border-left: 6px solid orange;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+
     #webchat {
+      margin-top: 30px;
       width: 100%;
-      height: 100%;
+      height: 600px;
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        margin: 20px 10px;
+        padding: 20px;
+      }
+
+      #webchat {
+        height: 500px;
+      }
     }
   </style>
+
+  <!-- Botpress script -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
 </head>
 <body>
-  <div id="webchat"></div>
+  <div class="content">
+    <h1>💬 Velkommen til CalmBot</h1>
+    <p>
+      CalmBot er din digitale assistent, som kan hjælpe dig med spørgsmål, støtte og information under dit forløb med CalmClinic.
+      Du kan spørge botten om fx:
+    </p>
+    <ul>
+      <li>“Hvordan fungerer SUD-skalaen?”</li>
+      <li>“Hvilken øvelse anbefales før mit besøg?”</li>
+      <li>“Hvordan fortæller jeg min tandlæge om min frygt?”</li>
+    </ul>
 
+    <div class="warning">
+      <strong>Vigtigt:</strong> Undlad at indtaste personlige oplysninger som CPR-nummer, fulde navne eller medicinske diagnoser. CalmBot er kun til generel støtte og information.
+    </div>
+
+    <div class="disclaimer">
+      <strong>Ansvarsfraskrivelse:</strong> CalmBot er et eksperimentelt værktøj baseret på kunstig intelligens. Den information, du får, er ikke en erstatning for faglig rådgivning, diagnose eller behandling. Brug altid din sunde fornuft og kontakt klinikken ved tvivl.
+    </div>
+
+    <!-- Her indsættes selve botten -->
+    <div id="webchat"></div>
+  </div>
+
+  <!-- Init script -->
   <script>
-    const tryInit = () => {
-      if (window.botpress) {
-        window.botpress.init({
-          botId: "49442fde-d109-472a-98e9-36d04bdbf40d",
-          clientId: "bf7fc029-0816-4096-aab7-ef52c8037820",
-          selector: "#webchat"
-        });
-      } else {
-        // Prøv igen efter lidt tid
-        setTimeout(tryInit, 300);
-      }
-    };
-    tryInit();
+    window.botpress.on("webchat:ready", () => {
+      window.botpress.open();
+    });
+
+    window.botpress.init({
+      "botId": "49442fde-d109-472a-98e9-36d04bdbf40d",
+      "configuration": {
+        "website": {},
+        "email": {},
+        "phone": {},
+        "termsOfService": {},
+        "privacyPolicy": {}
+      },
+      "clientId": "bf7fc029-0816-4096-aab7-ef52c8037820",
+      "selector": "#webchat"
+    });
   </script>
 </body>
 </html>
-
