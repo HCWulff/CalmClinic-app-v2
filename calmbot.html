@@ -97,24 +97,44 @@
 
   <div id="webchat"></div>
 
-  <script>
-    window.addEventListener('DOMContentLoaded', function () {
-      const checkBotpress = setInterval(() => {
-        if (window.botpress) {
-          clearInterval(checkBotpress);
-          window.botpress.init({
-            "botId": "49442fde-d109-472a-98e9-36d04bdbf40d",
-            "clientId": "bf7fc029-0816-4096-aab7-ef52c8037820",
-            "selector": "#webchat",
-            "showPoweredBy": false,
-            "enableConversationDeletion": false,
-            "layout": "side",
-          });
-        }
-      }, 500);
-    });
-  </script>
-</body>
-</html>
+ 
+<!-- In your <head> tag -->
+<script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
+<style>
+  #webchat .bpWebchat {
+    position: unset;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  #webchat .bpFab {
+    display: none;
+  }
+</style>
+
+<!-- Put this on your page BEFORE the script below -->
+<div id="webchat" style="width: 500px; height: 500px;"></div>
+
+<!-- In your <body> tag -->
+<script>
+  window.botpress.on("webchat:ready", () => {
+    window.botpress.open();
+  });
+  window.botpress.init({
+  "botId": "ffec5578-86e6-40f8-864d-d835fb727e57",
+  "configuration": {
+    "website": {},
+    "email": {},
+    "phone": {},
+    "termsOfService": {},
+    "privacyPolicy": {}
+  },
+  "clientId": "a70047f6-efeb-4eef-af4e-75072745cd9c",
+  "selector": "#webchat"
+});
+</script>
+
 
 
