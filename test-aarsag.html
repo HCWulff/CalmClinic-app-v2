@@ -7,98 +7,106 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #ffffff;
       margin: 0;
-      padding: 0;
+      background-color: #e6f3fb;
     }
     .hero {
       background-image: url('images/havbaggrund.jpg.png');
       background-size: cover;
       background-position: center;
-      height: 220px;
+      height: 180px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
     }
     .hero img {
-      max-height: 100px;
+      max-height: 80px;
       z-index: 2;
     }
     .overlay {
       position: absolute;
       top: 0;
       left: 0;
-      height: 100%;
       width: 100%;
-      background-color: rgba(0,0,0,0.3);
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
       z-index: 1;
     }
     .container {
       max-width: 900px;
       margin: auto;
-      padding: 40px 20px;
-      text-align: center;
+      padding: 30px 20px;
+      background: white;
+      border-radius: 10px;
+      margin-top: -40px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     h1 {
+      text-align: center;
       font-size: 26px;
-      color: #003366;
-      margin-bottom: 10px;
+      color: white;
+      position: relative;
+      z-index: 2;
     }
-    .intro {
-      background: #eaf4fc;
-      padding: 15px;
-      border-left: 4px solid #0077cc;
-      border-radius: 6px;
+    h2 {
+      color: #003366;
+    }
+    p {
       font-size: 16px;
-      margin-bottom: 30px;
-      color: #003366;
+      color: #333;
     }
-    .billedgruppe {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+    .instructions {
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
       margin-top: 20px;
     }
-    .billede-valg {
-      border: 4px solid transparent;
+    .option {
+      border: 3px solid transparent;
       border-radius: 8px;
       overflow: hidden;
-      width: 180px;
       text-align: center;
+      background: #f9f9f9;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      transition: transform 0.2s, border-color 0.2s;
     }
-    .billede-valg img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-    }
-    .billede-valg.red { border-color: red; }
-    .billede-valg.blue { border-color: blue; }
-    .billede-valg.selected {
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    .option:hover {
       transform: scale(1.03);
     }
-    button {
-      margin-top: 25px;
+    .option img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .option span {
+      display: block;
+      padding: 8px;
+      font-weight: bold;
+    }
+    .selected-red {
+      border-color: red;
+    }
+    .selected-blue {
+      border-color: #0077cc;
+    }
+    .btn {
+      display: block;
+      margin: 30px auto 0;
       padding: 12px 24px;
-      font-size: 16px;
-      border: none;
       background-color: #0077cc;
       color: white;
+      border: none;
       border-radius: 6px;
+      font-size: 16px;
       cursor: pointer;
     }
-    .calmbot-hint {
-      font-style: italic;
-      font-size: 14px;
-      margin-top: 20px;
-    }
     @media (max-width: 600px) {
-      .billede-valg {
-        width: 100%;
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -109,60 +117,63 @@
     <img src="images/logo.png" alt="CalmClinic Logo" />
   </div>
   <div class="container">
-    <h1>Find din CalmClinic-type</h1>
-    <div class="intro">
-      🧽 Vælg et billede med <strong>rød ramme</strong> og et med <strong>blå ramme</strong>. Det afslører din kommunikationsstil og hvad der giver dig tryghed.
+    <h2>Hvordan virker testen?</h2>
+    <p>Når du vælger billeder, aktiveres din intuitive måde at bearbejde følelser og information uden lange spørgsmål. Testen afslører, om du f.eks. har brug for forklaringer eller tryg stemning. Resultatet viser din kommunikationstype og hvordan tandlægen bedst støtter dig.</p>
+    <p>Det kan være svært at vælge og det er helt normalt. Her er det bedst at lade intuitionen bestemme uden at tænke for meget over valget.</p>
+
+    <h2>Sådan tager du testen</h2>
+    <p class="instructions">
+      1. Vælg et billede med <strong style="color: red;">rød ramme</strong>  &nbsp;&nbsp; 2. Vælg et billede med <strong style="color: #0077cc;">blå ramme</strong><br><br>
+      <strong>Hvad lægger du mest vægt på under dit tandlægebesøg?</strong><br>
+      Vælg de billeder, der bedst viser, hvad der giver dig tryghed og ro under behandlingen.
+    </p>
+
+    <div class="grid">
+      <div class="option" onclick="selectImage(this, 'red')">
+        <img src="images/information.jpg" alt="Information" />
+        <span>Information</span>
+      </div>
+      <div class="option" onclick="selectImage(this, 'red')">
+        <img src="images/empati.jpg" alt="Empati" />
+        <span>Empati</span>
+      </div>
+      <div class="option" onclick="selectImage(this, 'blue')">
+        <img src="images/overblik.jpg" alt="Overblik" />
+        <span>Overblik</span>
+      </div>
+      <div class="option" onclick="selectImage(this, 'blue')">
+        <img src="images/detaljer.jpg" alt="Detaljer" />
+        <span>Detaljer</span>
+      </div>
     </div>
-    <div class="billedgruppe">
-      <div class="billede-valg red" onclick="vaelgBillede(this, 'red')">
-        <img src="images/checkliste.jpg" alt="Information" />
-        <div><strong>Information</strong></div>
-      </div>
-      <div class="billede-valg red" onclick="vaelgBillede(this, 'red')">
-        <img src="images/haender.jpg" alt="Empati" />
-        <div><strong>Empati</strong></div>
-      </div>
-      <div class="billede-valg blue" onclick="vaelgBillede(this, 'blue')">
-        <img src="images/stier.jpg" alt="Overblik" />
-        <div><strong>Overblik</strong></div>
-      </div>
-      <div class="billede-valg blue" onclick="vaelgBillede(this, 'blue')">
-        <img src="images/instrumenter.jpg" alt="Detaljer" />
-        <div><strong>Detaljer</strong></div>
-      </div>
-    </div>
-    <div class="calmbot-hint">
-      🤖 Har du brug for støtte? <a href="calmbot.html">Start CalmBot her</a>
-    </div>
-    <button onclick="sendResultat()">Se mit resultat</button>
+
+    <button class="btn" onclick="goToResult()">Se mit resultat</button>
   </div>
+
   <script>
-    let valgtRed = null;
-    let valgtBlue = null;
+    let selectedRed = null;
+    let selectedBlue = null;
 
-    function vaelgBillede(element, type) {
-      const alreadySelected = element.classList.contains('selected');
-      const group = document.querySelectorAll('.' + type);
-
-      group.forEach(el => el.classList.remove('selected'));
-
-      if (!alreadySelected) {
-        element.classList.add('selected');
-        if (type === 'red') valgtRed = element.innerText.trim();
-        else valgtBlue = element.innerText.trim();
+    function selectImage(element, color) {
+      if (color === 'red') {
+        if (selectedRed) selectedRed.classList.remove('selected-red');
+        selectedRed = element;
+        element.classList.add('selected-red');
       } else {
-        if (type === 'red') valgtRed = null;
-        else valgtBlue = null;
+        if (selectedBlue) selectedBlue.classList.remove('selected-blue');
+        selectedBlue = element;
+        element.classList.add('selected-blue');
       }
     }
 
-    function sendResultat() {
-      if (!valgtRed || !valgtBlue) {
-        alert("Vælg et billede fra hver kategori (rød og blå) for at få dit resultat.");
+    function goToResult() {
+      if (!selectedRed || !selectedBlue) {
+        alert("Vælg ét billede med rød og ét med blå ramme for at se dit resultat.");
         return;
       }
-      sessionStorage.setItem("calmTypeRed", valgtRed);
-      sessionStorage.setItem("calmTypeBlue", valgtBlue);
+      // gem evt. i sessionStorage og navigér til resultatside
+      sessionStorage.setItem('valgRed', selectedRed.innerText.trim());
+      sessionStorage.setItem('valgBlue', selectedBlue.innerText.trim());
       window.location.href = "resultatside.html";
     }
   </script>
