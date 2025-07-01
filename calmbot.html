@@ -18,7 +18,9 @@
       background-position: center;
       padding: 40px 20px;
       text-align: center;
-      color: white;
+    }
+    header img {
+      max-width: 150px;
     }
     .container {
       max-width: 900px;
@@ -52,8 +54,8 @@
     }
   </style>
 
+  <!-- Redirect mobilbrugere -->
   <script>
-    // Automatisk redirect til mobilversion
     if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
       window.location.href = "https://files.bpcontent.cloud/2025/07/01/13/20250701130740-DA71EYFW.html";
     }
@@ -62,7 +64,7 @@
 
 <body>
   <header>
-    <img src="images/logo.png" alt="CalmClinic logo" style="max-width: 150px;" />
+    <img src="images/logo.png" alt="CalmClinic logo">
   </header>
 
   <div class="container">
@@ -80,21 +82,22 @@
       <strong>Vigtigt:</strong> Undlad at indtaste personlige oplysninger som CPR-nummer, fulde navn eller medicinske diagnoser. CalmBot er kun til generel støtte og information.
     </div>
 
+    <!-- CalmBot vises her -->
     <div id="webchat"></div>
   </div>
 
-  <!-- Botpress Chat Embed -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
+  <!-- Botpress embed -->
+  <script src="https://cdn.botpress.cloud/webchat/v3/inject.js"></script>
   <script>
     window.botpressWebChat.init({
-      "botId": "49442fde-d109-472a-98e9-36d04bdbf40d",
-      "clientId": "bf7fc029-0816-4096-aab7-ef52c8037820",
-      "hostUrl": "https://cdn.botpress.cloud/webchat/v3",
-      "messagingUrl": "https://messaging.botpress.cloud",
-      "containerWidth": "100%",
-      "layoutWidth": "100%",
-      "showPoweredBy": false,
-      "container": "#webchat"
+      botId: "49442fde-d109-472a-98e9-36d04bdbf40d",
+      clientId: "bf7fc029-0816-4096-aab7-ef52c8037820",
+      hostUrl: "https://cdn.botpress.cloud/webchat/v3",
+      messagingUrl: "https://messaging.botpress.cloud",
+      container: "#webchat",
+      layoutWidth: "100%",
+      containerWidth: "100%",
+      showPoweredBy: false
     });
   </script>
 </body>
