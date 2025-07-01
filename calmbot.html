@@ -1,54 +1,45 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>CalmBot</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      font-family: Arial, sans-serif;
-      background-color: #f0f8ff;
+      background-color: #eaf6fb;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-
     #webchat {
       width: 100%;
       height: 100%;
     }
-
-    .loading-message {
-      text-align: center;
-      margin-top: 20%;
-      font-size: 1.2rem;
-      color: #555;
-    }
   </style>
-
-  <!-- Botpress Webchat Script -->
-  <script src="https://cdn.botpress.cloud/webchat/v3/inject.js"></script>
 </head>
 <body>
-  <div id="webchat">
-    <div class="loading-message">🕐 CalmBot loader…</div>
-  </div>
+  <div id="webchat"></div>
 
   <script>
-    window.botpressWebChat.init({
-      botId: "49442fde-d109-472a-98e9-36d04bdbf40d",
-      clientId: "bf7fc029-0816-4096-aab7-ef52c8037820",
-      hostUrl: "https://cdn.botpress.cloud/webchat/v3",
-      messagingUrl: "https://messaging.botpress.cloud",
-      containerWidth: "100%",
-      layoutWidth: "100%",
-      showPoweredBy: false,
-      botName: "CalmBot",
-      stylesheet: "",
-      enableConversationDeletion: false,
-      enableTranscriptDownload: false
-    });
+    const tryInit = () => {
+      if (window.botpress) {
+        window.botpress.init({
+          botId: "49442fde-d109-472a-98e9-36d04bdbf40d",
+          clientId: "bf7fc029-0816-4096-aab7-ef52c8037820",
+          selector: "#webchat"
+        });
+      } else {
+        // Prøv igen efter lidt tid
+        setTimeout(tryInit, 300);
+      }
+    };
+    tryInit();
   </script>
 </body>
 </html>
+
