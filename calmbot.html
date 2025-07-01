@@ -54,12 +54,15 @@
     }
   </style>
 
-  <!-- Redirect mobilbrugere -->
+  <!-- ✅ MOBIL-REDIRECT -->
   <script>
     if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
       window.location.href = "https://files.bpcontent.cloud/2025/07/01/13/20250701130740-DA71EYFW.html";
     }
   </script>
+
+  <!-- ✅ Botpress webchat script -->
+  <script src="https://cdn.botpress.cloud/webchat/v3/inject.js"></script>
 </head>
 
 <body>
@@ -82,12 +85,11 @@
       <strong>Vigtigt:</strong> Undlad at indtaste personlige oplysninger som CPR-nummer, fulde navn eller medicinske diagnoser. CalmBot er kun til generel støtte og information.
     </div>
 
-    <!-- CalmBot vises her -->
+    <!-- CalmBot chatcontainer -->
     <div id="webchat"></div>
   </div>
 
-  <!-- Botpress embed -->
-  <script src="https://cdn.botpress.cloud/webchat/v3/inject.js"></script>
+  <!-- ✅ Botpress init script -->
   <script>
     window.botpressWebChat.init({
       botId: "49442fde-d109-472a-98e9-36d04bdbf40d",
